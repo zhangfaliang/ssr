@@ -2,7 +2,7 @@
  import Link from 'next/link'
  export default ()=>(
    <div>
-     Click{' '}
+     Click{'   '}
      <Link href="/readme-api/user-static">
       <a> here</a>
      </Link>
