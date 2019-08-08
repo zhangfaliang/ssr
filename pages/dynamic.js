@@ -1,7 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
 import Nav from '../components/nav'
-import Counter from '../components/Counter'
 import dynamic from 'next/dynamic'
 
 const DynamicComponent1 = dynamic(import('../components/hello1'))

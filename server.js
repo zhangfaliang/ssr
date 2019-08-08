@@ -10,11 +10,11 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = new Koa()
   const router = new Router()
-  if (req.headers.host === 'my-app.com') {
-    app.setAssetPrefix('http://cdn.com/myapp')
-  } else {
-    app.setAssetPrefix('')
-  }
+  // if (req.headers.host === 'my-app.com') {
+  //   app.setAssetPrefix('http://cdn.com/myapp')
+  // } else {
+  //   app.setAssetPrefix('')
+  // }
   router.get('/a', async ctx => {
     await app.render(ctx.req, ctx.res, '/a', ctx.query)
     ctx.respond = false
