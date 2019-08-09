@@ -1,4 +1,3 @@
-import App, { Container } from "next/app";
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
@@ -28,13 +27,6 @@ class HelloUA extends React.Component {
     console.log(this.props, "-------------");
     return (
       <div>
-        <>
-          <a onClick={() => setTimeout(() => router.push("/dynamic"), 100)}>
-            A route transition will happen after 100ms
-          </a>
-          {// and we can prefetch it!
-          router.prefetch("/dynamic")}
-        </>
         Hello World {this.props.userAgent}
         <Link scroll={false} href="/?counter=10">
           <a>Disables scrolling</a>
@@ -61,7 +53,7 @@ class HelloUA extends React.Component {
           here
         </span>{" "}
         to read more
-        <Link href="/about" prefetch href="/about">
+        <Link href="/about"  prefetch href='/about' rel="preload">
           <a>About</a>
         </Link>
       </div>

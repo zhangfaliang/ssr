@@ -60,8 +60,6 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        <Header />
-
         {/* Load immediately, but in a separate bundle */}
         <DynamicComponent1 />
 
