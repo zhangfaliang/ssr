@@ -1,4 +1,4 @@
-const dynamicRoute = ({ router, server, app }) => {
+const dynamicRoute = ({ router, server, app, ssrCache }) => {
   router.get("/dynamic", async ctx => {
     await app.render(ctx.req, ctx.res, "/dynamic", ctx.query);
     ctx.respond = false;

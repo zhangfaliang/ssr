@@ -1,6 +1,12 @@
-const indexRoute = ({ router, server, app }) => {
+const indexRoute = ({ router, server, app, ssrCache }) => {
   router.get("/a", async ctx => {
-    await app.render(ctx.req, ctx.res, "/a", ctx.query);
+    // await app.render(ctx.req, ctx.res, "/a", ctx.query);
+    return ssrCache({
+      req: ctx.req,
+      res: ctx.res,
+      pagePath: "/a",
+      queryParams: ctx.query
+    });
     ctx.respond = false;
   });
 

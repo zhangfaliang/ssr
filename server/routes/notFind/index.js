@@ -1,4 +1,4 @@
-const notFind = ({ router, server, app, handle }) => {
+const notFind = ({ router, server, app, handle, ssrCache }) => {
   router.get("*", async ctx => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;

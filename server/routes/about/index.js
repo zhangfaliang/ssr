@@ -1,4 +1,4 @@
-const aboutRoute = ({ router, server, app }) => {
+const aboutRoute = ({ router, server, app, ssrCache }) => {
   router.get("/about", async ctx => {
     await app.render(ctx.req, ctx.res, "/about", ctx.query);
     ctx.respond = false;
