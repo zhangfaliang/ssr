@@ -23,8 +23,6 @@ class HelloUA extends React.Component {
   render() {
     const href = "/about?counter=10";
     const as = href;
-
-    console.log(this.props, "-------------");
     return (
       <div>
         Hello World {this.props.userAgent}
