@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-
+import styles from './index.less';
 const Title = styled.h1`
   font-size: 20px;
   color: ${({ theme }) => theme.colors.primary};
@@ -21,7 +21,8 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 export default () => (
-  <div style={{ marginTop: 100 }}>
+  <div className ={styles.index} style={{ marginTop: 100 }}>
+   {console.log(styles)}
     <Title>
       <ul>
         <li>
