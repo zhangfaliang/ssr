@@ -1,8 +1,13 @@
 import React from 'react'
-
 import Link from 'next/link'
+import styled from 'styled-components'
 
+const Title = styled.h1`
+  font-size: 10px;
+  color: ${({ theme }) => theme.colors.primary};
+`
 export default () => (
+  <Title>
   <ul>
     <li>
       <Link href='/b' as='/a'>
@@ -30,4 +35,5 @@ export default () => (
       </Link>
     </li>
   </ul>
+  </Title>
 )

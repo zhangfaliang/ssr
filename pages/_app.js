@@ -1,8 +1,17 @@
 import React from "react";
 import App, { Container } from "next/app";
-import dynamic from 'next/dynamic'
-
-const DynamicGlobalLayouComponent= dynamic({
+import dynamic from "next/dynamic";
+import { ThemeProvider } from "styled-components";
+const theme = {
+  colors: {
+    primary: 'black'
+  }
+};
+//在页面更改之间保持布局
+//导航页面时保持状态
+//使用componentDidCatch进行自定义错误处理
+//将其他数据注入页面（例如，通过处理GraphQL查询）
+const DynamicGlobalLayouComponent = dynamic({
   loader: () => import("../Layouts/globalLayout/index"),
   loading: () => <p>Loading ...</p>
 });
@@ -10,11 +19,27 @@ const DynamicGlobalLayouComponent= dynamic({
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    return <DynamicGlobalLayouComponent>{children}</DynamicGlobalLayouComponent>;
+    return (
+      <DynamicGlobalLayouComponent>{children}</DynamicGlobalLayouComponent>
+    );
   }
 }
 
 export default class MyApp extends App {
+  //如果您有阻止数据要求，则仅取消注释此方法
+  // 应用程序中的每一页。这会禁用此功能
+  //执行自动静态优化，导致应用中的每个页面都出现
+  //是服务器端呈现的。
+  //在App中添加自定义getInitialProps将影响自动预渲染
+  // static async getInitialProps({ Component, ctx }) {
+  //   let pageProps = {}
+  //
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps(ctx)
+  //   }
+  //
+  //   return { pageProps }
+  // }
   componentDidCatch(error, errorInfo) {
     console.log("CUSTOM ERROR HANDLING", error);
     // This is needed to render errors correctly in development / production
@@ -22,11 +47,14 @@ export default class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
+
     return (
       <Container>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
       </Container>
     );
   }
