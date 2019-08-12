@@ -26,11 +26,11 @@ module.exports = {
       "/about": { page: "/about" }
     };
   },
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]"
-  },
+  // cssModules: true,
+  // cssLoaderOptions: {
+  //   importLoaders: 1,
+  //   localIdentName: "[local]___[hash:base64:5]"
+  // },
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
@@ -47,10 +47,11 @@ module.exports = {
     javascriptEnabled: true,
     modifyVars: themeVariables // 让你的antd自定义有效
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (isServer) {
       const antStyles = /antd\/.*?\/style.*?/;
       const origExternals = [...config.externals];
+     // config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//))
       config.externals = [
         (context, request, callback) => {
           if (request.match(antStyles)) return callback();
@@ -69,6 +70,6 @@ module.exports = {
       });
     }
     return config;
-  },
+  }
   
 };

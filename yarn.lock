@@ -283,6 +283,14 @@
     "@babel/helper-create-class-features-plugin" "^7.4.4"
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-proposal-do-expressions@^7.5.0":
+  version "7.5.0"
+  resolved "https://registry.npmjs.org/@babel/plugin-proposal-do-expressions/-/plugin-proposal-do-expressions-7.5.0.tgz#ceb594d4a618545b00aa0b5cd61cad4aaaeb7a5a"
+  integrity sha512-xe0QQrhm+DGj6H23a6XtwkJNimy1fo71O/YVBfrfvfSl0fsq9T9dfoQBIY4QceEIdUo7u9s7OPEdsWEuizfGeg==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-do-expressions" "^7.2.0"
+
 "@babel/plugin-proposal-json-strings@^7.2.0":
   version "7.2.0"
   resolved "https://registry.npmjs.org/@babel/plugin-proposal-json-strings/-/plugin-proposal-json-strings-7.2.0.tgz#568ecc446c6148ae6b267f02551130891e29f317"
@@ -328,6 +336,13 @@
   version "7.2.0"
   resolved "https://registry.npmjs.org/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.2.0.tgz#69e1f0db34c6f5a0cf7e2b3323bf159a76c8cb7f"
   integrity sha512-1ZrIRBv2t0GSlcwVoQ6VgSLpLgiN/FVQUzt9znxo7v2Ov4jJrs8RY8tv0wvDmFN3qIdMKWrmMMW6yZ0G19MfGg==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-syntax-do-expressions@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.npmjs.org/@babel/plugin-syntax-do-expressions/-/plugin-syntax-do-expressions-7.2.0.tgz#f3d4b01be05ecde2892086d7cfd5f1fa1ead5a2a"
+  integrity sha512-/u4rJ+XEmZkIhspVuKRS+7WLvm7Dky9j9TvGK5IgId8B3FKir9MG+nQxDZ9xLn10QMBvW58dZ6ABe2juSmARjg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
