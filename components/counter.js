@@ -1,23 +1,25 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-import { increment, decrement, reset } from '../models/index/actions'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCount } from "../models/index/selects";
+import { increment, decrement, reset } from "../models/index/actions";
 
 class Counter extends Component {
   increment = () => {
-    this.props.dispatch(increment())
-  }
+    this.props.dispatch(increment());
+  };
 
   decrement = () => {
-    this.props.dispatch(decrement())
-  }
+    this.props.dispatch(decrement());
+  };
 
   reset = () => {
-    this.props.dispatch(reset())
-  }
+    this.props.dispatch(reset());
+  };
 
-  render () {
-    const { count } = this.props
+  render() {
+    const { count } = this.props;
+    console.log(this.props,'-------------')
     return (
       <div>
         <style jsx>{`
@@ -32,9 +34,12 @@ class Counter extends Component {
         <button onClick={this.decrement}>-1</button>
         <button onClick={this.reset}>Reset</button>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({ count }) => ({ count })
-export default connect(mapStateToProps)(Counter)
+const mapStateToProps = createStructuredSelector({
+  count: selectCount()
+});
+
+export default connect(mapStateToProps)(Counter);

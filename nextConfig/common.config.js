@@ -1,4 +1,3 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const lessToJS = require("less-vars-to-js");
 const fs = require("fs");
 const path = require("path");
@@ -58,7 +57,7 @@ module.exports = {
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (isServer) {
-      const antStyles = /(antd-mobile\/.*?\/style.*?)|(antd\/.*?\/style.*?)/;
+      const antStyles = /(antd\/.*?\/style.*?)/;
       const origExternals = [...config.externals];
 
       config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
