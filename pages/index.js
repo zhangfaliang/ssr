@@ -5,9 +5,6 @@ import styles from "./index.less";
 import getConfig from "next/config";
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
-console.log(serverRuntimeConfig.mySecret, "-----"); // Will only be available on the server side
-console.log(publicRuntimeConfig.staticFolder, "========="); // Will be available on both server and client
-
 const Title = styled.h1`
   font-size: 20px;
   color: ${({ theme }) => theme.colors.primary};
@@ -22,6 +19,7 @@ import {
   Slider,
   Button
 } from "antd";
+// import { Button } from 'antd-mobile'
 
 const FormItem = Form.Item;
 const Option = Select.Option;

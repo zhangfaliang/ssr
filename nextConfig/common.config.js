@@ -11,11 +11,13 @@ module.exports = {
   //您可以根据缓存策略禁用HTML页面的etag生成。如果未指定配置，则Next将为每个页面生成etags。
   //generateEtags: false,
   compression: false,
-  serverRuntimeConfig: { // Will only be available on the server side
-    mySecret: 'secret'
+  serverRuntimeConfig: {
+    // Will only be available on the server side
+    mySecret: "secret"
   },
-  publicRuntimeConfig: { // Will be available on both server and client
-    staticFolder: '/static',
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    staticFolder: "/static",
     mySecret: process.env.MY_SECRET // Pass through env variables
   },
   pageExtensions: ["mdx", "jsx", "js"], //在页面中解析页面时配置扩展名
@@ -55,10 +57,10 @@ module.exports = {
     modifyVars: themeVariables // 让你的antd自定义有效
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
- 
     if (isServer) {
-      const antStyles = /antd\/.*?\/style.*?/;
+      const antStyles = /(antd-mobile\/.*?\/style.*?)|(antd\/.*?\/style.*?)/;
       const origExternals = [...config.externals];
+
       config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
       config.externals = [
         (context, request, callback) => {
@@ -79,5 +81,4 @@ module.exports = {
     }
     return config;
   }
-  
 };
