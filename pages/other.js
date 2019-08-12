@@ -1,18 +1,13 @@
-
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadData, startClock, tickClock } from '../models/index/actions'
+
+import { startClock, tickClock } from '../models/index/actions'
 import Page from '../components/page'
 
-class Index extends React.Component {
+class Other extends React.Component {
   static async getInitialProps (props) {
     const { store, isServer } = props.ctx
     store.dispatch(tickClock(isServer))
-
-    if (!store.getState().placeholderData) {
-      store.dispatch(loadData())
-    }
-
     return { isServer }
   }
 
@@ -21,8 +16,8 @@ class Index extends React.Component {
   }
 
   render () {
-    return <Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />
+    return <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
   }
 }
 
-export default connect()(Index)
+export default connect()(Other)

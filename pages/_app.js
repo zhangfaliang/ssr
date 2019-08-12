@@ -2,9 +2,14 @@ import React from "react";
 import App, { Container } from "next/app";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import withReduxSaga from "next-redux-saga";
+import createStore from "../models/store";
+
 const theme = {
   colors: {
-    primary: 'black'
+    primary: "black"
   }
 };
 //在页面更改之间保持布局
@@ -25,37 +30,42 @@ class Layout extends React.Component {
   }
 }
 
-export default class MyApp extends App {
+class MyApp extends App {
   //如果您有阻止数据要求，则仅取消注释此方法
   // 应用程序中的每一页。这会禁用此功能
   //执行自动静态优化，导致应用中的每个页面都出现
   //是服务器端呈现的。
   //在App中添加自定义getInitialProps将影响自动预渲染
-  // static async getInitialProps({ Component, ctx }) {
-  //   let pageProps = {}
-  //
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx)
-  //   }
-  //
-  //   return { pageProps }
-  // }
+
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps({ ctx });
+    }
+
+    return { pageProps };
+  }
   componentDidCatch(error, errorInfo) {
     console.log("CUSTOM ERROR HANDLING", error);
     // This is needed to render errors correctly in development / production
     super.componentDidCatch(error, errorInfo);
   }
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
 
     return (
-      <Container>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </Container>
+      <Provider store={store}>
+        <Container>
+          <ThemeProvider theme={theme}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </Container>
+      </Provider>
     );
   }
 }
+
+export default withRedux(createStore)(withReduxSaga(MyApp));
