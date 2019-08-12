@@ -9,9 +9,9 @@ import createStore from "../models/store";
 
 const theme = {
   colors: {
-    primary: "black"
+    primary: '#0070f3'
   }
-};
+}
 //在页面更改之间保持布局
 //导航页面时保持状态
 //使用componentDidCatch进行自定义错误处理

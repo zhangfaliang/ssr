@@ -5,9 +5,6 @@ const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
 
-// choose your own modifyVars
-// const modifyVars = require("./utils/modifyVars")
-
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => { }
 }
@@ -41,15 +38,6 @@ module.exports = {
       "/about": { page: "/about" }
     };
   },
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
-  },
-  lessLoaderOptions: {
-    javascriptEnabled: true,
-    //modifyVars: themeVariables
-  },
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
@@ -61,6 +49,11 @@ module.exports = {
       analyzerMode: "static",
       reportFilename: "../bundles/client.html"
     }
+  },
+  cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: "[local]___[hash:base64:5]",
   },
   lessLoaderOptions: {
     javascriptEnabled: true,
