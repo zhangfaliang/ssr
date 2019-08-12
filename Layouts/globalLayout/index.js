@@ -1,59 +1,31 @@
-import React from "react";
-import Link from "next/link";
+import Link from 'next/link'
+import Head from 'next/head'
 
-const links = [
-  { href: "", label: "LOOK" },
-  { href: "", label: "GitHub" }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`;
-  return link;
-});
+export default ({ children, title = 'This is the default title' }) => (
+  <div>
+    <Head>
+      <title>{title}</title>
+      <meta charSet='utf-8' />
+      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+    </Head>
+    <header>
+      <nav>
+        <Link href='/'>
+          <a>Home</a>
+        </Link>{' '}
+        |
+        <Link href='/about'>
+          <a>About</a>
+        </Link>{' '}
+        |
+        <Link href='/contact'>
+          <a>Contact</a>
+        </Link>
+      </nav>
+    </header>
 
-const GlobalLayout = ({ children }) => (
-  <>
-    <nav>
-      <ul>
-        <li>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-        </li>
-        {links.map(({ key, href, label }) => (
-          <li key={key}>
-            <a href={href}>{label}</a>
-          </li>
-        ))}
-      </ul>
-
-      <style jsx>{`
-        :global(body) {
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-            Helvetica, sans-serif;
-        }
-        nav {
-          text-align: center;
-        }
-        ul {
-          display: flex;
-          justify-content: space-between;
-        }
-        nav > ul {
-          padding: 4px 16px;
-        }
-        li {
-          display: flex;
-          padding: 6px 8px;
-        }
-        a {
-          color: #067df7;
-          text-decoration: none;
-          font-size: 13px;
-        }
-      `}</style>
-    </nav>
     {children}
-  </>
-);
 
-export default GlobalLayout;
+    <footer>{'I`m here to stay'}</footer>
+  </div>
+)

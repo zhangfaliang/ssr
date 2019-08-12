@@ -5,6 +5,13 @@ const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
 
+// choose your own modifyVars
+// const modifyVars = require("./utils/modifyVars")
+
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = (file) => { }
+}
+
 module.exports = {
   // distDir: 'build', //自定义build地址
   //您可以根据缓存策略禁用HTML页面的etag生成。如果未指定配置，则Next将为每个页面生成etags。
@@ -28,17 +35,21 @@ module.exports = {
     }
     return null;
   },
-  exportPathMap: function() {
+  exportPathMap: function () {
     return {
       "/": { page: "/", query: { showMore: false } },
       "/about": { page: "/about" }
     };
   },
-  // cssModules: true,
-  // cssLoaderOptions: {
-  //   importLoaders: 1,
-  //   localIdentName: "[local]___[hash:base64:5]"
-  // },
+  cssModules: true,
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: "[local]___[hash:base64:5]",
+  },
+  lessLoaderOptions: {
+    javascriptEnabled: true,
+    //modifyVars: themeVariables
+  },
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
