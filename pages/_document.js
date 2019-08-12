@@ -10,6 +10,8 @@ export default class MyDocument extends Document {
   //像onClick这样的事件处理程序无法添加到此文件中
   //注意：浏览器不会初始化<Main />之外的React组件。不要在这里添加应用程序逻辑。如果您需要在所有页面中共享组件（如菜单或工具栏），请查看<App>组件。
 
+  //注意：如果您有一个带有getInitialProps的自定义<Document>，
+  //请确保在假定页面是服务器端呈现之前检查是否定义了ctx.req。对于预呈现的页面，将不定义ctx.req。
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;

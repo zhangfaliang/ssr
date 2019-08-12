@@ -1,7 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import styles from './index.less';
+import styles from "./index.less";
+import getConfig from "next/config";
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+
+console.log(serverRuntimeConfig.mySecret, "-----"); // Will only be available on the server side
+console.log(publicRuntimeConfig.staticFolder, "========="); // Will be available on both server and client
+
 const Title = styled.h1`
   font-size: 20px;
   color: ${({ theme }) => theme.colors.primary};
@@ -21,17 +27,24 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 export default () => (
-  <div className ={styles.index} style={{ marginTop: 100 }}>
-   {console.log(styles)}
+  <div className={styles.index} style={{ marginTop: 100 }}>
+    <div>
+      <p>Environment variable process.env.TEST is "{process.env.TEST}"</p>
+      <p>
+        Custom environment variables process.env.BACKEND_URL is "
+        {process.env.BACKEND_URL}"
+      </p>
+    </div>
     <Title>
       <ul>
         <li>
-          <Link href="/b" as="/a">
+          {process.env.customKey}
+          <Link href="/a" as="/a">
             <a>a</a>
           </Link>
         </li>
         <li>
-          <Link href="/a" as="/b">
+          <Link href="/b" as="/b">
             <a>b</a>
           </Link>
         </li>

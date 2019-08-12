@@ -1,7 +1,15 @@
 const commonConfig = require("./common.config.js");
+const dotEnvResult = require("dotenv").config();
 
+if (dotEnvResult.error) {
+  throw dotEnvResult.error;
+}
 module.exports = {
   ...commonConfig,
+  env: {
+    BACKEND_URL: "http://localhost:3000",
+    TEST: process.env.TEST
+  },
   /* development only config options here */
   useFileSystemPublicRoutes: true, // 开启前端路由
   //这是仅限开发的功能。如果要在生产中缓存
