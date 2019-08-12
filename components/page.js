@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { connect } from 'react-redux'
-
 import Counter from './counter'
 import Clock from './clock'
-
-function Page ({
+import styles from './page.less'
+import { Button } from 'antd'
+function Page({
   error,
   lastUpdate,
   light,
@@ -14,7 +14,8 @@ function Page ({
   title
 }) {
   return (
-    <div>
+    <div className={styles.div}>
+      <Button title='querwe'>querwe</Button>
       <h1>{title}</h1>
       <Clock lastUpdate={lastUpdate} light={light} />
       <Counter />
