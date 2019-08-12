@@ -19,7 +19,6 @@ class Counter extends Component {
 
   render() {
     const { count } = this.props;
-    console.log(this.props,'-------------')
     return (
       <div>
         <style jsx>{`
