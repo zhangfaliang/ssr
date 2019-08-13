@@ -24,7 +24,7 @@ class SiderDemo extends React.Component {
     } = this.props;
 
     return (
-      <Row className={styles.layout}>
+      <Row className={styles.layout} gutter={24}>
         <Layout>
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
@@ -44,16 +44,16 @@ class SiderDemo extends React.Component {
             </Menu>
           </Sider>
           <Layout className={styles.leftLayout}>
-            <Header  style={{ background: "#fff", padding:0 }}>
-              <Row gutter="24">
-                <Col span="2">
+            <Header style={{ background: "#fff", padding: 0 }}>
+              <Row gutter={24}>
+                <Col span={2}>
                   <Icon
                     className="trigger"
                     type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
                     onClick={this.toggle}
                   />
                 </Col>
-                <Col span="16">
+                <Col className={styles.search} span={16}>
                   <Search
                     placeholder={placeholder}
                     enterButton={enterButton}
