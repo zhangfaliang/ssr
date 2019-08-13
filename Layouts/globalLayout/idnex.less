@@ -1,33 +1,22 @@
+@import "../../assets/reset.less";
 .layout {
-  overflow: hidden;
-  position: relative;
-  box-sizing: border-box;
   :global {
-    #components-layout-demo-side .logo {
+    #components-layout-demo-custom-trigger .trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    #components-layout-demo-custom-trigger .trigger:hover {
+      color: #1890ff;
+    }
+
+    #components-layout-demo-custom-trigger .logo {
       height: 32px;
       background: rgba(255, 255, 255, 0.2);
       margin: 16px;
     }
-  }
-  .warp {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  header {
-    height: 50px;
-  }
-  .main {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 24;
-    box-sizing: border-box;
-    background: "#fff";
-    height: calc(100vh - 150px);
-  }
-  .footer {
-    height: 50px;
   }
 }
