@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { connect } from "react-redux";
-import Counter from "./counter";
-import Clock from "./clock";
+import Counter from "../components/counter";
+import Clock from "../components/clock";
 import { Button } from "antd";
 function Page({
   error,
