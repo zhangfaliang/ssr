@@ -1,10 +1,9 @@
-import { Layout, Menu, Breadcrumb, Icon, Row, Col } from "antd";
-
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+import { Layout, Menu, Icon, Row, Col, Input } from "antd";
+const { Search } = Input;
+const { Header, Content, Sider } = Layout;
 import styles from "./idnex.less";
 
-export default class SiderDemo extends React.Component {
+class SiderDemo extends React.Component {
   state = {
     collapsed: false
   };
@@ -16,7 +15,14 @@ export default class SiderDemo extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
+    const {
+      children,
+      seachPlaceholder,
+      onSearch,
+      placeholder,
+      enterButton
+    } = this.props;
+
     return (
       <Row className={styles.layout}>
         <Layout>
@@ -25,25 +31,37 @@ export default class SiderDemo extends React.Component {
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
               <Menu.Item key="1">
                 <Icon type="user" />
-                <span>nav 1</span>
+                <span>用户</span>
               </Menu.Item>
               <Menu.Item key="2">
                 <Icon type="video-camera" />
-                <span>nav 2</span>
+                <span>视频</span>
               </Menu.Item>
               <Menu.Item key="3">
                 <Icon type="upload" />
-                <span>nav 3</span>
+                <span>下载</span>
               </Menu.Item>
             </Menu>
           </Sider>
-          <Layout>
-            <Header style={{ background: "#fff", padding: 0 }}>
-              <Icon
-                className="trigger"
-                type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                onClick={this.toggle}
-              />
+          <Layout className={styles.leftLayout}>
+            <Header  style={{ background: "#fff", padding:0 }}>
+              <Row gutter="24">
+                <Col span="2">
+                  <Icon
+                    className="trigger"
+                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                    onClick={this.toggle}
+                  />
+                </Col>
+                <Col span="16">
+                  <Search
+                    placeholder={placeholder}
+                    enterButton={enterButton}
+                    size="large"
+                    onSearch={onSearch}
+                  />
+                </Col>
+              </Row>
             </Header>
             <Content
               style={{
@@ -53,7 +71,7 @@ export default class SiderDemo extends React.Component {
                 minHeight: 280
               }}
             >
-             {children}
+              {children}
             </Content>
           </Layout>
         </Layout>
@@ -61,3 +79,12 @@ export default class SiderDemo extends React.Component {
     );
   }
 }
+
+SiderDemo.defaultProps = {
+  seachPlaceholder: "input search text",
+  onSearch: value => console.log(value),
+  placeholder: "input search text",
+  enterButton: "Search"
+};
+
+export default SiderDemo;

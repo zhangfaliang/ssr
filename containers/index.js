@@ -2,7 +2,10 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import Counter from "../components/counter";
 import Clock from "../components/clock";
-import { Button } from "antd";
+import { Button, Input } from "antd";
+
+const { Search } = Input;
+
 function Page({
   error,
   lastUpdate,
@@ -14,7 +17,12 @@ function Page({
 }) {
   return (
     <div>
-      <Button title="querwe">querwe</Button>
+      <Search
+        placeholder="input search text"
+        onSearch={value => console.log(value)}
+        enterButton
+      />
+
       <h1>{title}</h1>
       <Clock lastUpdate={lastUpdate} light={light} />
       <Counter />
