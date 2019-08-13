@@ -57,7 +57,7 @@ module.exports = {
   },
   lessLoaderOptions: {
     javascriptEnabled: true,
-    modifyVars: themeVariables // 让你的antd自定义有效
+    modifyVars: themeVariables, // 让你的antd自定义有效
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (isServer) {

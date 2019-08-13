@@ -77,7 +77,7 @@ export default class SiderDemo extends React.Component {
                 </div>
               </Content>
               <Footer  className={styles.footer}>
-                Ant Design ©2018 Created by Ant UED
+               footer
               </Footer>
             </Layout>
           </Layout>
