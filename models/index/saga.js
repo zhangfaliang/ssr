@@ -1,32 +1,28 @@
-import { all, call, delay, put, take, takeLatest } from 'redux-saga/effects'
-import es6promise from 'es6-promise'
-import 'isomorphic-unfetch'
+import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
+import es6promise from "es6-promise";
+import "isomorphic-unfetch";
+import { actionTypes, failure, loadDataSuccess, tickClock } from "./actions";
+import { getIndexData } from "../../services/index";
+es6promise.polyfill();
 
-import { actionTypes, failure, loadDataSuccess, tickClock } from './actions'
-
-es6promise.polyfill()
-
-function * runClockSaga () {
-  yield take(actionTypes.START_CLOCK)
+function* runClockSaga() {
+  yield take(actionTypes.START_CLOCK);
   while (true) {
-    yield put(tickClock(false))
-    yield delay(1000)
+    yield put(tickClock(false));
+    yield delay(1000);
   }
 }
 
-function * loadDataSaga () {
+function* loadDataSaga() {
   try {
-    const res = yield fetch('https://jsonplaceholder.typicode.com/users')
-    const data = yield res.json()
-    yield put(loadDataSuccess(data))
+    const data = yield call(getIndexData);
+    yield put(loadDataSuccess(data.data));
   } catch (err) {
-    yield put(failure(err))
+    yield put(failure(err));
   }
 }
-
-
 
 export default [
   call(runClockSaga),
   takeLatest(actionTypes.LOAD_DATA, loadDataSaga)
-]
+];

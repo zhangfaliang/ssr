@@ -1,4 +1,4 @@
-import Toast from '../components/toast';
+// import Toast from '../components/toast';
 import Axios from 'axios';
 
 export class ProcessUpdateApi {
@@ -32,7 +32,7 @@ export class ProcessUpdateApi {
                 console.log('.....数据请求成功');
               } else {
                 // 请求中
-                Toast.show('网络出了点问题，正在尝试重新连接');
+                alert('网络出了点问题，正在尝试重新连接');
                 console.error(`${_that.currentTolerance}.....尝试再次请求中`);
               }
             } catch (e) {

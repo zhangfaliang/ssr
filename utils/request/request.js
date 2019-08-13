@@ -1,10 +1,10 @@
 import Axios from "axios";
-import { requestCon } from "./requestCon";
+import { config } from "./requestCon";
 import { ProcessUpdateApi } from "./updateApi";
 
 // Set config defaults when creating the instance
 const axios = Axios.create({
-  ...requestCon
+  ...config
 });
 const setRequestAndResponse = () => {
   axios.interceptors.request.use(
@@ -58,4 +58,6 @@ const setRequestAndResponse = () => {
   );
 };
 
-setRequestAndResponse;
+setRequestAndResponse();
+
+export { axios };
