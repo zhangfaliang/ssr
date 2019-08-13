@@ -1,0 +1,35 @@
+@import '../../theme/index.less';
+@import '../../theme/reset.less';
+.layout {
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  :global {
+    #components-layout-demo-side .logo {
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 16px;
+    }
+  }
+  .warp {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  header {
+    height: 50px;
+  }
+  .main {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 24;
+    box-sizing: border-box;
+    background: "#fff";
+    height: calc(100vh - 150px);
+  }
+  .footer {
+    height: 50px;
+  }
+}
