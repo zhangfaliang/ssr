@@ -26,7 +26,7 @@ class SiderDemo extends React.Component {
     return (
       <Row className={styles.layout} gutter={24}>
         <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+          {/* <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
               <Menu.Item key="1">
@@ -42,7 +42,7 @@ class SiderDemo extends React.Component {
                 <span>下载</span>
               </Menu.Item>
             </Menu>
-          </Sider>
+          </Sider> */}
           <Layout className={styles.leftLayout}>
             <Header style={{ background: "#fff", padding: 0 }}>
               <Row gutter={24}>
