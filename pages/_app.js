@@ -22,7 +22,7 @@ const DynamicGlobalLayouComponent = dynamic({
   loader: () => import("../Layouts/globalLayout/index"),
   loading: () => <p>Loading ...</p>
 });
-
+console.log(process.env.mySecret,process.env,'000000000000');
 class Layout extends React.Component {
   render() {
     const { children } = this.props;

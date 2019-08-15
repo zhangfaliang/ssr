@@ -45,7 +45,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-          <script charset="UTF-8" src="//ljmm-static.oss-cn-beijing.aliyuncs.com/js/adaptive.js"></script>
+          <script charset="UTF-8" src="https://ljmm-static.oss-cn-beijing.aliyuncs.com/js/adaptive.js"></script>
           {/*<meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width" /> unComment it while main browser support this tag */}
         </Head>
         <body>

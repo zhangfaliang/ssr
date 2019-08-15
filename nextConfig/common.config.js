@@ -5,9 +5,10 @@ const cssLoaderGetLocalIdent = require("css-loader/lib/getLocalIdent.js");
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
+const PxtoremWebpackPlugin = require('pxtorem-webpack-plugin');
 
 if (typeof require !== "undefined") {
-  require.extensions[".less"] = file => {};
+  require.extensions[".less"] = file => { };
 }
 
 module.exports = {
@@ -84,6 +85,11 @@ module.exports = {
         };
       });
     }
+    config.plugins.push(new PxtoremWebpackPlugin({
+      baseWidth: 750,
+      baseDpr: 2,
+      remUnit: 100,
+    }))
 
     if (isServer) {
       const antMStyles = /antd-mobile\/.*?\/style.*?/;

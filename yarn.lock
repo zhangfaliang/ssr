@@ -5589,7 +5589,15 @@ punycode@^2.1.0:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-px2rem@~0.5.0:
+px2rem-loader@^0.1.8:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/px2rem-loader/-/px2rem-loader-0.1.9.tgz#c8f2bf8be8b9a6b43a5f67d14b2febe1160e56a0"
+  integrity sha512-3Ew8At5W/HHIIUe/KZk+FBRRb20KtgP1N1c/BnMlXk6LNkqrFmUIUF35GF/evzNdj/Q63iWJpkmn/c5qSMplRg==
+  dependencies:
+    loader-utils "^1.1.0"
+    px2rem "^0.5.0"
+
+px2rem@^0.5.0, px2rem@~0.5.0:
   version "0.5.0"
   resolved "https://registry.npmjs.org/px2rem/-/px2rem-0.5.0.tgz#24b3a6cf74d14adb4ed776f207871d9893e410e2"
   integrity sha1-JLOmz3TRSttO13byB4cdmJPkEOI=
@@ -5599,6 +5607,15 @@ px2rem@~0.5.0:
     css "~2.2.0"
     extend "~3.0.0"
     fs-extra "~0.16.3"
+
+pxtorem-webpack-plugin@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/pxtorem-webpack-plugin/-/pxtorem-webpack-plugin-0.2.2.tgz#51af0ad7937bf45e3232c9db402cb44a988c1f01"
+  integrity sha512-ot1E3Sfr5C+UrSVPuYvneG/AffA39XdV5TsMnOjufFMqF0GOUNb2qaeZ+jpsBNRXKlv2RwPzXQGr3sw5Kpxb1A==
+  dependencies:
+    lodash "^4.17.5"
+    px2rem "^0.5.0"
+    px2rem-loader "^0.1.8"
 
 qs@6.7.0:
   version "6.7.0"
