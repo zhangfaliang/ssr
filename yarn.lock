@@ -4984,6 +4984,11 @@ next-redux-wrapper@^3.0.0-alpha.3:
   resolved "https://registry.npmjs.org/next-redux-wrapper/-/next-redux-wrapper-3.0.0-alpha.3.tgz#3db44012e2e36e12977816cc8726a9e2d24a9c40"
   integrity sha512-qFYQbba8u3kb71FYxOyyAg0cQ5fe9GAJVy52wuXPDEU6irGz7jOrj/8JYhFa9WJh5sSpEdnFK6vFyvihLltemw==
 
+next-seo@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/next-seo/-/next-seo-2.0.0.tgz#478ea9ac5a6f7b331b58f9604a577bcccbd4ba43"
+  integrity sha512-VUkgKtnBEugWIjZTHLBRO/EI9LCqPM55qCuYgP1OBvSPwXKReG27g9k5iEHaFymoTjdyhQFMUE8GVHdbAfd2eA==
+
 next-server@9.0.3:
   version "9.0.3"
   resolved "https://registry.npmjs.org/next-server/-/next-server-9.0.3.tgz#b1372df158646ec40118c6e845d9a51764a21d89"

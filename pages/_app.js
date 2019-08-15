@@ -5,7 +5,11 @@ import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
+import { NextSeo } from "next-seo";
 import createStore from "../models/store";
+import { DefaultSeo } from "next-seo";
+
+import SEO from "../next-seo.config";
 const theme = {
   colors: {
     primary: "#0070f3"
@@ -55,6 +59,7 @@ class MyApp extends App {
 
     return (
       <Provider store={store}>
+        <NextSeo config={SEO} />
         <Container>
           <ThemeProvider theme={theme}>
             <Layout>
