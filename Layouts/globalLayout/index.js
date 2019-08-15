@@ -2,6 +2,7 @@ import { Layout, Menu, Icon, Row, Col, Input } from "antd";
 const { Search } = Input;
 import { isEmpty } from "lodash";
 const { Header, Content, Sider } = Layout;
+import LoginComponent from '../../components/loginComponent'
 import styles from "./idnex.less";
 // import vl from "umi-hd";
 // !isEmpty(window) && vl();
@@ -28,41 +29,22 @@ class SiderDemo extends React.Component {
 
     return (
       <Row className={styles.layout} gutter={24}>
-        <Layout>
-          {/* <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-              <Menu.Item key="1">
-                <Icon type="user" />
-                <span>用户</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span>视频</span>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="upload" />
-                <span>下载</span>
-              </Menu.Item>
-            </Menu>
-          </Sider> */}
+        <Col span={24}>
+
           <Layout className={styles.leftLayout}>
             <Header style={{ background: "#fff", padding: 0 }}>
               <Row gutter={24}>
-                <Col span={2}>
-                  <Icon
-                    className="trigger"
-                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                    onClick={this.toggle}
-                  />
-                </Col>
-                <Col className={styles.search} span={16}>
+
+                <Col offset={1} className={styles.search} span={16}>
                   <Search
                     placeholder={placeholder}
                     enterButton={enterButton}
                     size="large"
                     onSearch={onSearch}
                   />
+                </Col>
+                <Col offset={0} className={styles.search} span={7}>
+                  <LoginComponent></LoginComponent>
                 </Col>
               </Row>
             </Header>
@@ -77,7 +59,7 @@ class SiderDemo extends React.Component {
               {children}
             </Content>
           </Layout>
-        </Layout>
+        </Col>
       </Row>
     );
   }
