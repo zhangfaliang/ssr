@@ -1,71 +1,32 @@
-import { Layout, Menu, Icon, Row, Col, Input } from "antd";
-const { Search } = Input;
-const { Header, Content, Sider } = Layout;
-import LoginComponent from '../../components/loginComponent'
 import styles from "./idnex.less";
-class SiderDemo extends React.Component {
-  state = {
-    collapsed: false
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+class App extends React.Component {
+  state = { visible: false, placement: "left" };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+      collapsed: false
+    });
   };
 
-  toggle = () => {
+  onClose = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      visible: false
     });
   };
 
   render() {
-    const {
-      children,
-      seachPlaceholder,
-      onSearch,
-      placeholder,
-      enterButton
-    } = this.props;
-
+    const { children } = this.props;
     return (
-      <Row className={styles.layout} gutter={24}>
-        <Col span={24}>
-
-          <Layout className={styles.leftLayout}>
-            <Header style={{ background: "#fff", padding: 0 }}>
-              <Row gutter={24}>
-
-                <Col offset={1} className={styles.search} span={16}>
-                  <Search
-                    placeholder={placeholder}
-                    enterButton={enterButton}
-                    size="large"
-                    onSearch={onSearch}
-                  />
-                </Col>
-                <Col offset={0} className={styles.search} span={7}>
-                  <LoginComponent></LoginComponent>
-                </Col>
-              </Row>
-            </Header>
-            <Content
-              style={{
-                margin: "24px 16px",
-                padding: 24,
-                background: "#fff",
-                minHeight: 280
-              }}
-            >
-              {children}
-            </Content>
-          </Layout>
-        </Col>
-      </Row>
+      <div className={styles.layout}>
+        <Header className={styles.header} />
+        <div className={styles.main}>{/* {children} */}</div>
+        <Footer />
+      </div>
     );
   }
 }
 
-SiderDemo.defaultProps = {
-  seachPlaceholder: "input search text",
-  onSearch: value => console.log(value),
-  placeholder: "input search text",
-  enterButton: "Search"
-};
-
-export default SiderDemo;
+export default App;

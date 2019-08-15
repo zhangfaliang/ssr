@@ -1,38 +1,37 @@
 @import "../../assets/reset.less";
 .layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  .header {
+    height: 50px;
+    width: 100%;
+    background: #fff;
+  }
+  .main{
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch
+  }
+  .footer{
+    height: 50px;
+    width: 100%;
+  }
+
   :global {
-    #components-layout-demo-custom-trigger .trigger {
-      font-size: 18px;
-      line-height: 64px;
-      padding: 0 24px;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    #components-layout-demo-custom-trigger .trigger:hover {
-      color: #1890ff;
-    }
-
     #components-layout-demo-custom-trigger .logo {
       height: 32px;
       background: rgba(255, 255, 255, 0.2);
       margin: 16px;
     }
-    .ant-layout-content{
-      
-    }
-  }
-  .search{
-    padding-top: 15px;
-    box-sizing: border-box;
-  }
-  .header {
-
-    background: "#fff";
-    padding: 0;
-  }
-  .leftLayout {
-    height: calc(100vh-64px);
-    overflow: hidden;
   }
 }
