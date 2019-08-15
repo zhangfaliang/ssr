@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div className={styles.layout}>
         <header className={styles.header}>
-         werwer
+         <Header></Header>
         </header>
         <main className={styles.main}>{children}</main>
         <footer className={styles.footer}>  
