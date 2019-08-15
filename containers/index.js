@@ -1,10 +1,13 @@
 import { connect } from "react-redux";
 import { NextSeo } from "next-seo";
+import { Button } from 'antd-mobile'
 import Counter from "../components/counter";
 import Clock from "../components/clock";
-import { Tabs, Row, Col } from "antd";
+
 import Banner from "../components/banner/index";
+
 const { TabPane } = Tabs;
+
 
 const tabPanes = [
   {
@@ -140,23 +143,7 @@ function Page({ error, lastUpdate, light, placeholderData }) {
           }
         }}
       />
-      <Row gutter={24}>
-        <Col span={24}>
-          <Banner />
-        </Col>
-        <Col span={24}>
-          <Tabs defaultActiveKey="1" size={"large"}>
-            {tabPanes.map((item, index) => {
-              const { content, tab } = item;
-              return (
-                <TabPane tab={tab} key={index}>
-                  {content({ lastUpdate, light, placeholderData, error })}
-                </TabPane>
-              );
-            })}
-          </Tabs>
-        </Col>
-      </Row>
+     
     </>
   );
 }

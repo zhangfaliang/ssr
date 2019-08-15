@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col } from "antd";
 import { connect } from "react-redux";
 import { loadData, startClock, tickClock } from "../models/index/actions";
 import Page from "../containers/index";

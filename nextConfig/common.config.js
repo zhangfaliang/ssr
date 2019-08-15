@@ -33,12 +33,7 @@ module.exports = {
     }
     return null;
   },
-  exportPathMap: function() {
-    return {
-      "/": { page: "/", query: { showMore: false } },
-      "/about": { page: "/about" }
-    };
-  },
+
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
@@ -89,13 +84,13 @@ module.exports = {
         };
       });
     }
+
     if (isServer) {
-      const antStyles = /(antd\/.*?\/style.*?)/;
+      const antMStyles = /antd-mobile\/.*?\/style.*?/;
       const origExternals = [...config.externals];
-      config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
       config.externals = [
         (context, request, callback) => {
-          if (request.match(antStyles)) return callback();
+          if (request.match(antMStyles)) return callback();
           if (typeof origExternals[0] === "function") {
             origExternals[0](context, request, callback);
           } else {
@@ -104,8 +99,9 @@ module.exports = {
         },
         ...(typeof origExternals[0] === "function" ? [] : origExternals)
       ];
+
       config.module.rules.unshift({
-        test: antStyles,
+        test: antMStyles,
         use: "null-loader"
       });
     }

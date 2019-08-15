@@ -1,4 +1,3 @@
-import { Drawer } from "antd";
 import styles from "./index.less";
 
 class DrawerComponent extends React.Component {
@@ -25,17 +24,11 @@ class DrawerComponent extends React.Component {
   render() {
     const { placement } = this.props;
     return (
-      <Drawer
-        title=""
-        placement={placement}
-        closable={false}
-        onClose={this.onClose}
-        visible={this.state.visible}
-      >
+     
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
-      </Drawer>
+     
     );
   }
 }

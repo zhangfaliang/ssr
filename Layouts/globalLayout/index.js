@@ -1,4 +1,3 @@
-import { Row, Col } from "antd";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -21,23 +20,16 @@ class App extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <Row gutter={24}>
-        <Col span={24}>
-          <Row gutter={8}>
-            <Col span={24}>
-              <Header />
-            </Col>
-          </Row>
-          <Row gutter={8}>
-            <Col span={24}>main</Col>
-          </Row>
-          <Row gutter={8}>
-            <Col span={24}>
-              <Footer />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      <div className={styles.layout}>
+        <header className={styles.header}>
+         werwer
+        </header>
+        <main className={styles.main}>{children}</main>
+        <footer className={styles.footer}>  
+
+        werwer    
+        </footer>
+      </div>
     );
   }
 }
