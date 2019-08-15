@@ -1,4 +1,4 @@
-
+import React from 'react'
 import styles from "./index.less";
 class Header extends React.Component {
   state = { visible: false, placement: "left" };
