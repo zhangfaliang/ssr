@@ -6,12 +6,11 @@ import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import createStore from "../models/store";
-
 const theme = {
   colors: {
-    primary: '#0070f3'
+    primary: "#0070f3"
   }
-}
+};
 //在页面更改之间保持布局
 //导航页面时保持状态
 //使用componentDidCatch进行自定义错误处理

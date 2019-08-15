@@ -1,7 +1,10 @@
 import { Layout, Menu, Icon, Row, Col, Input } from "antd";
 const { Search } = Input;
+import { isEmpty } from "lodash";
 const { Header, Content, Sider } = Layout;
 import styles from "./idnex.less";
+// import vl from "umi-hd";
+// !isEmpty(window) && vl();
 
 class SiderDemo extends React.Component {
   state = {

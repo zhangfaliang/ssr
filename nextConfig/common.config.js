@@ -1,12 +1,13 @@
 const lessToJS = require("less-vars-to-js");
 const fs = require("fs");
 const path = require("path");
+const cssLoaderGetLocalIdent = require("css-loader/lib/getLocalIdent.js");
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
 
-if (typeof require !== 'undefined') {
-  require.extensions['.less'] = (file) => { }
+if (typeof require !== "undefined") {
+  require.extensions[".less"] = file => {};
 }
 
 module.exports = {
@@ -32,7 +33,7 @@ module.exports = {
     }
     return null;
   },
-  exportPathMap: function () {
+  exportPathMap: function() {
     return {
       "/": { page: "/", query: { showMore: false } },
       "/about": { page: "/about" }
@@ -52,18 +53,45 @@ module.exports = {
   },
   cssModules: true,
   cssLoaderOptions: {
-    importLoaders: 1,
+    camelCase: true,
     localIdentName: "[local]___[hash:base64:5]",
+    getLocalIdent: (context, localIdentName, localName, options) => {
+      let hz = context.resourcePath.replace(context.rootContext, "");
+      if (/node_modules/.test(hz)) {
+        return localName;
+      } else {
+        return cssLoaderGetLocalIdent(
+          context,
+          localIdentName,
+          localName,
+          options
+        );
+      }
+    }
   },
   lessLoaderOptions: {
     javascriptEnabled: true,
-    modifyVars: themeVariables, // 让你的antd自定义有效
+    modifyVars: themeVariables // 让你的antd自定义有效
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    if (config.externals) {
+      const includes = [/antd-mobile|antd/];
+      config.externals = config.externals.map(external => {
+        if (typeof external !== "function") return external;
+        return (ctx, req, cb) => {
+          return includes.find(include =>
+            req.startsWith(".")
+              ? include.test(path.resolve(ctx, req))
+              : include.test(req)
+          )
+            ? cb()
+            : external(ctx, req, cb);
+        };
+      });
+    }
     if (isServer) {
       const antStyles = /(antd\/.*?\/style.*?)/;
       const origExternals = [...config.externals];
-
       config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
       config.externals = [
         (context, request, callback) => {
@@ -76,7 +104,6 @@ module.exports = {
         },
         ...(typeof origExternals[0] === "function" ? [] : origExternals)
       ];
-
       config.module.rules.unshift({
         test: antStyles,
         use: "null-loader"
