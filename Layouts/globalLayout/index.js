@@ -1,3 +1,4 @@
+import { Row, Col } from "antd";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -16,15 +17,27 @@ class App extends React.Component {
       visible: false
     });
   };
-
+  //<div className={styles.main}>{/* {children} */}</div>
   render() {
     const { children } = this.props;
     return (
-      <div className={styles.layout}>
-        <Header className={styles.header} />
-        <div className={styles.main}>{/* {children} */}</div>
-        <Footer />
-      </div>
+      <Row gutter={24}>
+        <Col span={24}>
+          <Row gutter={8}>
+            <Col span={24}>
+              <Header />
+            </Col>
+          </Row>
+          <Row gutter={8}>
+            <Col span={24}>main</Col>
+          </Row>
+          <Row gutter={8}>
+            <Col span={24}>
+              <Footer />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }

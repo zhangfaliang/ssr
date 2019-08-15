@@ -1,28 +1,28 @@
-
-import React from 'react'
-import { connect } from 'react-redux'
-import { loadData, startClock, tickClock } from '../models/index/actions'
-import Page from '../containers/index'
+import React from "react";
+import { Row, Col } from "antd";
+import { connect } from "react-redux";
+import { loadData, startClock, tickClock } from "../models/index/actions";
+import Page from "../containers/index";
 
 class Index extends React.Component {
-  static async getInitialProps (props) {
-    const { store, isServer } = props.ctx
-    store.dispatch(tickClock(isServer))
+  static async getInitialProps(props) {
+    const { store, isServer } = props.ctx;
+    store.dispatch(tickClock(isServer));
 
     if (!store.getState().placeholderData) {
-      store.dispatch(loadData())
+      store.dispatch(loadData());
     }
 
-    return { isServer }
+    return { isServer };
   }
 
-  componentDidMount () {
-    this.props.dispatch(startClock())
+  componentDidMount() {
+    this.props.dispatch(startClock());
   }
 
-  render () {
-    return <Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />
+  render() {
+    return <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />
   }
 }
 
-export default connect()(Index)
+export default connect()(Index);

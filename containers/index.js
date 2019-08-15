@@ -140,7 +140,7 @@ function Page({ error, lastUpdate, light, placeholderData }) {
           }
         }}
       />
-      <Row gutter={20}>
+      <Row gutter={24}>
         <Col span={24}>
           <Banner />
         </Col>

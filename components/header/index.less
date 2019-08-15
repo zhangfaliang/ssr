@@ -1,7 +1,21 @@
 @import "../../assets/reset.less";
 
 .header {
-  height: 50px;
   width: 100%;
   background: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  .top{
+   
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    .userIcon{
+      margin:0 20px;
+    }
+  }
+  .bottom{
+    height: 50px;
+  }
 }

@@ -8,7 +8,7 @@ import withReduxSaga from "next-redux-saga";
 import { NextSeo } from "next-seo";
 import createStore from "../models/store";
 import { DefaultSeo } from "next-seo";
-
+import { Row, Col } from "antd";
 import SEO from "../next-seo.config";
 const theme = {
   colors: {
