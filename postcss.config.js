@@ -1,14 +1,19 @@
-const pxtorem = require("postcss-pxtorem");
-module.exports = {
-  plugins: [
-    pxtorem({
-      rootValue: 100,
-      unitPrecision: 5,
-      propList: ["*"],
-      //selectorBlackList: [/^\.nop2r/, /^\.am/],//排除antd样式
-      replace: true,
-      mediaQuery: false,
-      minPixelValue: 0
-    })
-  ]
-};
+const autoprefixer = require('autoprefixer');
+const pxtorem = require('postcss-pxtorem');
+module.exports = ({ file }) => {
+    let ROOTValue;
+    if (file && file.dirname && file.dirname.indexOf('vant') > -1) {
+        ROOTValue = 37.5
+    } else {
+        ROOTValue = 75
+    }
+    return {
+        plugins: [
+            autoprefixer(),
+            pxtorem({
+              rootValue: ROOTValue,
+              propList: ['*']
+            })
+        ]
+    }
+}

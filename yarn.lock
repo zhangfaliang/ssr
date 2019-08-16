@@ -1300,6 +1300,11 @@ ajv@^6.1.0, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+amfe-flexible@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/amfe-flexible/-/amfe-flexible-2.2.1.tgz#353f00289e4d38ca88a21eb3854420308af0b559"
+  integrity sha1-NT8AKJ5NOMqIoh6zhUQgMIrwtVk=
+
 amp-toolbox-core@^1.2.0-alpha.1, amp-toolbox-core@^1.2.0-alpha.2:
   version "1.2.0-alpha.2"
   resolved "https://registry.npmjs.org/amp-toolbox-core/-/amp-toolbox-core-1.2.0-alpha.2.tgz#6ce061e832a71ed2474f230e205781c62930500f"

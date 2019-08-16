@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-do-expressions": "^7.5.0",
+    "amfe-flexible": "^2.2.1",
     "babel-plugin-import": "^1.10.0",
     "dotenv": "^8.0.0",
     "html-webpack-plugin": "^3.2.0",
