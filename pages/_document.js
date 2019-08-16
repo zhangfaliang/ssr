@@ -58,7 +58,6 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <script src="static/adaptive.js" />
-          <script src="static/iconfont.css" />
         </Head>
         <body>
           <GlobalStyle />

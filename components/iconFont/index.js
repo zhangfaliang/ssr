@@ -4,15 +4,17 @@ import styles from "./index.less";
 
 class IconFont extends Component {
   render() {
-    const { type } = this.props;
-    const iconCls = classnames({
+    const { type, onClick, className } = this.props;
+    const iconCls = classnames(className, {
       [styles.iconfont]: true,
-      [`icon-${type}`]: true
+      [styles[`icon-${type}`]]: true
     });
-    return <span className={iconCls} />;
+    return <span className={iconCls} onClick={onClick} />;
   }
 }
 IconFont.defaultProps = {
-  type: "weidenglutouxiang"
+  type: "weidenglutouxiang",
+  className: "",
+  onClick: () => {}
 };
 export default IconFont;

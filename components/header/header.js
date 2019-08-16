@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import { Icon, Grid } from "antd-mobile";
-import  IconFont from '../../components/iconFont';
+import IconFont from "../../components/iconFont";
+import Seach from "./seach";
 import styles from "./index.less";
 
 class Header extends PureComponent {
@@ -9,14 +9,19 @@ class Header extends PureComponent {
     return (
       <div className={styles.header}>
         <div className={styles.top}>
-          <span>
-            <Icon type={"ellipsis"} onClick={onLeftClick} />
+          <div className={styles.userInfo} onClick={onLeftClick}>
+            <IconFont
+              className={`${styles.mr40} ${styles.flod}`}
+              type={"zhedie"}
+            />
             {isLogin ? (
-               <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
+              <IconFont type={"weidenglutouxiang"} />
             ) : (
-              <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
+              <IconFont type={"weidenglutouxiang"} />
             )}
-          </span>
+          </div>
+          <Seach />
+          <IconFont className={styles.ml40} type={"liulanjilu"} />
         </div>
         <div className={styles.bottom}>bottom</div>
       </div>
