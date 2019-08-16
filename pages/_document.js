@@ -1,6 +1,20 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheet, createGlobalStyle } from "styled-components";
 
+const GlobalStyle = createGlobalStyle`
+
+  @font-face {
+    font-family: "iconfont"; /* */
+    src: url("static/icon-font/iconfont.eot");
+    src: url("static/icon-font/iconfont.eot?#iefix")
+        format("embedded-opentype"),
+      url("static/icon-font/iconfont.woff2") format("woff2"),
+      url("static/icon-font/iconfont.woff") format("woff"),
+      url("static/icon-font/iconfont.ttf") format("truetype"),
+      url("static/icon-font/iconfont.svg#iconfont")
+        format("svg");
+  }
+`;
 export default class MyDocument extends Document {
   //<Document>的getInitialProps函数在客户端转换期间不会被调用，也不会在页面自动预呈现时调用。
   //自定义<Document>还可以包含getInitialProps，用于表示异步服务器呈现数据要求。
@@ -43,13 +57,15 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script src='static/adaptive.js'></script>
+          <script src="static/adaptive.js" />
+          <script src="static/iconfont.css" />
         </Head>
         <body>
+          <GlobalStyle />
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

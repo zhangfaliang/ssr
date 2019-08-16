@@ -5,13 +5,9 @@ const cssLoaderGetLocalIdent = require("css-loader/lib/getLocalIdent.js");
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
-const PxtoremWebpackPlugin = require("pxtorem-webpack-plugin");
-// const pxtorem = require("postcss-pxtorem");
-
 if (typeof require !== "undefined") {
   require.extensions[".less"] = file => {};
 }
-
 module.exports = {
   // distDir: 'build', //自定义build地址
   //您可以根据缓存策略禁用HTML页面的etag生成。如果未指定配置，则Next将为每个页面生成etags。
@@ -86,14 +82,6 @@ module.exports = {
         };
       });
     }
-
-    // config.plugins.push([
-    //   new PxtoremWebpackPlugin({
-    //     baseWidth: 750,
-    //     baseDpr: 2,
-    //     remUnit: 100
-    //   })
-    // ]);
     if (isServer) {
       const antStyles = /antd-mobile\/.*?\/style.*?/;
       const origExternals = [...config.externals];
@@ -108,12 +96,12 @@ module.exports = {
         },
         ...(typeof origExternals[0] === "function" ? [] : origExternals)
       ];
-
       config.module.rules.unshift({
         test: antStyles,
         use: "null-loader"
       });
     }
+    // 处理ant的报错
     config.module.rules.forEach(item => {
       if (item.loader && item.loader.loader) {
         item.include = [];
