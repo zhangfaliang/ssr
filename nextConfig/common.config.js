@@ -5,10 +5,11 @@ const cssLoaderGetLocalIdent = require("css-loader/lib/getLocalIdent.js");
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
-const PxtoremWebpackPlugin = require('pxtorem-webpack-plugin');
+// const PxtoremWebpackPlugin = require("pxtorem-webpack-plugin");
+// const pxtorem = require("postcss-pxtorem");
 
 if (typeof require !== "undefined") {
-  require.extensions[".less"] = file => { };
+  require.extensions[".less"] = file => {};
 }
 
 module.exports = {
@@ -48,6 +49,7 @@ module.exports = {
     }
   },
   cssModules: true,
+  // 控制ant
   cssLoaderOptions: {
     camelCase: true,
     localIdentName: "[local]___[hash:base64:5]",
@@ -71,7 +73,7 @@ module.exports = {
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (config.externals) {
-      const includes = [/antd-mobile|antd/];
+      const includes = [/antd-mobile/];
       config.externals = config.externals.map(external => {
         if (typeof external !== "function") return external;
         return (ctx, req, cb) => {
@@ -85,18 +87,12 @@ module.exports = {
         };
       });
     }
-    config.plugins.push(new PxtoremWebpackPlugin({
-      baseWidth: 750,
-      baseDpr: 2,
-      remUnit: 100,
-    }))
-
     if (isServer) {
-      const antMStyles = /antd-mobile\/.*?\/style.*?/;
+      const antStyles = /antd-mobile\/.*?\/style.*?/;
       const origExternals = [...config.externals];
       config.externals = [
         (context, request, callback) => {
-          if (request.match(antMStyles)) return callback();
+          if (request.match(antStyles)) return callback();
           if (typeof origExternals[0] === "function") {
             origExternals[0](context, request, callback);
           } else {
@@ -107,10 +103,17 @@ module.exports = {
       ];
 
       config.module.rules.unshift({
-        test: antMStyles,
+        test: antStyles,
         use: "null-loader"
       });
     }
+    // config.plugins.push([
+    //   new PxtoremWebpackPlugin({
+    //     baseWidth: 750,
+    //     baseDpr: 2,
+    //     remUnit: 100
+    //   })
+    // ]);
     return config;
   }
 };
