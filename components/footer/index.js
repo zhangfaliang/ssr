@@ -1,4 +1,5 @@
-import styles from './index.less';
+import FooterBar from "./footer";
+import styles from "./index.less";
 
 class Footer extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className={styles.footer}>
-        werwe
+        <FooterBar />
       </footer>
     );
   }

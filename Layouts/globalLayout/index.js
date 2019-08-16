@@ -19,12 +19,11 @@ class App extends React.Component {
     return (
       <div className={styles.layout}>
         <header className={styles.header}>
-         <Header></Header>
+          <Header />
         </header>
         <main className={styles.main}>{children}</main>
-        <footer className={styles.footer}>  
-
-          footer    
+        <footer className={styles.footer}>
+          <Footer />
         </footer>
       </div>
     );

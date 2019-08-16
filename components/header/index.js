@@ -1,9 +1,10 @@
 import { Drawer, List, NavBar, Icon } from "antd-mobile";
 import Header from "./header";
 import styles from "./index.less";
+
 class App1 extends React.Component {
   state = {
-    open: true
+    open: false
   };
   onOpenChange = (...args) => {
     console.log(args);
@@ -39,10 +40,9 @@ class App1 extends React.Component {
 
     return (
       <div className={styles["header-warp"]}>
-        <Header onLeftClick={this.onOpenChange} />
+          <Header onLeftClick={this.onOpenChange} />
         <Drawer
           className={`${styles.drawer} my-drawer `}
-          // style={{ minHeight:'100vh' }}
           enableDragHandle
           contentStyle={{
             color: "#A6A6A6",
@@ -53,7 +53,7 @@ class App1 extends React.Component {
           open={this.state.open}
           onOpenChange={this.onOpenChange}
         >
-          Click upper-left corner
+         <span></span>
         </Drawer>
       </div>
     );
