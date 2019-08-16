@@ -5,7 +5,7 @@ const cssLoaderGetLocalIdent = require("css-loader/lib/getLocalIdent.js");
 const themeVariables = lessToJS(
   fs.readFileSync(path.resolve(__dirname, "../assets/antd-custom.less"), "utf8")
 );
-// const PxtoremWebpackPlugin = require("pxtorem-webpack-plugin");
+const PxtoremWebpackPlugin = require("pxtorem-webpack-plugin");
 // const pxtorem = require("postcss-pxtorem");
 
 if (typeof require !== "undefined") {
@@ -49,7 +49,6 @@ module.exports = {
     }
   },
   cssModules: true,
-  // 控制ant
   cssLoaderOptions: {
     camelCase: true,
     localIdentName: "[local]___[hash:base64:5]",
@@ -87,6 +86,14 @@ module.exports = {
         };
       });
     }
+
+    // config.plugins.push([
+    //   new PxtoremWebpackPlugin({
+    //     baseWidth: 750,
+    //     baseDpr: 2,
+    //     remUnit: 100
+    //   })
+    // ]);
     if (isServer) {
       const antStyles = /antd-mobile\/.*?\/style.*?/;
       const origExternals = [...config.externals];
@@ -107,13 +114,11 @@ module.exports = {
         use: "null-loader"
       });
     }
-    // config.plugins.push([
-    //   new PxtoremWebpackPlugin({
-    //     baseWidth: 750,
-    //     baseDpr: 2,
-    //     remUnit: 100
-    //   })
-    // ]);
+    config.module.rules.forEach(item => {
+      if (item.loader && item.loader.loader) {
+        item.include = [];
+      }
+    });
     return config;
   }
 };
