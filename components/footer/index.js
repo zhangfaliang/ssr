@@ -1,25 +1,22 @@
-import FooterBar from "./footer";
+import { Tabs, WhiteSpace, Badge } from "antd-mobile";
 import styles from "./index.less";
 
-class Footer extends React.Component {
-  state = {
-    current: "mail"
-  };
+const tabs2 = [
+  { title: "首页", sub: "1" },
+  { title: "平台", sub: "2" },
+  { title: "订单", sub: "3" },
+  { title: "会员", sub: "4" }
+];
 
-  handleClick = e => {
-    console.log("click ", e);
-    this.setState({
-      current: e.key
-    });
-  };
+const FooterBar = () => (
+  <div className={styles.footer}>
+    <Tabs
+      tabs={tabs2}
+      initialPage={1}
+      tabBarPosition="bottom"
+      renderTab={tab => <span>{tab.title}</span>}
+    />
+  </div>
+);
 
-  render() {
-    return (
-      <footer className={styles.footer}>
-        <FooterBar />
-      </footer>
-    );
-  }
-}
-
-export default Footer;
+export default FooterBar;
