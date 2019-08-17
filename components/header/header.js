@@ -32,7 +32,7 @@ class Header extends PureComponent {
   }
 }
 Header.defaultProps = {
-  onLeftClick: () => {},
+  onLeftClick: () => {console.log('11323')},
   isLogin: false
 };
 export default Header;

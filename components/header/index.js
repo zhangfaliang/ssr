@@ -1,63 +1,38 @@
-import { Drawer, List, NavBar, Icon } from "antd-mobile";
-import Header from "./header";
+import React, { PureComponent } from "react";
+import IconFont from "../../components/iconFont";
+import Seach from "./seach";
+import HeaderTabs from '../headerTabs';
+
 import styles from "./index.less";
 
-class App1 extends React.Component {
-  state = {
-    open: false
-  };
-  onOpenChange = (...args) => {
-    console.log(args);
-    this.setState({ open: !this.state.open });
-  };
+class Header extends PureComponent {
   render() {
-    // fix in codepen
-    const sidebar = (
-      <List>
-        {[0, 1, 2, 3, 4, 5, 6].map((i, index) => {
-          if (index === 0) {
-            return (
-              <List.Item
-                key={index}
-                thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-                multipleLine
-              >
-                Category
-              </List.Item>
-            );
-          }
-          return (
-            <List.Item
-              key={index}
-              thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-            >
-              Category{index}
-            </List.Item>
-          );
-        })}
-      </List>
-    );
-
+    const { onLeftClick, isLogin } = this.props;
     return (
-      <div className={styles["header-warp"]}>
-        <Header onLeftClick={this.onOpenChange} />
-        <Drawer
-          className={`${styles.drawer} my-drawer `}
-          enableDragHandle
-          contentStyle={{
-            color: "#A6A6A6",
-            textAlign: "center",
-            paddingTop: 42
-          }}
-          sidebar={sidebar}
-          open={this.state.open}
-          onOpenChange={this.onOpenChange}
-        >
-          <span />
-        </Drawer>
+      <div className={styles.header}>
+        <div className={styles.top}>
+          <div className={styles.userInfo} onClick={onLeftClick}>
+            <IconFont
+              className={`${styles.mr40} ${styles.flod}`}
+              type={"zhedie"}
+              onClick={onLeftClick}
+            />
+            {isLogin ? (
+              <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
+            ) : (
+              <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
+            )}
+          </div>
+          <Seach />
+          <IconFont className={styles.ml40} type={"liulanjilu"} />
+        </div>
+        <div className={styles.bottom}><HeaderTabs/></div>
       </div>
     );
   }
 }
-
-export default App1;
+Header.defaultProps = {
+  onLeftClick: () => {console.log('11323')},
+  isLogin: false
+};
+export default Header;

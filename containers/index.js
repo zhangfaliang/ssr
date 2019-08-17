@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 import { Button } from 'antd-mobile'
 import Counter from "../components/counter";
 import Clock from "../components/clock";
-
 import Banner from "../components/banner/index";
 
 function Page({ error, lastUpdate, light, placeholderData }) {
@@ -37,7 +36,7 @@ function Page({ error, lastUpdate, light, placeholderData }) {
           }
         }}
       />
-     
+     <Banner/>
     </>
   );
 }

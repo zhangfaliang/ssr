@@ -1,58 +1,36 @@
-@import "../../assets/reset.less";
-
-.header-warp {
+.header {
   width: 100%;
-  background: #fff;
   display: flex;
-  font-size: 30px;
-  .drawer {
-    height: calc(100vh - 270px) !important;
-  }
-  .header {
-    width: 100%;
+  flex-flow: column nowrap;
+  .top {
+    height: 100px;
     display: flex;
-    flex-flow: column nowrap;
-    .top {
-      height: 100px;
+    justify-content: flex-start;
+    align-items: center;
+    .userInfo {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      .userInfo {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        translate: 0 50px;
-      }
-      .flod {
-        transform: translateX(-20px);
-      }
-      .mr40 {
-        margin-right: 40px;
-      }
-      .ml40 {
-        margin-left: 40px;
-      }
+      translate: 0 50px;
     }
-    .bottom {
-      height: 80px;
+    .flod {
+      transform: translateX(-20px);
     }
+    .mr40 {
+      margin-right: 40px;
+    }
+    .ml40 {
+      margin-left: 40px;
+    }
+  }
+  .bottom {
+    height: 80px;
   }
 
   flex-flow: column nowrap;
   :global {
-    .my-drawer {
-      position: relative;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .my-drawer .am-drawer-sidebar {
-   
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .my-drawer .am-drawer-sidebar .am-list {
-      width: 300px;
-      padding: 0;
+    .am-tabs-top {
+      padding-left: 20px;
     }
     .am-search {
       width: 400px;
