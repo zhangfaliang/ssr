@@ -1,8 +1,21 @@
+@import '../../assets/antd-custom.less';
+
 .footer {
-  height: 80px;
   width: 100%;
   font-size: 20px;
   :global {
-  
+    .am-tabs-tab-bar-wrap {
+      height: 90px;
+    }
+    .am-tabs-default-bar-tab{
+      line-height: inherit;
+      padding: 0;
+  }
+  }
+}
+.active{
+  color:@primary-color!important;
+  &:before{
+    color:@primary-color!important;
   }
 }

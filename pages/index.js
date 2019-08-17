@@ -9,7 +9,7 @@ class Index extends React.Component {
     store.dispatch(tickClock(isServer));
 
     if (!store.getState().placeholderData) {
-      store.dispatch(loadData());
+      //store.dispatch(loadData());
     }
 
     return { isServer };
