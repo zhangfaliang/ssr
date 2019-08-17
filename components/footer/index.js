@@ -12,17 +12,30 @@ const tabs2 = [
 ];
 
 class FooterBar extends Component {
+  // ={};
+  state = {
+    sub: 1
+  };
+
+  onTabClick = (tab, index) => {
+    const { sub } = tab;
+    this.setState({
+      sub
+    });
+  };
   render() {
-    const { onClickBar }  =this.props;
+    const { onClickBar } = this.props;
+    const { sub } = this.state;
     return (
       <div className={styles.footer}>
         <Tabs
+          onTabClick={this.onTabClick}
           tabs={tabs2}
-          initialPage={2}
+          initialPage={0}
           tabBarPosition="bottom"
           renderTab={tab => (
             <Bar
-              className={styles.active}
+              className={sub === tab.sub && styles.active}
               icontType={tab.icontType}
               barText={tab.title}
               onClickBar={onClickBar}
@@ -33,7 +46,7 @@ class FooterBar extends Component {
     );
   }
 }
-FooterBar.defaultProps={
-  onClickBar:()=>{}
-}
+FooterBar.defaultProps = {
+  onClickBar: () => {}
+};
 export default FooterBar;

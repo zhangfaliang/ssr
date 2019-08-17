@@ -40,7 +40,7 @@ class App1 extends React.Component {
 
     return (
       <div className={styles["header-warp"]}>
-          <Header onLeftClick={this.onOpenChange} />
+        <Header onLeftClick={this.onOpenChange} />
         <Drawer
           className={`${styles.drawer} my-drawer `}
           enableDragHandle
@@ -53,7 +53,7 @@ class App1 extends React.Component {
           open={this.state.open}
           onOpenChange={this.onOpenChange}
         >
-         <span></span>
+          <span />
         </Drawer>
       </div>
     );
