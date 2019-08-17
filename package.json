@@ -32,6 +32,7 @@
     "lodash": "^4.17.15",
     "micro-cors": "^0.1.1",
     "next": "9.0.3",
+    "next-antd-aza-less": "^1.0.2",
     "next-compose-plugins": "^2.2.0",
     "next-fonts": "^0.17.0",
     "next-redux-saga": "^4.0.2",
@@ -49,6 +50,7 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-do-expressions": "^7.5.0",
     "babel-plugin-import": "^1.10.0",
     "dotenv": "^8.0.0",
