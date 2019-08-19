@@ -15,29 +15,48 @@
       .title {
         color: #000;
         font-size: 34px !important;
+        margin-right: 20px;
       }
       .leftLabel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: @recommend-rightlabel-color;
         background: @recommend-rightlabel-background-color;
         margin-right: 20px;
-        display:inline-block;
-        padding: 5px;
+        height: 40px;
+        width: 60px;
         font-size: 16px;
         border: 1px solid currentColor;
         border-radius: 4px;
       }
       .rightLabel {
-        display:inline-block;
-        background:@recommend-leftlabel-background-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 60px;
+        background: @recommend-leftlabel-background-color;
         font-size: 14px;
-        padding: 5px;
         margin-left: 20px;
         border: 1px solid @recommend-leftlabel-border-color;
         border-radius: 4px;
-
       }
     }
     .buttom {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 18px;
+      height: 60px;
+      .fire{
+        color: #ee5e7b;
+        display: flex;
+        &:before{
+          color: #ee5e7b;
+          font-size: 40px;
+        }
+      }
     }
   }
   .right {

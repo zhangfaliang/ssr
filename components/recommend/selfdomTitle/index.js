@@ -1,11 +1,13 @@
 import React, { PureComponent } from "react";
+import { Button } from 'antd-mobile'
 import classnames from "classnames";
 import { get, isArray } from "lodash";
 import styles from "./index.less";
+import IconFont from '../../../components/iconFont'
 
 class SelfdomTitle extends PureComponent {
   render() {
-    const { preFixCls, leftLabel, rightLabel, title } = this.props;
+    const { preFixCls, leftLabel, rightLabel, title, iconType } = this.props;
     const selfdomCls = classnames({
       [styles[`${preFixCls || "default"}-title`]]: true
     });
@@ -27,9 +29,12 @@ class SelfdomTitle extends PureComponent {
                 </span>
               ))}
           </div>
-          <div className={styles.button}> button </div>
+          <div className={styles.buttom}>
+            <IconFont className={styles[`${iconType}`]} type={iconType}></IconFont>
+            <span className={styles[`${iconType}`]}>超级火爆</span>
+          </div>
         </div>
-        <div className={styles.right}> 2 </div>
+        <div className={styles.right}> <Button type="ghost" size="small" inline>关注</Button> </div>
       </div>
     );
   }
@@ -38,6 +43,7 @@ SelfdomTitle.defaultProps = {
   preFixCls: "default",
   title: "海贼王",
   leftLabel: ["冒险"],
-  rightLabel: ["冒险", "奇幻"]
+  rightLabel: ["冒险", "奇幻"],
+  iconType: 'fire'
 };
 export default SelfdomTitle;
