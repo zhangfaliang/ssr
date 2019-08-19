@@ -7,7 +7,7 @@ import IconFont from '../../../components/iconFont'
 
 class SelfdomTitle extends PureComponent {
   render() {
-    const { preFixCls, leftLabel, rightLabel, title, iconType } = this.props;
+    const { preFixCls, leftLabel, rightLabel, title, leftIconType, des, rightText, righIconType, rightBtnText } = this.props;
     const selfdomCls = classnames({
       [styles[`${preFixCls || "default"}-title`]]: true
     });
@@ -30,11 +30,17 @@ class SelfdomTitle extends PureComponent {
               ))}
           </div>
           <div className={styles.buttom}>
-            <IconFont className={styles[`${iconType}`]} type={iconType}></IconFont>
-            <span className={styles[`${iconType}`]}>超级火爆</span>
+            {leftIconType ? <IconFont className={styles[`${leftIconType}`]} type={leftIconType}></IconFont> : ''}
+            <span className={styles[`${leftIconType}`]}>{des}</span>
           </div>
         </div>
-        <div className={styles.right}> <Button type="ghost" size="small" inline>关注</Button> </div>
+        <div className={styles.right}>
+          {rightBtnText ? <Button type="ghost" size="small" inline>{rightBtnText}</Button> : ''}
+          {rightText ? <span className={styles[`${righIconType}`]} >{rightText}</span> : ""}
+          {righIconType ? <IconFont className={styles[`${righIconType}`]} type={righIconType}></IconFont> : ""}
+
+
+        </div>
       </div>
     );
   }
@@ -42,8 +48,12 @@ class SelfdomTitle extends PureComponent {
 SelfdomTitle.defaultProps = {
   preFixCls: "default",
   title: "海贼王",
-  leftLabel: ["冒险"],
-  rightLabel: ["冒险", "奇幻"],
-  iconType: 'fire'
+  leftLabel: [],
+  rightLabel: [],
+  leftIconType: '',
+  des: '',
+  rightText: '',
+  righIconType: '',
+  rightBtnText: ''
 };
 export default SelfdomTitle;

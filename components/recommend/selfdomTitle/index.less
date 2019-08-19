@@ -49,11 +49,27 @@
       align-items: center;
       font-size: 18px;
       height: 60px;
-      .fire{
+      .fire {
         color: #ee5e7b;
         display: flex;
-        &:before{
+        &:before {
           color: #ee5e7b;
+          font-size: 40px;
+        }
+      }
+      .yanjing{
+        color: #faad14;
+        display: flex;
+        &:before {
+          color: #faad14;
+          font-size: 40px;
+        }
+      }
+      .jingpin-{
+        color:#0e80d2;
+        display: flex;
+        &:before {
+          color: #0e80d2;
           font-size: 40px;
         }
       }
@@ -64,5 +80,27 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    .close{
+      font-size: 18px;
+      &:before {
+        display: flex;
+        font-size: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  :global {
+    .am-button-small {
+      font-size: 16px;
+      height: 40px;
+      width: 80px;
+      line-height: 0px;
+      border-radius: 10px;
+      padding: 0;
+      span {
+        line-height: 40px;
+      }
+    }
   }
 }

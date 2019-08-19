@@ -7,18 +7,58 @@ import Banner from "../banner/index";
 const data = [
   {
     img: "https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png",
-    title: "Meet hotel",
-    des: "不是所有的兼职汪都需要风吹日晒"
+    des: "不是所有的兼职汪都需要风吹日晒",
+    preFixCls: "default",
+    title: "海贼王",
+    rightLabel: ["冒险", "奇幻"],
+    leftIconType: 'fire',
+    rightBtnText: '关注'
   },
   {
     img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png",
-    title: "McDonald's invites you",
-    des: "不是所有的兼职汪都需要风吹日晒"
+    des: "不是所有的兼职汪都需要风吹日晒",
+    preFixCls: "default",
+    title: "海贼王",
+    rightLabel: ["冒险", "奇幻"],
+    leftIconType: 'yanjing',
+    rightBtnText: '查看'
   },
   {
     img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
-    title: "Eat the week",
-    des: "不是所有的兼职汪都需要风吹日晒"
+    des: "不是所有的兼职汪都需要风吹日晒",
+    preFixCls: "default",
+    title: "海贼王",
+    rightLabel: ["冒险", "奇幻"],
+    leftIconType: 'jingpin-',
+    rightBtnText: '浏览'
+  },
+  {
+    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    des: "作者：玩儿翁",
+    preFixCls: "default",
+    title: "海贼王",
+    leftLabel: ["冒险"],
+    righIconType: 'close',
+    rightText: '全集',
+  },
+  {
+    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    des: "作者：玩儿翁",
+    preFixCls: "default",
+    title: "海贼王",
+    leftLabel: ["冒险"],
+    righIconType: 'close',
+    rightText: '全集',
+  }, {
+    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    des: "作者：玩儿翁",
+    preFixCls: "default",
+    title: "海贼王",
+    leftLabel: ["冒险"],
+    showRightBtn: false,
+    righIconType: 'close',
+    rightText: '全集',
+
   }
 ];
 const NUM_ROWS = 20;
@@ -91,7 +131,7 @@ class ListViewComponent extends PureComponent {
 
   render() {
     const { ceilingFlag, IndexRow } = this.props;
-
+    let index = data.length - 1;
     const listViewCls = classnames({
       [styles["listView-wrap"]]: true,
       [styles.ceiling]: ceilingFlag
@@ -122,9 +162,13 @@ class ListViewComponent extends PureComponent {
             {this.state.isLoading ? "Loading..." : "Loaded"}
           </div>
         )}
-        renderRow={(rowData, sectionID, rowID) => (
-          <IndexRow rowData={rowData} sectionID={sectionID} rowID={rowID} />
-        )}
+        renderRow={(rowData, sectionID, rowID) => {
+          if (index < 0) {
+            index = data.length - 1;
+          }
+          const obj = data[index--];
+          return <IndexRow data={obj} rowData={rowData} sectionID={sectionID} rowID={rowID} />
+        }}
         renderSeparator={separator}
         className={`am-list ${listViewCls}`}
         pageSize={4}
@@ -137,7 +181,7 @@ class ListViewComponent extends PureComponent {
   }
 }
 ListViewComponent.defaultProps = {
-  onScroll: () => {}
+  onScroll: () => { }
 };
 
 export default ListViewComponent;
