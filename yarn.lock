@@ -1397,6 +1397,11 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
+antd-mobile-demo-data@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/antd-mobile-demo-data/-/antd-mobile-demo-data-0.3.0.tgz#f275250bebdad308af481672635f8b90def34aed"
+  integrity sha512-fdjcFSqlHxroAH+hJPQNvviJw4YbftXUWI7+y/A/BlzVagNg/caKu1uwUuwubp5Ik4+aAGvOXXb0xo3q8fkHrQ==
+
 antd-mobile@^2.2.14:
   version "2.2.14"
   resolved "https://registry.npmjs.org/antd-mobile/-/antd-mobile-2.2.14.tgz#0c3b4da1ef383799ec33f268786860e9cc4533d7"

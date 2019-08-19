@@ -1,58 +1,65 @@
-import { Carousel, WingBlank } from 'antd-mobile';
+import { Carousel, Button, WhiteSpace, WingBlank } from "antd-mobile";
 
 class Banner extends React.Component {
   state = {
-    data: ['1', '2', '3'],
+    data: ["1", "2", "3"],
     imgHeight: 176,
-  }
+    slideIndex: 2
+  };
   componentDidMount() {
     // simulate img loading
     setTimeout(() => {
       this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+        data: [
+          "AiyWuByWklrrUDlFignR",
+          "TekJlZRVCjLFexlOCuWn",
+          "IJOtIlfsYdTyaDTRVrLI"
+        ]
       });
     }, 100);
   }
+  componentDidUpdate() {
+    // After the new child element is rendered, change the slideIndex
+    // https://github.com/FormidableLabs/nuka-carousel/issues/327
+    if (this.state.slideIndex !== this.state.data.length - 1) {
+      /* eslint react/no-did-update-set-state: 0 */
+      this.setState({ slideIndex: this.state.data.length - 1 });
+    }
+  }
   render() {
     return (
-      <WingBlank>
-        <Carousel className="space-carousel"
-          frameOverflow="visible"
-          cellSpacing={10}
-          slideWidth={0.8}
-          autoplay
-          infinite
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => this.setState({ slideIndex: index })}
-        >
-          {this.state.data.map((val, index) => (
-            <a
-              key={val}
-              // href=""
-              style={{
-                display: 'block',
-                position: 'relative',
-                top: this.state.slideIndex === index ? -10 : 0,
-                height: this.state.imgHeight,
-                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+      <Carousel
+        autoplay={false}
+        infinite
+        selectedIndex={this.state.slideIndex}
+        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+        afterChange={index => console.log("slide to", index)}
+      >
+        {this.state.data.map((val, index) => (
+          <a
+            key={val + index}
+            // href="http://www.alipay.com"
+            style={{
+              display: "inline-block",
+              width: "100%",
+              height: this.state.imgHeight
+            }}
+          >
+            <img
+              src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+              alt=""
+              style={{ width: "100%", verticalAlign: "top" }}
+              onLoad={() => {
+                // fire window resize event to change height
+                window.dispatchEvent(new Event("resize"));
+                this.setState({ imgHeight: "auto" });
               }}
-            >
-              <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-                alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({ imgHeight: 'auto' });
-                }}
-              />
-            </a>
-          ))}
-        </Carousel>
-      </WingBlank>
+            />
+          </a>
+        ))}
+      </Carousel>
     );
   }
 }
 
-export default Banner
+export default Banner;

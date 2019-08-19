@@ -4,7 +4,7 @@ import { Button } from 'antd-mobile'
 import Counter from "../components/counter";
 import Clock from "../components/clock";
 import Banner from "../components/banner/index";
-
+import ListViewComponent from '../components/listView';
 function Page({ error, lastUpdate, light, placeholderData }) {
   return (
     <>
@@ -37,6 +37,7 @@ function Page({ error, lastUpdate, light, placeholderData }) {
         }}
       />
      <Banner/>
+     <ListViewComponent/>
     </>
   );
 }

@@ -52,6 +52,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-do-expressions": "^7.5.0",
+    "antd-mobile-demo-data": "^0.3.0",
     "babel-plugin-import": "^1.10.0",
     "dotenv": "^8.0.0",
     "file-loader": "^4.2.0",
