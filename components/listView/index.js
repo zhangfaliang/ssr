@@ -1,6 +1,7 @@
 import React from "react";
 /* eslint no-dupe-keys: 0 */
 import { ListView } from "antd-mobile";
+import styles from './index.less';
 import Banner from "../banner/index";
 
 const data = [
@@ -146,7 +147,7 @@ class ListViewComponent extends React.Component {
       <ListView
         ref={el => (this.lv = el)}
         dataSource={this.state.dataSource}
-        renderHeader={() => <Banner />}
+        // renderHeader={() => <Banner />}
         renderFooter={() => (
           <div style={{ padding: 30, textAlign: "center" }}>
             {this.state.isLoading ? "Loading..." : "Loaded"}
@@ -154,9 +155,9 @@ class ListViewComponent extends React.Component {
         )}
         renderRow={row}
         renderSeparator={separator}
-        className="am-list"
+        className={`am-list ${styles['listView-wrap']}`}
         pageSize={4}
-        useBodyScroll
+        // useBodyScroll
         onScroll={() => {
           console.log("scroll");
         }}
