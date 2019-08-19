@@ -128,7 +128,6 @@ class ListViewComponent extends PureComponent {
         renderSeparator={separator}
         className={`am-list ${listViewCls}`}
         pageSize={4}
-        // useBodyScroll
         onScroll={this.onScroll}
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
