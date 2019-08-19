@@ -1,4 +1,5 @@
-import React from "react";
+import React, { PureComponent } from "react";
+import classnames from "classnames";
 import { ListView, NavBar, Icon } from "antd-mobile";
 import styles from "./index.less";
 import Banner from "../banner/index";
@@ -32,7 +33,7 @@ function genData(pIndex = 0) {
   return dataBlob;
 }
 
-class ListViewComponent extends React.Component {
+class ListViewComponent extends PureComponent {
   constructor(props) {
     super(props);
     const dataSource = new ListView.DataSource({
@@ -89,6 +90,11 @@ class ListViewComponent extends React.Component {
   };
 
   render() {
+    const { ceilingFlag } = this.props;
+    const listViewCls = classnames({
+      [styles["listView-wrap"]]: true,
+      [styles.ceiling]: ceilingFlag
+    });
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -162,7 +168,7 @@ class ListViewComponent extends React.Component {
         )}
         renderRow={row}
         renderSeparator={separator}
-        className={`am-list ${styles["listView-wrap"]}`}
+        className={`am-list ${listViewCls}`}
         pageSize={4}
         // useBodyScroll
         onScroll={this.onScroll}

@@ -1,14 +1,17 @@
 .listView-wrap {
-  height: @main-height;
   overflow: auto;
   width: 100%;
+  height: @main-height;
+  &.ceiling {
+    height: @main-height-ceiling;
+  }
   .banner {
     width: 710px;
     height: 275px;
   }
   :global {
     .am-list-header {
-      padding:0 20px;
+      padding: 0 20px;
     }
     .sticky-list .sticky-container .am-list-item {
       padding-left: 0;

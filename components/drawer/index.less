@@ -4,7 +4,10 @@
   position: relative;
   .drawer {
     height: @main-height;
-    overflow: hidden!important;
+    overflow: hidden !important;
+    &.ceiling {
+      height: @main-height-ceiling;
+    }
   }
   :global {
     .my-drawer {

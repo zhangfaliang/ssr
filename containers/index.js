@@ -10,11 +10,23 @@ import ListViewComponent from "../components/listView";
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
     const { parentProps } = this.props;
-    const { listViewScrollTop, mainNoScroll, setScrollTop } = parentProps;
+    const {
+      listViewScrollTop,
+      mainNoScroll,
+      setScrollTop,
+      ceilingFlag
+    } = parentProps;
     setScrollTop(scrollTop);
   };
   render() {
-    const { error, lastUpdate, light, placeholderData } = this.props;
+    const {
+      error,
+      lastUpdate,
+      light,
+      placeholderData,
+      parentProps
+    } = this.props;
+    const { ceilingFlag } = parentProps;
     return (
       <div>
         <NextSeo
@@ -45,7 +57,7 @@ class IndexPage extends React.PureComponent {
             }
           }}
         />
-        <ListViewComponent onScroll={this.onScroll} />
+        <ListViewComponent onScroll={this.onScroll} ceilingFlag={ceilingFlag} />
       </div>
     );
   }

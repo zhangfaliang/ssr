@@ -1,7 +1,9 @@
+import React, { PureComponent } from "react";
 import { Drawer, List, NavBar, Icon } from "antd-mobile";
+import classnames from "classnames";
 import styles from "./index.less";
 
-class DrawerComponent extends React.Component {
+class DrawerComponent extends PureComponent {
   state = {
     open: false
   };
@@ -19,7 +21,12 @@ class DrawerComponent extends React.Component {
   };
   render() {
     // fix in codepen
-    const { children } = this.props;
+    const { children, ceilingFlag } = this.props;
+
+    const drawerCls = classnames({
+      [styles.drawer]: true,
+      [styles.ceiling]: ceilingFlag
+    });
     const sidebar = (
       <List>
         {[0, 1, 2, 3, 4, 5, 6].map((i, index) => {
@@ -46,9 +53,10 @@ class DrawerComponent extends React.Component {
       </List>
     );
     return (
+      //ceiling
       <div className={styles["drawer-warp"]}>
         <Drawer
-          className={`${styles.drawer} my-drawer `}
+          className={`${drawerCls} my-drawer `}
           enableDragHandle
           contentStyle={{
             color: "#A6A6A6",

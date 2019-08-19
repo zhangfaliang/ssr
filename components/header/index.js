@@ -15,7 +15,9 @@ class Header extends PureComponent {
     const { onSetCeilingFlag, ceilingFlag } = props;
     if (props.listViewScrollTop !== state.listViewScrollTop) {
       const flag = props.listViewScrollTop > state.listViewScrollTop;
-      onSetCeilingFlag(flag);
+      if (flag !== state.ceilingFlag) {
+        onSetCeilingFlag(flag);
+      }
       return {
         listViewScrollTop: props.listViewScrollTop,
         ceilingFlag: flag

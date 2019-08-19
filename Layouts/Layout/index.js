@@ -52,7 +52,7 @@ class Layout extends React.Component {
       mainNoScroll,
       setScrollTop,
       listViewScrollTop,
-      onSetCeilingFlag, 
+      onSetCeilingFlag,
       ceilingFlag
     } = this.props;
     const { isDrawerOpen } = this.state;
@@ -69,7 +69,11 @@ class Layout extends React.Component {
           ceilingFlag={ceilingFlag}
         />
         <main className={mainCls}>
-          <DrawerComponent onOpenChange={this.onOpenChange} open={isDrawerOpen}>
+          <DrawerComponent
+            onOpenChange={this.onOpenChange}
+            open={isDrawerOpen}
+            ceilingFlag={ceilingFlag}
+          >
             {this.renderChildren()}
           </DrawerComponent>
         </main>
