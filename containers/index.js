@@ -36,7 +36,7 @@ function Page({ error, lastUpdate, light, placeholderData }) {
           }
         }}
       />
-     <Banner/>
+     {/* <Banner/> */}
      <ListViewComponent/>
     </>
   );
