@@ -23,6 +23,6 @@ function* loadDataSaga() {
 }
 
 export default [
-  call(runClockSaga),
+  // call(runClockSaga),
   takeLatest(actionTypes.LOAD_DATA, loadDataSaga)
 ];

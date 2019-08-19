@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { get } from 'lodash';
 
 export const selectState = () => state => state.count;
 

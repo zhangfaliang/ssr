@@ -44,6 +44,9 @@ class ListViewComponent extends React.Component {
       isLoading: true
     };
   }
+  onScroll = (e)=>{
+    this.props.onScroll(e.target.scrollTop)
+  }
 
   componentDidMount() {
     // you can scroll to the specified position
@@ -161,15 +164,16 @@ class ListViewComponent extends React.Component {
         className={`am-list ${styles["listView-wrap"]}`}
         pageSize={4}
         // useBodyScroll
-        onScroll={() => {
-          console.log("scroll");
-        }}
+        onScroll={this.onScroll}
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={10}
       />
     );
   }
+}
+ListViewComponent.defaultProps={
+  onScroll:()=>{}
 }
 
 export default ListViewComponent;
