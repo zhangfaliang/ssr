@@ -1,10 +1,10 @@
-import { Drawer } from "antd-mobile";
+import classnames from "classnames";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
 import DrawerComponent from "../../components/drawer";
 
-class App extends React.Component {
+class Layout extends React.Component {
   state = { visible: false, placement: "left", isDrawerOpen: false };
   showDrawer = () => {
     this.setState({
@@ -13,13 +13,11 @@ class App extends React.Component {
     });
   };
   onLeftClick = isDrawerOpen => {
-    console.log(isDrawerOpen, "00000");
     this.setState({
       isDrawerOpen: !this.state.isDrawerOpen
     });
   };
   onOpenChange = isDrawerOpen => {
-    console.log(isDrawerOpen, "888");
     this.setState({
       isDrawerOpen
     });
@@ -30,12 +28,16 @@ class App extends React.Component {
     });
   };
   render() {
-    const { children } = this.props;
+    const { children, mainNoScroll } = this.props;
     const { isDrawerOpen } = this.state;
+    const mainCls = classnames({
+      [styles.main]: true,
+      [styles["no-scroll"]]: mainNoScroll
+    });
     return (
       <div className={styles.layout}>
         <Header onLeftClick={this.onLeftClick} />
-        <main className={styles.main}>
+        <main className={mainCls}>
           <DrawerComponent onOpenChange={this.onOpenChange} open={isDrawerOpen}>
             {children}
           </DrawerComponent>
@@ -45,5 +47,7 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
+Layout.defaultProps={
+  mainNoScroll:true
+}
+export default Layout;

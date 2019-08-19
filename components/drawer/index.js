@@ -45,7 +45,6 @@ class DrawerComponent extends React.Component {
         })}
       </List>
     );
-    console.log(this.state.open, "----88------");
     return (
       <div className={styles["drawer-warp"]}>
         <Drawer
