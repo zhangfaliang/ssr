@@ -7,7 +7,7 @@ import Banner from "../components/banner/index";
 import ListViewComponent from '../components/listView';
 function Page({ error, lastUpdate, light, placeholderData }) {
   return (
-    <>
+    <div>
       <NextSeo
         config={{
           title: "Page Meta Title",
@@ -36,9 +36,8 @@ function Page({ error, lastUpdate, light, placeholderData }) {
           }
         }}
       />
-     {/* <Banner/> */}
      <ListViewComponent/>
-    </>
+    </div>
   );
 }
 
