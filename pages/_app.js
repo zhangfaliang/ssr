@@ -19,12 +19,13 @@ const theme = {
 //使用componentDidCatch进行自定义错误处理
 //将其他数据注入页面（例如，通过处理GraphQL查询）
 const DynamicGlobalLayouComponent = dynamic({
-  loader: () => import("../Layouts/globalLayout/index"),
+  loader: () => import("../Layouts/Layout/index"),
   loading: () => <p>Loading ...</p>
 });
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
+    console.log(children,'-----')
     return (
       <DynamicGlobalLayouComponent>{children}</DynamicGlobalLayouComponent>
     );

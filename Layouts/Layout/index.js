@@ -1,8 +1,13 @@
 import classnames from "classnames";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
 import DrawerComponent from "../../components/drawer";
+import  { widthHeader }  from '../../decorator/index';
+import { setListViewScrollTop } from "../../models/global/actions";
+import { makeListViewScrollTop } from "../../models//global/selects";
 
 class Layout extends React.Component {
   state = { visible: false, placement: "left", isDrawerOpen: false };
@@ -28,7 +33,12 @@ class Layout extends React.Component {
     });
   };
   render() {
-    const { children, mainNoScroll } = this.props;
+    const {
+      children,
+      mainNoScroll,
+      setScrollTop,
+      listViewScrollTop
+    } = this.props;
     const { isDrawerOpen } = this.state;
     const mainCls = classnames({
       [styles.main]: true,
@@ -36,7 +46,10 @@ class Layout extends React.Component {
     });
     return (
       <div className={styles.layout}>
-        <Header onLeftClick={this.onLeftClick} />
+        <Header
+          listViewScrollTop={listViewScrollTop}
+          onLeftClick={this.onLeftClick}
+        />
         <main className={mainCls}>
           <DrawerComponent onOpenChange={this.onOpenChange} open={isDrawerOpen}>
             {children}
@@ -47,7 +60,18 @@ class Layout extends React.Component {
     );
   }
 }
-Layout.defaultProps={
-  mainNoScroll:true
-}
-export default Layout;
+Layout.defaultProps = {
+  mainNoScroll: true
+};
+const mapStateToProps = createStructuredSelector({
+  listViewScrollTop: makeListViewScrollTop
+});
+
+const mapDispatchToProps = dispatch => ({
+  setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Layout);
