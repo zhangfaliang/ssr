@@ -9,18 +9,12 @@ import ListViewComponent from "../components/listView";
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
-    console.log(scrollTop);
+    const { parentProps } = this.props;
+    const { listViewScrollTop, mainNoScroll, setScrollTop } = parentProps;
+    setScrollTop(scrollTop);
   };
   render() {
-    const {
-      error,
-      lastUpdate,
-      light,
-      placeholderData,
-      parentProps
-    } = this.props;
-
-    console.log(parentProps,'------')
+    const { error, lastUpdate, light, placeholderData } = this.props;
     return (
       <div>
         <NextSeo

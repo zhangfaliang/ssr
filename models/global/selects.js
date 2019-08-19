@@ -9,3 +9,10 @@ export const makeListViewScrollTop = createSelector(
     return get(globalData, "scrollTop");
   }
 );
+
+export const makeCeilingFlag = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "ceilingFlag");
+  }
+);

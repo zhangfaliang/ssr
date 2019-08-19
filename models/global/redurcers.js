@@ -1,7 +1,11 @@
-import { SET_LIST_VIEW_SCROOL_TOP } from "./actionTypes";
+import {
+  SET_LIST_VIEW_SCROOL_TOP,
+  SET_HEADER_CEILING_FLAG
+} from "./actionTypes";
 
 export const exampleInitialState = {
-  scrollTop: 0
+  scrollTop: 0,
+  ceilingFlag: false
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -10,6 +14,11 @@ function reducer(state = exampleInitialState, action) {
       return {
         ...state,
         scrollTop: action.scrollTop
+      };
+    case SET_HEADER_CEILING_FLAG:
+      return {
+        ...state,
+        ceilingFlag: action.ceilingFlag
       };
     default:
       return state;

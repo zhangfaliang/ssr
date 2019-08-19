@@ -44,9 +44,9 @@ class ListViewComponent extends React.Component {
       isLoading: true
     };
   }
-  onScroll = (e)=>{
-    this.props.onScroll(e.target.scrollTop)
-  }
+  onScroll = e => {
+    this.props.onScroll(e.target.scrollTop);
+  };
 
   componentDidMount() {
     // you can scroll to the specified position
@@ -147,6 +147,7 @@ class ListViewComponent extends React.Component {
     };
     return (
       <ListView
+        scrollEventThrottle={300}
         ref={el => (this.lv = el)}
         dataSource={this.state.dataSource}
         renderHeader={() => (
@@ -172,8 +173,8 @@ class ListViewComponent extends React.Component {
     );
   }
 }
-ListViewComponent.defaultProps={
-  onScroll:()=>{}
-}
+ListViewComponent.defaultProps = {
+  onScroll: () => {}
+};
 
 export default ListViewComponent;

@@ -6,8 +6,14 @@ import Header from "../../components/header";
 import FooterBar from "../../components/footer";
 import DrawerComponent from "../../components/drawer";
 import { widthHeader } from "../../decorator/index";
-import { setListViewScrollTop } from "../../models/global/actions";
-import { makeListViewScrollTop } from "../../models//global/selects";
+import {
+  setListViewScrollTop,
+  setCeilingFlag
+} from "../../models/global/actions";
+import {
+  makeListViewScrollTop,
+  makeCeilingFlag
+} from "../../models//global/selects";
 
 class Layout extends React.Component {
   state = { visible: false, placement: "left", isDrawerOpen: false };
@@ -45,7 +51,9 @@ class Layout extends React.Component {
       children,
       mainNoScroll,
       setScrollTop,
-      listViewScrollTop
+      listViewScrollTop,
+      onSetCeilingFlag, 
+      ceilingFlag
     } = this.props;
     const { isDrawerOpen } = this.state;
     const mainCls = classnames({
@@ -57,6 +65,8 @@ class Layout extends React.Component {
         <Header
           listViewScrollTop={listViewScrollTop}
           onLeftClick={this.onLeftClick}
+          onSetCeilingFlag={onSetCeilingFlag}
+          ceilingFlag={ceilingFlag}
         />
         <main className={mainCls}>
           <DrawerComponent onOpenChange={this.onOpenChange} open={isDrawerOpen}>
@@ -72,11 +82,13 @@ Layout.defaultProps = {
   mainNoScroll: true
 };
 const mapStateToProps = createStructuredSelector({
-  listViewScrollTop: makeListViewScrollTop
+  listViewScrollTop: makeListViewScrollTop,
+  ceilingFlag: makeCeilingFlag
 });
 
 const mapDispatchToProps = dispatch => ({
-  setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop))
+  setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop)),
+  onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag))
 });
 
 export default connect(
