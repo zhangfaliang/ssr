@@ -5,7 +5,7 @@ import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
 import DrawerComponent from "../../components/drawer";
-import  { widthHeader }  from '../../decorator/index';
+import { widthHeader } from "../../decorator/index";
 import { setListViewScrollTop } from "../../models/global/actions";
 import { makeListViewScrollTop } from "../../models//global/selects";
 
@@ -32,6 +32,14 @@ class Layout extends React.Component {
       visible: false
     });
   };
+  renderChildren() {
+    const { children, ...other } = this.props;
+    return React.Children.map(children, child => {
+      return React.cloneElement(child, {
+        parentProps: other
+      });
+    });
+  }
   render() {
     const {
       children,
@@ -52,7 +60,7 @@ class Layout extends React.Component {
         />
         <main className={mainCls}>
           <DrawerComponent onOpenChange={this.onOpenChange} open={isDrawerOpen}>
-            {children}
+            {this.renderChildren()}
           </DrawerComponent>
         </main>
         <FooterBar />

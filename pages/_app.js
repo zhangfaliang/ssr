@@ -25,7 +25,6 @@ const DynamicGlobalLayouComponent = dynamic({
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    console.log(children,'-----')
     return (
       <DynamicGlobalLayouComponent>{children}</DynamicGlobalLayouComponent>
     );

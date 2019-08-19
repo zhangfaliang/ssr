@@ -12,7 +12,15 @@ class IndexPage extends React.PureComponent {
     console.log(scrollTop);
   };
   render() {
-    const { error, lastUpdate, light, placeholderData } = this.props;
+    const {
+      error,
+      lastUpdate,
+      light,
+      placeholderData,
+      parentProps
+    } = this.props;
+
+    console.log(parentProps,'------')
     return (
       <div>
         <NextSeo
