@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { loadData, startClock, tickClock } from "../models/index/actions";
-import Page from "../containers/index";
+import Page from "../containers/index/index.js";
 
 class Index extends React.Component {
   static async getInitialProps(props) {

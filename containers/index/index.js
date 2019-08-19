@@ -1,11 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NextSeo } from "next-seo";
-import { Button } from "antd-mobile";
-import Counter from "../components/counter";
-import Clock from "../components/clock";
-import Banner from "../components/banner/index";
-import ListViewComponent from "../components/listView";
+import ListViewComponent from "../../components/listView";
+import IndexRow from "./row";
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
@@ -57,7 +54,11 @@ class IndexPage extends React.PureComponent {
             }
           }}
         />
-        <ListViewComponent onScroll={this.onScroll} ceilingFlag={ceilingFlag} />
+        <ListViewComponent
+          IndexRow={IndexRow}
+          onScroll={this.onScroll}
+          ceilingFlag={ceilingFlag}
+        />
       </div>
     );
   }
