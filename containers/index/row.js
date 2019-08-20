@@ -1,5 +1,5 @@
 import React from "react";
-import { SelfdomTitle, SelfdomImg } from "../../components/recommend";
+import { SelfdomTitle, SelfdomImg, SelfdomDes } from "../../components/recommend";
 class IndexRow extends React.PureComponent {
   render() {
     const { rowData, sectionID, rowID, data } = this.props;
@@ -7,6 +7,7 @@ class IndexRow extends React.PureComponent {
       <div>
         <SelfdomTitle {...data} />
         <SelfdomImg />
+        <SelfdomDes />
       </div>
     );
   }
