@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import { Drawer, List, NavBar, Icon } from "antd-mobile";
 import classnames from "classnames";
+import Header from "../../components/header";
+import FooterBar from "../../components/footer";
 import { SildUserWarp, UserPhoto } from "../../components/sildeUser";
 import styles from "./index.less";
 
@@ -22,7 +24,13 @@ class DrawerComponent extends PureComponent {
   };
   render() {
     // fix in codepen
-    const { children, ceilingFlag } = this.props;
+    const {
+      children,
+      ceilingFlag,
+      listViewScrollTop,
+      onSetCeilingFlag,
+      onLeftClick
+    } = this.props;
 
     const drawerCls = classnames({
       [styles.drawer]: true,
@@ -48,7 +56,15 @@ class DrawerComponent extends PureComponent {
           open={this.state.open}
           onOpenChange={this.onOpenChange}
         >
+          <Header
+            listViewScrollTop={listViewScrollTop}
+            onLeftClick={onLeftClick}
+            onSetCeilingFlag={onSetCeilingFlag}
+            ceilingFlag={ceilingFlag}
+            key={"erterter"}
+          />
           {children}
+          <FooterBar />
         </Drawer>
       </div>
     );

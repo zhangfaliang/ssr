@@ -40,11 +40,13 @@ class Layout extends React.Component {
   };
   renderChildren() {
     const { children, ...other } = this.props;
-    return React.Children.map(children, child => {
+
+    const childrens = React.Children.map(children, child => {
       return React.cloneElement(child, {
         parentProps: other
       });
     });
+    return childrens;
   }
   render() {
     const {
@@ -62,7 +64,18 @@ class Layout extends React.Component {
     });
     return (
       <div className={styles.layout}>
-        <Header
+         <DrawerComponent
+          onOpenChange={this.onOpenChange}
+          open={isDrawerOpen}
+          ceilingFlag={ceilingFlag}
+          listViewScrollTop={listViewScrollTop}
+          onSetCeilingFlag={onSetCeilingFlag}
+          ceilingFlag={ceilingFlag}
+          onLeftClick={this.onLeftClick}
+        >
+          {this.renderChildren()}
+        </DrawerComponent>
+        {/* <Header
           listViewScrollTop={listViewScrollTop}
           onLeftClick={this.onLeftClick}
           onSetCeilingFlag={onSetCeilingFlag}
@@ -77,7 +90,8 @@ class Layout extends React.Component {
             {this.renderChildren()}
           </DrawerComponent>
         </main>
-        <FooterBar />
+        <FooterBar /> */}
+       
       </div>
     );
   }

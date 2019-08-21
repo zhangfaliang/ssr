@@ -3,13 +3,16 @@
 .drawer-warp {
   position: relative;
   .drawer {
-    height: @main-height;
+    height: 100vh; //@main-height;
     overflow: hidden !important;
     &.ceiling {
-      height: @main-height-ceiling;
+      height:100vh;  //@main-height-ceiling;
     }
   }
   :global {
+    .am-drawer-draghandle{
+      width: 5px !important;
+    }
     .my-drawer {
       position: relative;
       overflow: auto;
@@ -22,6 +25,11 @@
     .my-drawer .am-drawer-sidebar .am-list {
       width: 600px;
       padding: 0;
+    }
+    .am-drawer-sidebar{
+      div{
+        height: 100%;
+      }
     }
   }
 }
