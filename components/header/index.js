@@ -7,6 +7,7 @@ import HeaderTabs from "../headerTabs";
 import styles from "./index.less";
 
 class Header extends PureComponent {
+  static COMPONENT_NAME='HEADER'
   state = {
     listViewScrollTop: 0,
     ceilingFlag: null

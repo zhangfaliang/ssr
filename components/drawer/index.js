@@ -33,8 +33,7 @@ class DrawerComponent extends PureComponent {
     } = this.props;
 
     const drawerCls = classnames({
-      [styles.drawer]: true,
-      [styles.ceiling]: ceilingFlag
+      [styles.drawer]: true
     });
     const sidebar = (
       <SildUserWarp>
@@ -42,31 +41,29 @@ class DrawerComponent extends PureComponent {
       </SildUserWarp>
     );
     return (
-      //ceiling
-      <div className={styles["drawer-warp"]}>
-        <Drawer
-          className={`${drawerCls} my-drawer `}
-          enableDragHandle
-          contentStyle={{
-            color: "#A6A6A6",
-            textAlign: "center",
-            paddingTop: 10
-          }}
-          sidebar={sidebar}
-          open={this.state.open}
-          onOpenChange={this.onOpenChange}
-        >
-          <Header
-            listViewScrollTop={listViewScrollTop}
-            onLeftClick={onLeftClick}
-            onSetCeilingFlag={onSetCeilingFlag}
-            ceilingFlag={ceilingFlag}
-            key={"erterter"}
-          />
-          {children}
-          <FooterBar />
-        </Drawer>
-      </div>
+      <Drawer
+        className={`${drawerCls} my-drawer `}
+        enableDragHandle
+        contentStyle={{
+          color: "#A6A6A6",
+          textAlign: "center",
+          paddingTop: 10
+        }}
+        sidebar={sidebar}
+        open={this.state.open}
+        onOpenChange={this.onOpenChange}
+      >
+        <Header
+          listViewScrollTop={listViewScrollTop}
+          onLeftClick={onLeftClick}
+          onSetCeilingFlag={onSetCeilingFlag}
+          ceilingFlag={ceilingFlag}
+          key={"erterter"}
+        />
+        <div className={styles.main}>{children}</div>
+
+        <FooterBar />
+      </Drawer>
     );
   }
 }

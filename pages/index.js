@@ -20,7 +20,6 @@ class Index extends React.Component {
   }
 
   render() {
-    const { parentProps } = this.props;
     return <Page {...this.props} title="Index Page" />;
   }
 }

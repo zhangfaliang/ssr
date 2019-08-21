@@ -1,17 +1,19 @@
 @import "../../assets/reset.less";
-.layout {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: column nowrap;
-  .header {
-    width: 100%;
-    background: #fff;
+
+.drawer {
+  height: 100%; //@main-height;
+  overflow: hidden !important;
+  .layout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0px !important;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
   }
   .main {
     position: relative;
@@ -24,21 +26,39 @@
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
   }
-  .no-scroll{
-    overflow: hidden !important;
-  }
-  .footer {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: between;
-  }
-
   :global {
-    #components-layout-demo-custom-trigger .logo {
-      height: 32px;
-      background: rgba(255, 255, 255, 0.2);
-      margin: 16px;
+    .am-drawer-draghandle {
+      width: 5px !important;
+    }
+    .am-drawer-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0px !important;
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: column nowrap;
+    }
+    .my-drawer {
+      position: relative;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .my-drawer .am-drawer-sidebar {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .my-drawer .am-drawer-sidebar .am-list {
+      width: 600px;
+      padding: 0;
+    }
+    .am-drawer-sidebar {
+      div {
+        height: 100%;
+      }
     }
   }
 }

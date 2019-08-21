@@ -12,6 +12,7 @@ const tabs2 = [
 ];
 
 class FooterBar extends Component {
+  static COMPONENT_NAME='FOOTER'
   // ={};
   state = {
     sub: 1

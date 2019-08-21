@@ -1,17 +1,36 @@
 @import "../../assets/reset.less";
 
-.drawer-warp {
-  position: relative;
-  .drawer {
-    height: 100vh; //@main-height;
-    overflow: hidden !important;
-    &.ceiling {
-      height:100vh;  //@main-height-ceiling;
-    }
+.drawer {
+  height: 100vh; //@main-height;
+  overflow: hidden !important;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  // flex: 1;
+
+  .main {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
   :global {
-    .am-drawer-draghandle{
+    .am-drawer-draghandle {
       width: 5px !important;
+    }
+    .am-drawer-content {
+      padding: 0px !important;
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: column nowrap;
     }
     .my-drawer {
       position: relative;
@@ -26,8 +45,8 @@
       width: 600px;
       padding: 0;
     }
-    .am-drawer-sidebar{
-      div{
+    .am-drawer-sidebar {
+      div {
         height: 100%;
       }
     }
