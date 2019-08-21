@@ -1,27 +1,36 @@
-.sildUserWarp{
+.sildUserWarp {
   height: 100%;
   background: @sild-wrap-background;
+  box-sizing: border-box;
 }
 .photoWrap {
   display: flex;
   justify-content: flex-start;
   flex-flow: nowrap column;
   width: 600px;
+  padding: 40px 0 20px 40px;
   background: @sild-photo-wrap-background;
-  padding: 40px 0 0 40px;
-  box-sizing: border-box;
+
   .photo {
     height: 150px;
     width: 150px;
     border-radius: 50%;
   }
 }
-
-.userName{
-  color: @sild-user-name-colcr;
-  font-size:24px;
-}
-.balance{
-  color: @sild-user-name-colcr;
-  font-size:24px;
+.info {
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+  padding-left: 40px;
+  flex-flow: nowrap column;
+  .userName,
+  .balance {
+    color: @sild-user-name-color;
+    font-size: 24px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .balance {
+    color: @sild-user-balance-color;
+  }
 }

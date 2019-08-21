@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserPhoto from "./userPhoto";
+import UserInfo from "./userInfo";
 import styles from "./index.less";
 
 class SildUserWarp extends Component {
@@ -9,6 +10,8 @@ class SildUserWarp extends Component {
       const { ...other } = option;
       if (option.type.COMPONENT_NAME === "USER_PHOTO") {
         return <UserPhoto />;
+      } else if (option.type.COMPONENT_NAME === "USER_INFO") {
+        return <UserInfo />;
       }
     });
     return <div className={styles.sildUserWarp}>{options}</div>;

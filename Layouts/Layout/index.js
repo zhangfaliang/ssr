@@ -1,13 +1,11 @@
-import classnames from "classnames";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { Drawer, List, NavBar, Icon } from "antd-mobile";
+import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
-import DrawerComponent from "../../components/drawer";
-import { widthHeader } from "../../decorator/index";
-import { SildUserWarp, UserPhoto } from "../../components/sildeUser";
+
+import { SildUserWarp, UserPhoto, UserInfo } from "../../components/sildeUser";
 
 import {
   setListViewScrollTop,
@@ -22,21 +20,20 @@ class Layout extends React.Component {
   state = {
     visible: false,
     placement: "left",
-    isDrawerOpen: false,
+    isDrawerOpen: true,
     open: false
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.open !== state.open) {
-      return { open: props.open };
-    }
-    return null;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.isDrawerOpen !== state.isDrawerOpen) {
+  //     return { isDrawerOpen: props.isDrawerOpen };
+  //   }
+  //   return null;
+  // }
   onOpenChange = (...args) => {
     const { onOpenChange } = this.props;
     console.log(args);
-    onOpenChange(!this.state.open);
-    this.setState({ open: !this.state.open });
+    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
   };
 
   showDrawer = () => {
@@ -50,11 +47,6 @@ class Layout extends React.Component {
       isDrawerOpen: !this.state.isDrawerOpen
     });
   };
-  onOpenChange = isDrawerOpen => {
-    this.setState({
-      isDrawerOpen
-    });
-  };
   onClose = () => {
     this.setState({
       visible: false
@@ -62,33 +54,21 @@ class Layout extends React.Component {
   };
   renderChildren() {
     const { children, ...other } = this.props;
-
     return React.Children.map(children, child => {
-      console.log(child, "------");
       return React.cloneElement(child, {
         parentProps: other
       });
     });
   }
   render() {
-    const {
-      children,
-      mainNoScroll,
-      setScrollTop,
-      listViewScrollTop,
-      onSetCeilingFlag,
-      ceilingFlag
-    } = this.props;
+    const { listViewScrollTop, onSetCeilingFlag, ceilingFlag } = this.props;
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
+        <UserInfo />
       </SildUserWarp>
     );
     const { isDrawerOpen } = this.state;
-    const mainCls = classnames({
-      [styles.main]: true,
-      [styles["no-scroll"]]: mainNoScroll
-    });
     return (
       <Drawer
         className={`${styles.drawer} my-drawer `}
