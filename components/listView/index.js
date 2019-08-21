@@ -6,7 +6,7 @@ import Banner from "../banner/index";
 
 const data = [
   {
-    img: "https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566969497&di=8b6c8ca030f53683d24d3808a820d450&imgtype=jpg&er=1&src=http%3A%2F%2F03.imgmini.eastday.com%2Fmobile%2F20180505%2F20180505111711_266c2ddd3fce8000502daf0aa22325e2_4.jpeg",
     des: "不是所有的兼职汪都需要风吹日晒",
     preFixCls: "default",
     title: "海贼王",
@@ -15,7 +15,7 @@ const data = [
     rightBtnText: '关注'
   },
   {
-    img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566374803013&di=5d3a1c7edd2f5c05792c79b18a2a0ea7&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20101224%2FImg278493118.jpg",
     des: "不是所有的兼职汪都需要风吹日晒",
     preFixCls: "default",
     title: "海贼王",
@@ -24,7 +24,7 @@ const data = [
     rightBtnText: '查看'
   },
   {
-    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566374822260&di=69da4fe477a21245933bb12e92fdb4bf&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20090206%2FImg262091494.jpg",
     des: "不是所有的兼职汪都需要风吹日晒",
     preFixCls: "default",
     title: "海贼王",
@@ -33,7 +33,7 @@ const data = [
     rightBtnText: '浏览'
   },
   {
-    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566374822258&di=8ba9c89280b66552ae0ec9350bb5d72f&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20090120%2FImg261857600.jpg",
     des: "作者：玩儿翁",
     preFixCls: "default",
     title: "海贼王",
@@ -42,7 +42,7 @@ const data = [
     rightText: '全集',
   },
   {
-    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566374822257&di=ba17d50c0b69e8833f0c50e158cc9443&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20110503%2FImg280479381.jpg",
     des: "作者：玩儿翁",
     preFixCls: "default",
     title: "海贼王",
@@ -50,7 +50,7 @@ const data = [
     righIconType: 'close',
     rightText: '全集',
   }, {
-    img: "https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png",
+    imgSrc: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566374822257&di=6aeca632856ec190f86e4c43d7657c5f&imgtype=0&src=http%3A%2F%2Fpic.gooooal.com%2Fimages%2F100381%2F100381157.jpg",
     des: "作者：玩儿翁",
     preFixCls: "default",
     title: "海贼王",

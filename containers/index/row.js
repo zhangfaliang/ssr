@@ -6,8 +6,8 @@ class IndexRow extends React.PureComponent {
     return (
       <div>
         <SelfdomTitle {...data} />
-        <SelfdomImg />
-        <SelfdomDes />
+        <SelfdomImg imgSrc={data.imgSrc} />
+        <SelfdomDes  />
       </div>
     );
   }

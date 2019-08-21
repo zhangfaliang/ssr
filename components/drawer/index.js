@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Drawer, List, NavBar, Icon } from "antd-mobile";
 import classnames from "classnames";
+import { SildUserWarp, UserPhoto } from "../../components/sildeUser";
 import styles from "./index.less";
 
 class DrawerComponent extends PureComponent {
@@ -28,29 +29,9 @@ class DrawerComponent extends PureComponent {
       [styles.ceiling]: ceilingFlag
     });
     const sidebar = (
-      <List>
-        {[0, 1, 2, 3, 4, 5, 6].map((i, index) => {
-          if (index === 0) {
-            return (
-              <List.Item
-                key={index}
-                thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-                multipleLine
-              >
-                Category
-              </List.Item>
-            );
-          }
-          return (
-            <List.Item
-              key={index}
-              thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-            >
-              Category{index}
-            </List.Item>
-          );
-        })}
-      </List>
+      <SildUserWarp>
+        <UserPhoto />
+      </SildUserWarp>
     );
     return (
       //ceiling
