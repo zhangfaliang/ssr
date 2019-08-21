@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserPhoto from "./userPhoto";
+import styles from "./index.less";
 
 class SildUserWarp extends Component {
   render() {
@@ -10,8 +11,7 @@ class SildUserWarp extends Component {
         return <UserPhoto />;
       }
     });
-    console.log(options)
-    return <div>{options}</div>;
+    return <div className={styles.sildUserWarp}>{options}</div>;
   }
 }
 

@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
-import { Drawer, List, NavBar, Icon } from "antd-mobile";
+import { Drawer } from "antd-mobile";
 import classnames from "classnames";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
-import { SildUserWarp, UserPhoto } from "../../components/sildeUser";
+import { SildUserWarp, UserPhoto, UserInfo } from "../../components/sildeUser";
 import styles from "./index.less";
 
 class DrawerComponent extends PureComponent {
@@ -38,6 +38,7 @@ class DrawerComponent extends PureComponent {
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
+        <UserInfo />
       </SildUserWarp>
     );
     return (

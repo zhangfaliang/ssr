@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import classnames from "classnames";
-import { ListView, NavBar, Icon } from "antd-mobile";
+import { ListView } from "antd-mobile";
 import styles from "./index.less";
 import Banner from "../banner/index";
 
