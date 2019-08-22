@@ -1,11 +1,13 @@
 import {
   SET_LIST_VIEW_SCROOL_TOP,
-  SET_HEADER_CEILING_FLAG
+  SET_HEADER_CEILING_FLAG,
+  SET_PATH_NAME
 } from "./actionTypes";
 
 export const exampleInitialState = {
   scrollTop: 0,
-  ceilingFlag: false
+  ceilingFlag: false,
+  pathname:'index'
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -20,6 +22,11 @@ function reducer(state = exampleInitialState, action) {
         ...state,
         ceilingFlag: action.ceilingFlag
       };
+      case SET_PATH_NAME:
+        return {
+          ...state,
+          pathname: action.pathname
+        };
     default:
       return state;
   }

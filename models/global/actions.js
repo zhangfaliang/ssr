@@ -1,6 +1,7 @@
 import {
   SET_LIST_VIEW_SCROOL_TOP,
-  SET_HEADER_CEILING_FLAG
+  SET_HEADER_CEILING_FLAG,
+  SET_PATH_NAME
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -16,3 +17,12 @@ export const setCeilingFlag = ceilingFlag => {
     ceilingFlag
   };
 };
+
+
+export const setPathName = pathname => {
+  return {
+    type: SET_PATH_NAME,
+    pathname
+  };
+};
+

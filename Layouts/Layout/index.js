@@ -4,6 +4,7 @@ import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
+import { parseQuery } from "../../utils/commonFn";
 
 import {
   SildUserWarp,
@@ -16,18 +17,20 @@ import {
 
 import {
   setListViewScrollTop,
-  setCeilingFlag
+  setCeilingFlag,
+  setPathName
 } from "../../models/global/actions";
 import {
   makeListViewScrollTop,
-  makeCeilingFlag
-} from "../../models//global/selects";
+  makeCeilingFlag,
+  makePathName
+} from "../../models/global/selects";
 
 class Layout extends React.Component {
   state = {
     visible: false,
     placement: "left",
-    isDrawerOpen: true,
+    isDrawerOpen: false,
     open: false
   };
 
@@ -76,7 +79,6 @@ class Layout extends React.Component {
         <Recharge />
         <Setting />
         <SlideList />
-      
       </SildUserWarp>
     );
     const { isDrawerOpen } = this.state;
@@ -113,12 +115,14 @@ Layout.defaultProps = {
 };
 const mapStateToProps = createStructuredSelector({
   listViewScrollTop: makeListViewScrollTop,
-  ceilingFlag: makeCeilingFlag
+  ceilingFlag: makeCeilingFlag,
+  pathName: makePathName
 });
 
 const mapDispatchToProps = dispatch => ({
   setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop)),
-  onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag))
+  onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag)),
+  setPathName: setPathName => dispatch(setPathName(setPathName))
 });
 
 export default connect(

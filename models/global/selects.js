@@ -16,3 +16,10 @@ export const makeCeilingFlag = createSelector(
     return get(globalData, "ceilingFlag");
   }
 );
+
+export const makePathName = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "pathname");
+  }
+);
