@@ -5,16 +5,43 @@ import IconFont from "../iconFont";
 import styles from "./index.less";
 
 class DetailHeader extends Component {
+  state = {
+    listViewScrollTop: 0,
+    ceilingFlag: null
+  };
+  static getDerivedStateFromProps(props, state) {
+    const { onSetCeilingFlag, ceilingFlag } = props;
+    if (props.listViewScrollTop !== state.listViewScrollTop) {
+      const flag = props.listViewScrollTop > state.listViewScrollTop;
+      if (flag !== state.ceilingFlag) {
+        onSetCeilingFlag(flag);
+      }
+      return {
+        listViewScrollTop: props.listViewScrollTop,
+        ceilingFlag: flag
+      };
+    }
+    return null;
+  }
   onBack = () => {
     Router.back();
   };
   onShare = () => {
-    console.log('onShare');
+    console.log("onShare");
   };
   render() {
-    const { leftIcon, rigthIcon, title, className } = this.props;
+    const {
+      leftIcon,
+      rigthIcon,
+      title,
+      className,
+      onSetCeilingFlag,
+      ceilingFlag
+    } = this.props;
+    console.log(onSetCeilingFlag, ceilingFlag);
     const headerCls = classnames(className || "", {
-      [styles.detailHeder]: true
+      [styles.detailHeder]: true,
+      [styles.ceiling]: this.state.ceilingFlag
     });
     return (
       <div className={headerCls}>

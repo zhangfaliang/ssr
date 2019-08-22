@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import classnames from "classnames";
 import { ListView } from "antd-mobile";
 import styles from "./index.less";
-import Banner from "../banner/index";
 
 const data = [
   {
@@ -92,6 +91,7 @@ class ListViewComponent extends PureComponent {
     };
   }
   onScroll = e => {
+    console.log(e.target.scrollTop);
     this.props.onScroll(e.target.scrollTop);
   };
 
@@ -136,7 +136,7 @@ class ListViewComponent extends PureComponent {
   };
 
   render() {
-    const { IndexRow } = this.props;
+    const { IndexRow, Banner } = this.props;
     let index = data.length - 1;
     const listViewCls = classnames({
       [styles["listView-wrap"]]: true
@@ -157,11 +157,15 @@ class ListViewComponent extends PureComponent {
         scrollEventThrottle={300}
         ref={el => (this.lv = el)}
         dataSource={this.state.dataSource}
-        renderHeader={() => (
-          <div className={styles.banner}>
-            <Banner />
-          </div>
-        )}
+        renderHeader={() =>
+          Banner ? (
+            <div className={styles.banner}>
+              <Banner />
+            </div>
+          ) : (
+            ""
+          )
+        }
         renderFooter={() => (
           <div style={{ padding: 30, textAlign: "center" }}>
             {this.state.isLoading ? "Loading..." : "Loaded"}

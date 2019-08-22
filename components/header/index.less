@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: column nowrap;
   color: @header-color;
-  &.ceiling{
+  &.ceiling {
     // transform: translateY(-100px);
     .top {
       height: 0;
@@ -64,23 +64,27 @@
   }
 }
 
-
-.detailHeder{
+.detailHeder {
   display: flex;
   flex-flow: row nowrap;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   height: 80px;
-  transition: all .2s;
+  transition: all 0.2s;
   font-size: 28px;
-  padding:0 20px;
-  span{
+  padding: 0 20px;
+  &.ceiling {
+    // transform: translateY(-100px);
+    height: 0;
+    transform: translateY(-80px);
+  }
+  span {
     color: @header-color;
-    &:before{
-      color:@header-color;
+    &:before {
+      color: @header-color;
     }
   }
-  &.translate{
-    transform: translateY(80px)
+  &.translate {
+    transform: translateY(80px);
   }
 }

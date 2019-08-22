@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NextSeo } from "next-seo";
 import ListViewComponent from "../../components/listView";
 import IndexRow from "./row";
+import Banner from "../../components/banner/index";
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
@@ -55,6 +56,7 @@ class IndexPage extends React.PureComponent {
           }}
         />
         <ListViewComponent
+          Banner={Banner}
           IndexRow={IndexRow}
           onScroll={this.onScroll}
           ceilingFlag={ceilingFlag}

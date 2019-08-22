@@ -110,7 +110,13 @@ class Layout extends React.Component {
             pathname={pathName}
           />
           <div className={styles.main}>{this.renderChildren()}</div>
-          <DistributeFooterBar pathname={pathName} />
+          <DistributeFooterBar
+            listViewScrollTop={listViewScrollTop}
+            onLeftClick={this.onLeftClick}
+            onSetCeilingFlag={onSetCeilingFlag}
+            ceilingFlag={ceilingFlag}
+            pathname={pathName}
+          />
         </div>
       </Drawer>
     );

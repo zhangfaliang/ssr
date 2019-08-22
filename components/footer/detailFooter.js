@@ -4,10 +4,32 @@ import IconFont from "../iconFont";
 import styles from "./index.less";
 
 class DetailFooter extends Component {
+  state = {
+    listViewScrollTop: 0,
+    ceilingFlag: null
+  };
+  static getDerivedStateFromProps(props, state) {
+    const { onSetCeilingFlag, ceilingFlag } = props;
+    if (props.listViewScrollTop !== state.listViewScrollTop) {
+      const flag = props.listViewScrollTop > state.listViewScrollTop;
+      if (flag !== state.ceilingFlag) {
+        onSetCeilingFlag(flag);
+      }
+      return {
+        listViewScrollTop: props.listViewScrollTop,
+        ceilingFlag: flag
+      };
+    }
+    return null;
+  }
   render() {
     const { leftData, rightData, centerDate } = this.props;
+    const footerCls = classnames({
+      [styles.detailFooter]: true,
+      [styles.ceiling]: this.state.ceilingFlag
+    });
     return (
-      <div className={styles.detailFooter}>
+      <div className={footerCls}>
         <div>
           {leftData.iconType ? <IconFont type={leftData.iconType} /> : ""}
           {leftData.text ? <span>{leftData.text}</span> : ""}
