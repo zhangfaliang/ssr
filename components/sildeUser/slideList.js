@@ -17,7 +17,7 @@ class SlideList extends Component {
           list.map((item, index) => {
             const { iconType, text } = item;
             return (
-              <li className={styles.item}>
+              <li key={index} className={styles.item}>
                 <IconFont type={iconType} /> <span>{text}</span>
               </li>
             );

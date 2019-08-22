@@ -3,7 +3,8 @@ import { createStructuredSelector } from "reselect";
 import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
 import Header from "../../components/header";
-import FooterBar from "../../components/footer";
+import DistributeHeder from "../../components/header/distribute";
+import DistributeFooterBar from "../../components/footer/distribute";
 import { parseQuery } from "../../utils/commonFn";
 
 import {
@@ -71,7 +72,12 @@ class Layout extends React.Component {
     });
   }
   render() {
-    const { listViewScrollTop, onSetCeilingFlag, ceilingFlag } = this.props;
+    const {
+      listViewScrollTop,
+      onSetCeilingFlag,
+      ceilingFlag,
+      pathName
+    } = this.props;
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
@@ -92,19 +98,19 @@ class Layout extends React.Component {
           paddingTop: 10
         }}
         sidebar={sidebar}
-        open={isDrawerOpen}
+        open={isDrawerOpen || false}
         onOpenChange={this.onOpenChange}
       >
         <div className={styles.layout}>
-          <Header
+          <DistributeHeder
             listViewScrollTop={listViewScrollTop}
             onLeftClick={this.onLeftClick}
             onSetCeilingFlag={onSetCeilingFlag}
             ceilingFlag={ceilingFlag}
-            key={"erterter"}
+            pathname={pathName}
           />
           <div className={styles.main}>{this.renderChildren()}</div>
-          <FooterBar />
+          <DistributeFooterBar pathname={pathName} />
         </div>
       </Drawer>
     );

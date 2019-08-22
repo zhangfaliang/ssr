@@ -15,7 +15,7 @@ class Setting extends Component {
         {setArr &&
           setArr.map((item, index) => {
             const { icontType, className, barText } = item;
-            return <Bar icontType={icontType} barText={barText} />;
+            return <Bar key={index} icontType={icontType} barText={barText} />;
           })}
       </div>
     );
