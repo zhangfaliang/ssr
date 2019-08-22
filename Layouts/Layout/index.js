@@ -5,7 +5,14 @@ import styles from "./idnex.less";
 import Header from "../../components/header";
 import FooterBar from "../../components/footer";
 
-import { SildUserWarp, UserPhoto, UserInfo } from "../../components/sildeUser";
+import {
+  SildUserWarp,
+  UserPhoto,
+  UserInfo,
+  Recharge,
+  SlideList,
+  Setting
+} from "../../components/sildeUser";
 
 import {
   setListViewScrollTop,
@@ -66,6 +73,10 @@ class Layout extends React.Component {
       <SildUserWarp>
         <UserPhoto />
         <UserInfo />
+        <Recharge />
+        <Setting />
+        <SlideList />
+      
       </SildUserWarp>
     );
     const { isDrawerOpen } = this.state;

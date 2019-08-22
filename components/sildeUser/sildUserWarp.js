@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import UserPhoto from "./userPhoto";
 import UserInfo from "./userInfo";
+import Recharge from "./recharge";
+import SlideList from "./slideList";
+import Setting from './setting';
 import styles from "./index.less";
 
 class SildUserWarp extends Component {
@@ -12,7 +15,15 @@ class SildUserWarp extends Component {
         return <UserPhoto />;
       } else if (option.type.COMPONENT_NAME === "USER_INFO") {
         return <UserInfo />;
+      } else if (option.type.COMPONENT_NAME === "RECHARGE") {
+        return <Recharge />;
+      } else if (option.type.COMPONENT_NAME === "SLIDE_LIST") {
+        return <SlideList />;
+      }else if (option.type.COMPONENT_NAME === "SETTING") {
+        return <Setting />;
       }
+
+      
     });
     return <div className={styles.sildUserWarp}>{options}</div>;
   }

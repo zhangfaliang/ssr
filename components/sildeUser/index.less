@@ -34,3 +34,54 @@
     color: @sild-user-balance-color;
   }
 }
+.recharge {
+  padding-left: 40px;
+  display: flex;
+  justify-content: flex-start;
+  height: 200px;
+  flex-flow: column nowrap;
+  .btn {
+    margin-top: 30px;
+    width: 550px;
+    font-size: 24px;
+  }
+}
+
+.slideList {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  .item {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 24px;
+    span {
+      padding-left: 40px;
+      color: @sild-user-list-color;
+      &:before {
+        color: @sild-user-list-color;
+      }
+    }
+  }
+}
+
+.setting {
+  display: flex;
+  padding-left: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  height: 130px;
+  span {
+    padding-right: 60px;
+    color: @sild-user-list-color;
+    &:before {
+      color: @sild-user-list-color;
+    }
+  }
+}
