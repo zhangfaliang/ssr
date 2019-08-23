@@ -20,7 +20,8 @@ import {
 import {
   setListViewScrollTop,
   setCeilingFlag,
-  setPathName
+  setPathName,
+  setTabKey
 } from "../../models/global/actions";
 import {
   makeListViewScrollTop,
@@ -77,10 +78,10 @@ class Layout extends React.Component {
     console.log(tab, index);
   };
   onTabClick = (tab, index) => {
-    console.log(tab, index);
-    // Router.push({
-    //   pathname:'/type_list'
-    // })
+    const { setTabKey } = this.props;
+    const { toTarget } = tab;
+     setTabKey({ toTarget, key: index });
+   
   };
   render() {
     const {
@@ -150,7 +151,8 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop)),
   onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag)),
-  setPathName: setPathName => dispatch(setPathName(setPathName))
+  setPathName: pathName => dispatch(setPathName(pathName)),
+  setTabKey: params => dispatch(setTabKey(params))
 });
 
 export default connect(

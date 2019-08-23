@@ -31,33 +31,33 @@ export const makeTabs = createSelector(
       {
         badgeText: "3",
         title: "直播",
-        toTarget: "/index"
+        toTarget: { pathname: "/index", query: { type: 1 } }
       },
       {
         badgeText: "今日(20)",
         title: "推荐",
-        toTarget: "/index"
+        toTarget: { pathname: "/type_list", query: { type: 3 } }
       },
 
       {
         dot: true,
         title: "热门",
-        toTarget: "/index"
+        toTarget: { pathname: "/index", query: { type: 1 } }
       },
       {
         badgeText: "3",
         title: "最新",
-        toTarget: "/index"
+        toTarget: { pathname: "/index", query: { type: 1 } }
       },
       {
         badgeText: "今日(20",
         title: "动漫",
-        toTarget: "/index"
+        toTarget: { pathname: "/index", query: { type: 1 } }
       },
       {
         dot: true,
         title: "影视",
-        toTarget: "/index"
+        toTarget: { pathname: "/index", query: { type: 1 } }
       }
     ];
   }
