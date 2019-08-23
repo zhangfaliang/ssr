@@ -12,11 +12,12 @@ class DistributeHeder extends Component {
       [PATH_NAME_DISTRIBUTE_KEY.INDEX]: <HomeHeder {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailHeader {...this.props} />
     };
-    console.log(processHeader,pathname)
     return get(processHeader, pathname, PATH_NAME_DISTRIBUTE_KEY.HOME);
   }
 }
 DistributeHeder.defaultProps = {
-  pathname: "/"
+  pathname: "/",
+  onChangeTab: () => {},
+  onTabClick: () => {},
 };
 export default DistributeHeder;

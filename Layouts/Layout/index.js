@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import Router from "next/router";
 import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
 import Header from "../../components/header";
@@ -24,7 +25,8 @@ import {
 import {
   makeListViewScrollTop,
   makeCeilingFlag,
-  makePathName
+  makePathName,
+  makeTabs
 } from "../../models/global/selects";
 
 class Layout extends React.Component {
@@ -71,12 +73,22 @@ class Layout extends React.Component {
       });
     });
   }
+  onChangeTab = (tab, index) => {
+    console.log(tab, index);
+  };
+  onTabClick = (tab, index) => {
+    console.log(tab, index);
+    // Router.push({
+    //   pathname:'/type_list'
+    // })
+  };
   render() {
     const {
       listViewScrollTop,
       onSetCeilingFlag,
       ceilingFlag,
-      pathName
+      pathName,
+      tabs
     } = this.props;
     const sidebar = (
       <SildUserWarp>
@@ -103,11 +115,14 @@ class Layout extends React.Component {
       >
         <div className={styles.layout}>
           <DistributeHeder
+            onChangeTab={this.onChangeTab}
+            onTabClick={this.onTabClick}
             listViewScrollTop={listViewScrollTop}
             onLeftClick={this.onLeftClick}
             onSetCeilingFlag={onSetCeilingFlag}
             ceilingFlag={ceilingFlag}
             pathname={pathName}
+            tabs={tabs}
           />
           <div className={styles.main}>{this.renderChildren()}</div>
           <DistributeFooterBar
@@ -128,7 +143,8 @@ Layout.defaultProps = {
 const mapStateToProps = createStructuredSelector({
   listViewScrollTop: makeListViewScrollTop,
   ceilingFlag: makeCeilingFlag,
-  pathName: makePathName
+  pathName: makePathName,
+  tabs: makeTabs
 });
 
 const mapDispatchToProps = dispatch => ({

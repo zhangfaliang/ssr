@@ -23,3 +23,42 @@ export const makePathName = createSelector(
     return get(globalData, "pathname");
   }
 );
+
+export const makeTabs = createSelector(
+  selectState(),
+  globalData => {
+    return [
+      {
+        badgeText: "3",
+        title: "直播",
+        toTarget: "/index"
+      },
+      {
+        badgeText: "今日(20)",
+        title: "推荐",
+        toTarget: "/index"
+      },
+
+      {
+        dot: true,
+        title: "热门",
+        toTarget: "/index"
+      },
+      {
+        badgeText: "3",
+        title: "最新",
+        toTarget: "/index"
+      },
+      {
+        badgeText: "今日(20",
+        title: "动漫",
+        toTarget: "/index"
+      },
+      {
+        dot: true,
+        title: "影视",
+        toTarget: "/index"
+      }
+    ];
+  }
+);

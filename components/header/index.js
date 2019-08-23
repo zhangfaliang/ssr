@@ -7,7 +7,7 @@ import HeaderTabs from "../headerTabs";
 import styles from "./index.less";
 
 class Header extends PureComponent {
-  static COMPONENT_NAME='HEADER'
+  static COMPONENT_NAME = "HEADER";
   state = {
     listViewScrollTop: 0,
     ceilingFlag: null
@@ -27,7 +27,14 @@ class Header extends PureComponent {
     return null;
   }
   render() {
-    const { onLeftClick, isLogin, listViewScrollTop } = this.props;
+    const {
+      onLeftClick,
+      isLogin,
+      listViewScrollTop,
+      onChangeTab,
+      onTabClick,
+      tabs
+    } = this.props;
     const headerCls = classnames({
       [styles.header]: true,
       [styles.ceiling]: this.state.ceilingFlag
@@ -51,7 +58,7 @@ class Header extends PureComponent {
           <IconFont className={styles.ml40} type={"liulanjilu"} />
         </div>
         <div className={styles.bottom}>
-          <HeaderTabs />
+          <HeaderTabs tabs={tabs} onChange={onChangeTab} onTabClick={onTabClick} />
         </div>
       </div>
     );
@@ -61,6 +68,8 @@ Header.defaultProps = {
   onLeftClick: () => {
     console.log("11323");
   },
+  onChangeTab: () => {},
+  onTabClick: () => {},
   isLogin: false,
   listViewScrollTop: 0
 };
