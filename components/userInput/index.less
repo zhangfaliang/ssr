@@ -1,0 +1,116 @@
+
+.default-wrap {
+  position: relative;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+  .preFixPlaceholder {
+    font-family: Akrobat-Regular;
+    font-size: 36px;
+    color: #ffe011;
+    letter-spacing: 0.43px;
+    position: absolute;
+    top: 48px;
+    left: 0;
+  }
+
+
+
+  .showIcon {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-transition: all 0.1s;
+
+    /* Safari */
+    .isClose {
+      span {
+        &::before {
+          color: #BCBEC2;
+        }
+      }
+      &.hiddenClose{
+        display: none;
+      }
+    }
+
+    .isPassword {
+      margin-left: 40px;
+      display:inline-block;
+      height: 50px;
+      width: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 44px;
+        width: 44px;
+      }
+    }
+  }
+
+  .input {
+    font: normal;
+    background: @aide-color;
+    border-width: 0;
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid #BCBEC2;
+    font-family: PingFang-SC-Regular;
+    font-size: 32px;
+    color: #212934;
+    letter-spacing: 0;
+    height: 328px;
+    box-sizing: border-box;
+    &:focus {
+      border-bottom: 1px solid #fdd329;
+    }
+
+    &::-webkit-input-placeholder {
+      display: flex;
+      align-items: center;
+      font-family: PingFang-SC-Regular;
+      font-size: 32px;
+      color: #BCBEC2;
+      letter-spacing: 0;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px #162d49 inset;
+      font-size: 14px;
+      -webkit-text-fill-color: #fff;
+    }
+  }
+
+  .tel-preFixPlaceholder {
+    text-indent: 75px;
+
+    &::-webkit-input-placeholder {
+      text-indent: 75px;
+    }
+  }
+}
+
+.verify-code-wrap {
+  &:extend(.default-wrap all);
+  .showIcon {
+    position: absolute;
+    -webkit-transition: width 0.5s;
+    /* Safari */
+    top: 42px;
+    left: 380px;
+  }
+}
+
+.extraWrap {
+  position: relative;
+  .extra {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 40px 0 20px 0;
+  }
+}

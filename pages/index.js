@@ -10,7 +10,7 @@ class Index extends React.Component {
     const { store, isServer, pathname, apiData } = props.ctx;
     store.dispatch(setPathName(pathname));
     if (!store.getState().placeholderData) {
-      store.dispatch(loadData());
+      // store.dispatch(loadData());
     }
 
     return { isServer };

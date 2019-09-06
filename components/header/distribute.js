@@ -12,7 +12,7 @@ class DistributeHeder extends Component {
       [PATH_NAME_DISTRIBUTE_KEY.INDEX]: <HomeHeder {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailHeader {...this.props} />
     };
-    return get(processHeader, pathname, PATH_NAME_DISTRIBUTE_KEY.HOME);
+    return get(processHeader, pathname, processHeader[PATH_NAME_DISTRIBUTE_KEY.HOME]);
   }
 }
 DistributeHeder.defaultProps = {

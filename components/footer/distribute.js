@@ -6,13 +6,12 @@ import HomeFooter from "./index";
 class DistributeFooter extends Component {
   render() {
     const { pathname } = this.props;
-
     const processFooter = {
       [PATH_NAME_DISTRIBUTE_KEY.HOME]: <HomeFooter {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.INDEX]: <HomeFooter {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailFooter {...this.props} />
     };
-    return get(processFooter, pathname, PATH_NAME_DISTRIBUTE_KEY.HOME);
+    return get(processFooter, pathname, processFooter[PATH_NAME_DISTRIBUTE_KEY.HOME]);
   }
 }
 

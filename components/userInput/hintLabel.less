@@ -1,0 +1,15 @@
+.default-hint-label {
+  font-family: Akrobat-Regular;
+  font-size: 26px;
+  color: #8fb8df;
+  letter-spacing: 0.31px;
+  padding-top: 20px;
+  min-height:70px;
+  display: flex;
+  align-items: center; 
+}
+.error-hint-label {
+  &:extend(.default-hint-label all);
+  color: #e62300;
+  letter-spacing: 0;
+}
