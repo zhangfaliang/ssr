@@ -1,7 +1,8 @@
 import { createSelector } from "reselect";
-import { get } from 'lodash';
+import { get } from "lodash";
 
 export const selectState = () => state => state.count;
+export const selecIndexData = state => get(state, "indexData", {});
 
 export const selectCount = () =>
   createSelector(
@@ -9,14 +10,9 @@ export const selectCount = () =>
     count => count
   );
 
-export const selectLight = () =>
-  createSelector(
-    selectState(),
-    count => count.light
-  );
-
-export const selectLastUpdate = () =>
-  createSelector(
-    selectState(),
-    count => count.lastUpdate
-  );
+export const selectplaceholderData = createSelector(
+  selecIndexData,
+  indexData => {
+    return get(indexData, "placeholderData", {});
+  }
+);

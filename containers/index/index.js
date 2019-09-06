@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NextSeo } from "next-seo";
+import  { createStructuredSelector }  from 'reselect';
 import ListViewComponent from "../../components/listView";
 import IndexRow from "./row";
 import Banner from "../../components/banner/index";
+import { selectplaceholderData }  from '../../models/index/selects';
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
@@ -18,12 +20,10 @@ class IndexPage extends React.PureComponent {
   };
   render() {
     const {
-      error,
-      lastUpdate,
-      light,
-      placeholderData,
       parentProps
     } = this.props;
+    console.log(this.props);
+
     const { ceilingFlag } = parentProps;
     return (
       <div>
@@ -65,5 +65,11 @@ class IndexPage extends React.PureComponent {
     );
   }
 }
+const mapStateToProps = createStructuredSelector({
+  placeholderData: selectplaceholderData,
+ 
+});
+const mapDispatchToProps = dispatch => ({
+});
 
-export default connect(state => state)(IndexPage);
+export default connect(mapStateToProps,mapDispatchToProps)(IndexPage);
