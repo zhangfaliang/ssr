@@ -1,0 +1,58 @@
+.check-all-button {
+  &:hover,
+  &:active,
+  &:visited,
+  &:link,
+  &:focus {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    text-decoration: none;
+  }
+  background:  @fill-base!important;
+  height: 98px;
+  width: 702px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: @color-link;
+  letter-spacing: 0.38px;
+  margin: 20px 0;
+  position: relative;
+  &.active {
+    background:@brand-primary!important;
+  }
+
+  &.disabled {
+    color: @color-text-disabled;
+    background: @fill-disabled !important;
+    pointer-events: none;
+    .bottomText {
+      color: @fill-disabled;
+    }
+  }
+  .maxStakeAll {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font-size: 24px;
+    color: #214365;
+    text-align: center;
+  }
+}
+
+.user-banner-button {
+  background: #fceba3;
+  border-radius: 32px;
+  height: 64px;
+  width: 192px;
+  line-height:64px;
+  font-family: PingFangSC-Regular;
+  font-size: 28px;
+  color: #212934;
+  letter-spacing: 0;
+  text-align: center;
+}

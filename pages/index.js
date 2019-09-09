@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadData, startClock, tickClock } from "../models/index/actions";
+import { startClock } from "../models/index/actions";
 import { setPathName } from "../models/global/actions";
 
 import Page from "../containers/index/index.js";
