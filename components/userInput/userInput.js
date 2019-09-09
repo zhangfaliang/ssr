@@ -80,6 +80,7 @@ class UserInput extends PureComponent {
   handleClear = e => {
     e.preventDefault();
     e.stopPropagation();
+    console.log('---000---')
     this.IPRef.current.focus();
     const { verifyOnchange } = this.props;
     this.IPRef.current.value = "";
@@ -155,11 +156,11 @@ class UserInput extends PureComponent {
         )}
         <div className={showIconCls} onClick={this.handleClear}>
           <span className={isCloseCls} onClick={this.handleClear}>
-            <IconFont type="close" />
+            <IconFont type="close1" onClick={this.handleClear}/>
           </span>
           {this.props.type === "password" ? (
             <span className={styles.isPassword} onClick={this.handleLock}>
-              <IconFont type={type === "password" ? 'password' : "close"} />
+              <IconFont type={type === "password" ? 'eye' : "eye1"} />
             </span>
           ) : (
             ""

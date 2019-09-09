@@ -14,7 +14,6 @@ class DistributeHeder extends Component {
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailHeader {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.SIGN]: <UserBanner {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.LOGIN]: <UserBanner {...this.props} />
-      // [PATH_NAME_DISTRIBUTE_KEY.LOGIN]: <UserBanner {...this.props} />
     };
 
     return get(
