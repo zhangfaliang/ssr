@@ -1742,6 +1742,11 @@ async-sema@3.0.0:
   resolved "https://registry.npmjs.org/async-sema/-/async-sema-3.0.0.tgz#9e22d6783f0ab66a1cf330e21a905e39b3b3a975"
   integrity sha512-zyCMBDl4m71feawrxYcVbHxv/UUkqm4nKJiLu3+l9lfiQha6jQ/9dxhrXLnzzBXVFqCTDwiUkZOz9XFbdEGQsg==
 
+async-validator@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/async-validator/-/async-validator-3.0.4.tgz#515c55bafee40b1366f477a79fe678753c8828e3"
+  integrity sha512-CIKCZ3wyJWpxN8VMGXAjD1FqZ5FnB/asHMsLM8DvFlBxgJIb88MZJc5dg4Q4P91jI9iq+YBncUhy1/SKNNTPuQ==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"

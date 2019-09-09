@@ -10,7 +10,7 @@ class UserInput extends PureComponent {
     super(props);
     this.IPRef = createRef();
     this.state = {
-      showLeftIcon: false,
+      showLeftIcon: true,
       type: props.type
     };
   }
@@ -80,7 +80,6 @@ class UserInput extends PureComponent {
   handleClear = e => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('---000---')
     this.IPRef.current.focus();
     const { verifyOnchange } = this.props;
     this.IPRef.current.value = "";
@@ -98,9 +97,9 @@ class UserInput extends PureComponent {
 
   onBlur = e => {
     const { verifyOnBlur, onBlur, name } = this.props;
-    this.setState({
-      showLeftIcon: false
-    });
+    // this.setState({
+    //   showLeftIcon: false
+    // });
     if (verifyOnBlur) {
       this.getInputValue({
         outputInputTime: "onBlur",
