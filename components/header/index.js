@@ -33,6 +33,7 @@ class Header extends PureComponent {
       listViewScrollTop,
       onChangeTab,
       onTabClick,
+      onLogin,
       tabs
     } = this.props;
     const headerCls = classnames({
@@ -42,23 +43,30 @@ class Header extends PureComponent {
     return (
       <div className={headerCls}>
         <div className={styles.top}>
-          <div className={styles.userInfo} onClick={onLeftClick}>
+          <div
+            className={styles.userInfo}
+            onClick={isLogin ? onLeftClick : onLogin}
+          >
             <IconFont
               className={`${styles.mr40} ${styles.flod}`}
               type={"zhedie"}
-              onClick={onLeftClick}
+              onClick={isLogin ? onLeftClick : onLogin}
             />
             {isLogin ? (
               <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
             ) : (
-              <IconFont type={"weidenglutouxiang"} onClick={onLeftClick} />
+              <IconFont type={"weidenglutouxiang"} onClick={onLogin} />
             )}
           </div>
           <Seach />
           <IconFont className={styles.ml40} type={"liulanjilu"} />
         </div>
         <div className={styles.bottom}>
-          <HeaderTabs tabs={tabs} onChange={onChangeTab} onTabClick={onTabClick} />
+          <HeaderTabs
+            tabs={tabs}
+            onChange={onChangeTab}
+            onTabClick={onTabClick}
+          />
         </div>
       </div>
     );
@@ -70,6 +78,7 @@ Header.defaultProps = {
   },
   onChangeTab: () => {},
   onTabClick: () => {},
+  onLogin: () => {},
   isLogin: false,
   listViewScrollTop: 0
 };

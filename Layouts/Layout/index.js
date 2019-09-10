@@ -3,7 +3,6 @@ import { createStructuredSelector } from "reselect";
 import Router from "next/router";
 import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
-import Header from "../../components/header";
 import DistributeHeder from "../../components/header/distribute";
 import DistributeFooterBar from "../../components/footer/distribute";
 import { parseQuery } from "../../utils/commonFn";
@@ -66,6 +65,9 @@ class Layout extends React.Component {
       visible: false
     });
   };
+  onLogin = () => {
+    Router.push("/user/login/index");
+  };
   renderChildren() {
     const { children, ...other } = this.props;
     return React.Children.map(children, child => {
@@ -80,8 +82,7 @@ class Layout extends React.Component {
   onTabClick = (tab, index) => {
     const { setTabKey } = this.props;
     const { toTarget } = tab;
-     setTabKey({ toTarget, key: index });
-   
+    setTabKey({ toTarget, key: index });
   };
   render() {
     const {
@@ -118,6 +119,7 @@ class Layout extends React.Component {
           <DistributeHeder
             onChangeTab={this.onChangeTab}
             onTabClick={this.onTabClick}
+            onLogin={this.onLogin}
             listViewScrollTop={listViewScrollTop}
             onLeftClick={this.onLeftClick}
             onSetCeilingFlag={onSetCeilingFlag}

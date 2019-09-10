@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import { isEmpty } from "lodash";
-import iconFont from "../../iconFont";
+import { isEmpty, isFunction } from "lodash";
+import IconFont from "../../iconFont";
+import Router from "next/router";
 import styles from "./index.less";
 class Back extends Component {
   static defaultProps = {
     title: "Title",
-    backIcon: <iconFont />,
-    onBack: () => {},
+    backIcon: <IconFont type="back" />,
+    onBack: "",
     rightContent: [],
     onClose: null
   };
@@ -38,8 +39,13 @@ class Back extends Component {
     return (
       <div style={{ backgroundColor: color }} className={styles.wrap}>
         <div className={styles.main}>
-          <div onClick={() => {}} className={styles.back}>
-            <img src={backIcon} alt="" />
+          <div
+            onClick={() => {
+              isFunction(onBack) ? onBack() : Router.back();
+            }}
+            className={styles.back}
+          >
+            <IconFont type="back" />
           </div>
           <div className={styles.content}>{this.renderContent()}</div>
           <div className={rightCls}>
