@@ -1,24 +1,29 @@
 const Koa = require("koa");
 const next = require("next");
 const Router = require("koa-router");
+const bodyParser = require("koa-bodyparser");
 const combintionRouter = require("./routes/index.js");
 const ssrCache = require("./ssrCache/index.js");
-const connection = require("./connect/index");
+const query = require("./connect/index");
+const apiRouter = require("./apiData/index");
+
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-connection.query("SELECT 1 + 1 AS solution", function(error, results, fields) {
-  if (error) throw error;
-  console.log("The solution is: ", results[0].solution);
-});
-
 app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
   combintionRouter({
-    connection,
+    server,
+    router,
+    app,
+    handle,
+    ssrCache: ssrCache(app)
+  });
+  apiRouter({
+    query,
     server,
     router,
     app,
@@ -26,6 +31,7 @@ app.prepare().then(() => {
     ssrCache: ssrCache(app)
   });
   server.use(router.routes());
+  server.use(bodyParser());
   server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
   });
