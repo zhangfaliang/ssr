@@ -3,10 +3,17 @@ const aboutRoute = require("./about/index.js");
 const dynamicRoute = require("./dynamic");
 const notFindRoute = require("./notFind");
 
-const combintionRouter = ({ router, server, app, handle, ssrCache }) => {
-  indexRoute({ router, server, app, handle, ssrCache });
-  aboutRoute({ router, server, app, handle, ssrCache });
-  dynamicRoute({ router, server, app, handle, ssrCache });
-  notFindRoute({ router, server, app, handle, ssrCache });
+const combintionRouter = ({
+  connection,
+  router,
+  server,
+  app,
+  handle,
+  ssrCache
+}) => {
+  indexRoute({ connection, router, server, app, handle, ssrCache });
+  aboutRoute({ connection, router, server, app, handle, ssrCache });
+  dynamicRoute({ connection, router, server, app, handle, ssrCache });
+  notFindRoute({ connection, router, server, app, handle, ssrCache });
 };
 module.exports = combintionRouter;

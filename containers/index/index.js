@@ -22,8 +22,6 @@ class IndexPage extends React.PureComponent {
     const {
       parentProps
     } = this.props;
-    console.log(this.props);
-
     const { ceilingFlag } = parentProps;
     return (
       <div>
