@@ -8,7 +8,7 @@ const indexRoute = ({ query, router, server, app, ssrCache }) => {
     //isSomeoneUser()
     ctx.body = JSON.stringify(ctx);
     let postData = ctx.request.body
-    console.log(JSON.stringify(ctx));
+    console.log(ctx.req,postData);
   });
   router.post("/common/sign", async ctx => {
     const res = await query("select * from user");

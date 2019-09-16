@@ -31,7 +31,6 @@ app.prepare().then(() => {
     ssrCache: ssrCache(app)
   });
   server.use(router.routes());
-  server.use(bodyParser());
   server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
   });
