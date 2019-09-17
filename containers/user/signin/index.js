@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { setInputValues } from "../../../models/user/signin/actions";
+import { setInputValues, signIn } from "../../../models/user/signin/actions";
 import {
   makeInputValus,
   makeIsVerifySuccess
@@ -19,11 +19,11 @@ class Login extends Component {
   outputInputValues = dada => {
     this.props.onSetInputDatas(dada);
   };
-  someOneOnBlur = () => {};
-  onSign = () => {};
+  onSign = () => {
+    this.props.onSignIn();
+  };
   render() {
     const { inputValus, isVerifySuccess } = this.props;
-    console.log(inputValus, isVerifySuccess);
     return (
       <div className={styles["input-wrap"]}>
         <UserInputGroup
@@ -59,7 +59,8 @@ class Login extends Component {
         <Button
           btnText={"立即注册"}
           clickCheckBtn={this.onSign}
-          disabled={!isVerifySuccess}
+          disabled={false}
+          // !isVerifySuccess
         />
       </div>
     );
@@ -72,6 +73,9 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   onSetInputDatas: inputDatas => {
     dispatch(setInputValues(inputDatas));
+  },
+  onSignIn: () => {
+    dispatch(signIn());
   }
 });
 
