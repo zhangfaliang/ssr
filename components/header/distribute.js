@@ -11,7 +11,7 @@ class DistributeHeder extends Component {
     Router.push("/user/login/index");
   };
   sign = () => {
-    Router.push("/user/sign/index");
+    Router.push("/user/signin/index");
   };
   render() {
     const { pathname } = this.props;

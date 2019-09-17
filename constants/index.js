@@ -4,7 +4,7 @@ export const PATH_NAME_DISTRIBUTE_KEY = {
   "INDEX": "/",
   "DETAIL": "/detail",
   "DETAIL": "/detail",
-  "SIGN": "/user/sign/index",
+  "SIGN": "/user/signin/index",
   "LOGIN": "/user/login/index"
  
 };

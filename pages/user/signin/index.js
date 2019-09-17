@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setPathName } from "../../../models/global/actions";
-import Page from "../../../containers/user/sigin";
+import Page from "../../../containers/user/signin";
 
 class Detail extends React.Component {
   static async getInitialProps(props) {
