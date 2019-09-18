@@ -25,6 +25,7 @@
     "es6-promise": "^4.2.8",
     "faker": "^4.1.0",
     "graphql": "^14.4.2",
+    "http-proxy-middleware": "^0.20.0",
     "https-proxy-agent": "^2.2.2",
     "isomorphic-unfetch": "^3.0.0",
     "koa": "^2.7.0",
