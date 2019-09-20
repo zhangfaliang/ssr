@@ -2,14 +2,26 @@ import {
   SET_LIST_VIEW_SCROOL_TOP,
   SET_HEADER_CEILING_FLAG,
   SET_PATH_NAME,
-  SET_TAB_KEY
+  SET_TAB_KEY,
+  SET_FEEDBACKMODAL
 } from "./actionTypes";
 
 export const exampleInitialState = {
   scrollTop: 0,
   ceilingFlag: false,
   pathname: "index",
-  tabKey: 0
+  tabKey: 0,
+  feedbackModal: {
+    footerText: "footerText",
+    isOpen: false,
+    showLogo: false,
+    logo: "",
+    shouldCloseOnOverlayClick: false,
+    callbackWhenConfirm: () => {},
+    feedbackModalClose: () => {},
+    showCloseIcon: false,
+    texts: []
+  }
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -34,6 +46,14 @@ function reducer(state = exampleInitialState, action) {
       return {
         ...state,
         tabKey: action.params.key
+      };
+    case SET_FEEDBACKMODAL:
+      return {
+        ...state,
+        feedbackModal: {
+          ...state.feedbackModal,
+          ...action.params.feedbackModal
+        }
       };
 
     default:

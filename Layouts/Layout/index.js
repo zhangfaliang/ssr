@@ -6,7 +6,8 @@ import styles from "./idnex.less";
 import DistributeHeder from "../../components/header/distribute";
 import DistributeFooterBar from "../../components/footer/distribute";
 import { parseQuery } from "../../utils/commonFn";
-
+import FeedbackModal from "../../components/feedbackModal/index";
+import { makeListFeedbackModal } from "../../models/global/selects";
 import {
   SildUserWarp,
   UserPhoto,
@@ -90,7 +91,8 @@ class Layout extends React.Component {
       onSetCeilingFlag,
       ceilingFlag,
       pathName,
-      tabs
+      tabs,
+      feedbackModal
     } = this.props;
     const sidebar = (
       <SildUserWarp>
@@ -136,6 +138,18 @@ class Layout extends React.Component {
             pathname={pathName}
           />
         </div>
+        <FeedbackModal
+          {...feedbackModal}
+          // footerText={get(feedbackModal, 'footerText', '')}
+          // isOpen={get(feedbackModal, 'feedbackModalShowed')}
+          // showLogo={get(feedbackModal, 'showLogo', false)}
+          // logo={get(feedbackModal, 'logo', null)}
+          // shouldCloseOnOverlayClick={!1}
+          // callbackWhenConfirm={this.onFeedbackModalClose}
+          // feedbackModalClose={this.onFeedbackModalClose}
+          // showCloseIcon={get(feedbackModal, 'showCloseIcon', false)}
+          // texts={get(feedbackModal, 'texts', [])}
+        />
       </Drawer>
     );
   }
@@ -154,7 +168,8 @@ const mapDispatchToProps = dispatch => ({
   setScrollTop: scrollTop => dispatch(setListViewScrollTop(scrollTop)),
   onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag)),
   setPathName: pathName => dispatch(setPathName(pathName)),
-  setTabKey: params => dispatch(setTabKey(params))
+  setTabKey: params => dispatch(setTabKey(params)),
+  feedbackModal: makeListFeedbackModal
 });
 
 export default connect(

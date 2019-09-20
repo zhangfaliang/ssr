@@ -2,7 +2,8 @@ import {
   SET_LIST_VIEW_SCROOL_TOP,
   SET_HEADER_CEILING_FLAG,
   SET_PATH_NAME,
-  SET_TAB_KEY
+  SET_TAB_KEY,
+  SET_FEEDBACKMODAL
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -33,6 +34,13 @@ export const setTabKey = params => {
   return {
     type: SET_TAB_KEY,
     params
+  };
+};
+
+export const setFeedbackModal = feedbackModal => {
+  return {
+    type: SET_FEEDBACKMODAL,
+    feedbackModal
   };
 };
 

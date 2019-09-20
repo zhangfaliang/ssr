@@ -9,6 +9,12 @@ export const makeListViewScrollTop = createSelector(
     return get(globalData, "scrollTop");
   }
 );
+export const makeListFeedbackModal = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "feedbackModal", {});
+  }
+);
 
 export const makeCeilingFlag = createSelector(
   selectState(),
