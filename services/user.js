@@ -13,7 +13,7 @@ export const login = (inputValus = {}) => {
 };
 
 export const changePWD = (inputValus = {}) => {
-  return axios.post("/api/common/changePWD", {
+  return axios.post("/api/common/changepwd", {
     ...inputValus
   });
 };

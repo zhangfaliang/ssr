@@ -22,5 +22,6 @@ export default combineReducers({
   global,
   indexData,
   signin,
-  login
+  login,
+  changePWD
 });
