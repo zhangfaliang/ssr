@@ -1,17 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import {
   UserInputGroup,
   UserInput,
   HintLabel
 } from "../../../components/userInput";
+import { setInputValues, login } from "../../../models/user/login/actions";
+import {
+  makeInputValus,
+  makeIsVerifySuccess
+} from "../../../models/user/login/selects";
 import styles from "../index.less";
 import { validPassword, valideIphone } from "../../../utils/validates";
 import Button from "../../../components/button";
 
 class Login extends Component {
-  outputInputValues = () => {};
-  someOneOnBlur = () => {};
-  login = () => {};
+  outputInputValues = dada => {
+    this.props.onSetInputDatas(dada);
+  };
+  login = () => {
+    this.props.onLogin();
+  };
   render() {
     return (
       <div className={styles["input-wrap"]}>
@@ -45,5 +55,19 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;
+const mapStateToProps = createStructuredSelector({
+  inputValus: makeInputValus,
+  isVerifySuccess: makeIsVerifySuccess
+});
+const mapDispatchToProps = dispatch => ({
+  onSetInputDatas: inputDatas => {
+    dispatch(setInputValues(inputDatas));
+  },
+  onLogin: () => {
+    dispatch(login());
+  }
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

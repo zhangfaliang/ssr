@@ -1,13 +1,16 @@
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import Router from "next/router";
+import router from "next/router";
+import { get } from "lodash";
+import { isFunction } from "lodash";
 import { Drawer } from "antd-mobile";
 import styles from "./idnex.less";
 import DistributeHeder from "../../components/header/distribute";
 import DistributeFooterBar from "../../components/footer/distribute";
-import { parseQuery } from "../../utils/commonFn";
-import FeedbackModal from "../../components/feedbackModal/index";
+import { FeedbackModal } from "../../components/feedbackModal/index";
 import { makeListFeedbackModal } from "../../models/global/selects";
+import { setFeedbackModal } from "../../models/global/actions";
+
 import {
   SildUserWarp,
   UserPhoto,
@@ -85,6 +88,24 @@ class Layout extends React.Component {
     const { toTarget } = tab;
     setTabKey({ toTarget, key: index });
   };
+  onFeedbackModalClose = () => {
+    const { feedbackModal, onSetFeedbackModal } = this.props;
+    const { url, routerFn, query, state } = get(
+      feedbackModal,
+      "onRequestCloseUrlObj",
+      {
+        url: "",
+        routerFn: ""
+      }
+    );
+    isFunction(router[routerFn]) &&
+      router[routerFn]({
+        pathname: url,
+        query,
+        state
+      });
+    onSetFeedbackModal({ isOpen: false });
+  };
   render() {
     const {
       listViewScrollTop,
@@ -94,6 +115,7 @@ class Layout extends React.Component {
       tabs,
       feedbackModal
     } = this.props;
+    console.log(FeedbackModal, "feedbackModal");
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
@@ -140,15 +162,8 @@ class Layout extends React.Component {
         </div>
         <FeedbackModal
           {...feedbackModal}
-          // footerText={get(feedbackModal, 'footerText', '')}
-          // isOpen={get(feedbackModal, 'feedbackModalShowed')}
-          // showLogo={get(feedbackModal, 'showLogo', false)}
-          // logo={get(feedbackModal, 'logo', null)}
-          // shouldCloseOnOverlayClick={!1}
-          // callbackWhenConfirm={this.onFeedbackModalClose}
-          // feedbackModalClose={this.onFeedbackModalClose}
-          // showCloseIcon={get(feedbackModal, 'showCloseIcon', false)}
-          // texts={get(feedbackModal, 'texts', [])}
+          callbackWhenConfirm={this.onFeedbackModalClose}
+          feedbackModalClose={this.onFeedbackModalClose}
         />
       </Drawer>
     );
@@ -161,7 +176,8 @@ const mapStateToProps = createStructuredSelector({
   listViewScrollTop: makeListViewScrollTop,
   ceilingFlag: makeCeilingFlag,
   pathName: makePathName,
-  tabs: makeTabs
+  tabs: makeTabs,
+  feedbackModal: makeListFeedbackModal
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -169,7 +185,7 @@ const mapDispatchToProps = dispatch => ({
   onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag)),
   setPathName: pathName => dispatch(setPathName(pathName)),
   setTabKey: params => dispatch(setTabKey(params)),
-  feedbackModal: makeListFeedbackModal
+  onSetFeedbackModal: feedbackModal => dispatch(setFeedbackModal(feedbackModal))
 });
 
 export default connect(

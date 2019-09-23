@@ -1,64 +1,25 @@
 import { createSelector } from "reselect";
 import { get } from "lodash";
 
-export const selectState = () => state => get(state, "global", {});
+export const selectState = () => state => get(state, "login", {});
 
-export const makeListViewScrollTop = createSelector(
+export const makeInputValus = createSelector(
   selectState(),
-  globalData => {
-    return get(globalData, "scrollTop");
+  signin => {
+    const inputDatas = get(signin, "inputDatas");
+    const processDatas = Object.keys(inputDatas).map(key => {
+      const currentInputValue = inputDatas[key];
+      return {
+        [key]: get(currentInputValue, "value")
+      };
+    });
+    return get(processDatas, "0", {});
   }
 );
 
-export const makeCeilingFlag = createSelector(
+export const makeIsVerifySuccess = createSelector(
   selectState(),
-  globalData => {
-    return get(globalData, "ceilingFlag");
-  }
-);
-
-export const makePathName = createSelector(
-  selectState(),
-  globalData => {
-    return get(globalData, "pathname");
-  }
-);
-
-export const makeTabs = createSelector(
-  selectState(),
-  globalData => {
-    return [
-      {
-        badgeText: "3",
-        title: "直播",
-        toTarget: { pathname: "/index", query: { type: 1 } }
-      },
-      {
-        badgeText: "今日(20)",
-        title: "推荐",
-        toTarget: { pathname: "/type_list", query: { type: 3 } }
-      },
-
-      {
-        dot: true,
-        title: "热门",
-        toTarget: { pathname: "/index", query: { type: 1 } }
-      },
-      {
-        badgeText: "3",
-        title: "最新",
-        toTarget: { pathname: "/index", query: { type: 1 } }
-      },
-      {
-        badgeText: "今日(20",
-        title: "动漫",
-        toTarget: { pathname: "/index", query: { type: 1 } }
-      },
-      {
-        dot: true,
-        title: "影视",
-        toTarget: { pathname: "/index", query: { type: 1 } }
-      }
-    ];
+  signin => {
+    return get(signin, "inputDatas.isVerifySuccess");
   }
 );

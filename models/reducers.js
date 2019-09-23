@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import global from "./global/redurcers";
 import indexData from "./index/redurces";
 import signin from "./user/signin/redurcers";
+import login from "./user/login/redurcers";
 
 export const exampleInitialState = {
   indexData: {
@@ -10,12 +11,14 @@ export const exampleInitialState = {
     lastUpdate: 0,
     light: false,
     placeholderData: null,
-    signin: {}
+    signin: {},
+    login: {}
   }
 };
 
 export default combineReducers({
   global,
   indexData,
-  signin
+  signin,
+  login
 });

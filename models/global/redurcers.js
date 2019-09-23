@@ -52,7 +52,7 @@ function reducer(state = exampleInitialState, action) {
         ...state,
         feedbackModal: {
           ...state.feedbackModal,
-          ...action.params.feedbackModal
+          ...action.feedbackModal
         }
       };
 

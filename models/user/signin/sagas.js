@@ -9,6 +9,7 @@ import {
 } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import { get } from "lodash";
+import Router from "next/router";
 import { sigIn } from "../../../services/user";
 import { makeInputValus } from "./selects";
 import { USER_SIGN_IN } from "./actionTypes";
@@ -20,12 +21,18 @@ let feedbackModalData = {
   isOpen: false,
   showLogo: false,
   logo: "",
-  shouldCloseOnOverlayClick: false,
+  shouldCloseOnOverlayClick: true,
   callbackWhenConfirm: () => {},
   feedbackModalClose: () => {},
   showCloseIcon: false,
-  texts: []
-}
+  texts: [],
+  onRequestCloseUrlObj: {
+    url: "",
+    routerFn: "",
+    query: {},
+    state: {}
+  }
+};
 function* signIn() {
   try {
     const inputValus = yield select(makeInputValus);
@@ -39,23 +46,32 @@ function* signIn() {
       )
     });
     //setFeedbackModal
-    if(get(data,'data.code',0)*1===0){
-     const msg  = get(data,'data.data.msg');
-     feedbackModalData={
-       ...feedbackModalData,
-       texts: [msg],
-       isOpen: true,
-     }
-    }else{
-      feedbackModalData={
+    if (get(data, "data.code", 0) * 1 === 0) {
+      const msg = get(data, "data.data.msg");
+      const verify = get(data, "data.data.verify", false);
+      feedbackModalData = {
         ...feedbackModalData,
         texts: [msg],
         isOpen: true,
-      }
+        footerText: verify ? "去登陆" : "OK",
+        onRequestCloseUrlObj: {
+          url: "/user/login/index",
+          routerFn: "push"
+        }
+      };
+    } else {
+      feedbackModalData = {
+        ...feedbackModalData,
+        texts: [msg],
+        isOpen: true,
+        footerText: "OK"
+      };
     }
-    yield put(setFeedbackModal({
-     ...feedbackModalData
-    }))
+    yield put(
+      setFeedbackModal({
+        ...feedbackModalData
+      })
+    );
     console.log(data);
   } catch (err) {
     console.log(err);

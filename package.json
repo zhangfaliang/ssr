@@ -63,6 +63,7 @@
     "babel-plugin-import": "^1.10.0",
     "dotenv": "^8.0.0",
     "file-loader": "^4.2.0",
+    "koa-session": "^5.12.3",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "null-loader": "^3.0.0",

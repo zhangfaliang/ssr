@@ -1,38 +1,14 @@
-import {
-  SET_LIST_VIEW_SCROOL_TOP,
-  SET_HEADER_CEILING_FLAG,
-  SET_PATH_NAME,
-  SET_TAB_KEY
-} from "./actionTypes";
+import { SET_INPUTVALUE_DATAS, USER_LOGIN_IN } from "./actionTypes";
 
-export const setListViewScrollTop = scrollTop => {
+export const setInputValues = inputDatas => {
   return {
-    type: SET_LIST_VIEW_SCROOL_TOP,
-    scrollTop
+    type: SET_INPUTVALUE_DATAS,
+    inputDatas
   };
 };
 
-export const setCeilingFlag = ceilingFlag => {
+export const login = () => {
   return {
-    type: SET_HEADER_CEILING_FLAG,
-    ceilingFlag
+    type: USER_LOGIN_IN
   };
 };
-
-
-export const setPathName = pathname => {
-  return {
-    type: SET_PATH_NAME,
-    pathname
-  };
-};
-
-
-
-export const setTabKey = params => {
-  return {
-    type: SET_TAB_KEY,
-    params
-  };
-};
-

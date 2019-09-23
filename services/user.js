@@ -5,3 +5,9 @@ export const sigIn = (inputValus = {}) => {
     ...inputValus
   });
 };
+
+export const login = (inputValus = {}) => {
+  return axios.post("/api/common/login", {
+    ...inputValus
+  });
+};
