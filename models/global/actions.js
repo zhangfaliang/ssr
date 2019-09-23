@@ -22,6 +22,7 @@ export const setCeilingFlag = ceilingFlag => {
 
 
 export const setPathName = pathname => {
+  console.log('pathname',pathname)
   return {
     type: SET_PATH_NAME,
     pathname

@@ -20,7 +20,12 @@ class DistributeHeder extends Component {
       [PATH_NAME_DISTRIBUTE_KEY.INDEX]: <HomeHeder {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailHeader {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.SIGN]: (
-        <UserBanner clickCheckBtn={this.login} text="注册" {...this.props} />
+        <UserBanner
+          clickCheckBtn={this.login}
+          text="注册"
+          btnText="去登录"
+          {...this.props}
+        />
       ),
       [PATH_NAME_DISTRIBUTE_KEY.LOGIN]: (
         <UserBanner
@@ -29,9 +34,16 @@ class DistributeHeder extends Component {
           btnText="去注册"
           {...this.props}
         />
+      ),
+      [PATH_NAME_DISTRIBUTE_KEY.CHANGE_PWD]: (
+        <UserBanner
+          clickCheckBtn={this.login}
+          {...this.props}
+          text="修改密码"
+          btnText="去登录"
+        />
       )
     };
-
     return get(
       processHeader,
       pathname,

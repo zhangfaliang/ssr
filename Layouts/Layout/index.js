@@ -115,7 +115,6 @@ class Layout extends React.Component {
       tabs,
       feedbackModal
     } = this.props;
-    console.log(FeedbackModal, "feedbackModal");
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />

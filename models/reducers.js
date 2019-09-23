@@ -3,6 +3,7 @@ import global from "./global/redurcers";
 import indexData from "./index/redurces";
 import signin from "./user/signin/redurcers";
 import login from "./user/login/redurcers";
+import changePWD from "./user/changePWD/redurcers";
 
 export const exampleInitialState = {
   indexData: {
@@ -12,7 +13,8 @@ export const exampleInitialState = {
     light: false,
     placeholderData: null,
     signin: {},
-    login: {}
+    login: {},
+    changePWD: {}
   }
 };
 

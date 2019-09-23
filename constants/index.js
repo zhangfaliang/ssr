@@ -5,6 +5,7 @@ export const PATH_NAME_DISTRIBUTE_KEY = {
   "DETAIL": "/detail",
   "DETAIL": "/detail",
   "SIGN": "/user/signin/index",
-  "LOGIN": "/user/login/index"
+  "LOGIN": "/user/login/index",
+  "CHANGE_PWD": "/user/changePWD/index",
  
 };

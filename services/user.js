@@ -11,3 +11,9 @@ export const login = (inputValus = {}) => {
     ...inputValus
   });
 };
+
+export const changePWD = (inputValus = {}) => {
+  return axios.post("/api/common/changePWD", {
+    ...inputValus
+  });
+};

@@ -4,8 +4,9 @@ es6promise.polyfill();
 import indexSagas from "./index/saga";
 import signInSagas from "./user/signin/sagas";
 import loginSagas from "./user/login/sagas";
+import changeSagas from "./user/login/sagas";
 
 function* rootSaga() {
-  yield all([...indexSagas, ...signInSagas, ...loginSagas]);
+  yield all([...indexSagas, ...signInSagas, ...loginSagas, ...changeSagas]);
 }
 export default rootSaga;
