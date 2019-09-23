@@ -1,27 +1,77 @@
-import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
+import {
+  all,
+  call,
+  delay,
+  put,
+  take,
+  takeLatest,
+  select
+} from "redux-saga/effects";
 import es6promise from "es6-promise";
-import { setListViewScrollTop } from "./actions";
-import { SET_LIST_VIEW_SCROOL_TOP, SET_TAB_KEY } from "./actionTypes";
-
+import { get } from "lodash";
+import { login } from "../../../services/user";
+import { makeInputValus } from "./selects";
+import { USER_LOGIN_IN } from "./actionTypes";
+import { setFeedbackModal } from "../../../models/global/actions";
+import sjcl from "../../../utils/sjcl";
 es6promise.polyfill();
-
-function* goTarget(action) {
-  debugger
-
-  console.log(action,'----------')
-}
-
-function* loadDataSaga() {
+let feedbackModalData = {
+  footerText: "footerText",
+  isOpen: false,
+  showLogo: false,
+  logo: "",
+  shouldCloseOnOverlayClick: true,
+  callbackWhenConfirm: () => {},
+  feedbackModalClose: () => {},
+  showCloseIcon: false,
+  texts: [],
+  onRequestCloseUrlObj: {
+    url: "",
+    routerFn: "",
+    query: {},
+    state: {}
+  }
+};
+function* onLogin() {
   try {
-    console.log(SET_LIST_VIEW_SCROOL_TOP, "---");
+    const inputValus = yield select(makeInputValus);
+    const data = yield call(login, {
+      userName: get(inputValus, "phoneNumber", ""),
+      password: JSON.stringify(
+        sjcl.encrypt("password", get(inputValus, "password", ""))
+      )
+    });
+    //setFeedbackModal verify
+    if (get(data, "data.code", 0) * 1 === 0) {
+      const verify = get(data, "data.data.verify", false);
+      const msg = get(data, "data.data.msg");
+      feedbackModalData = {
+        ...feedbackModalData,
+        texts: [msg],
+        isOpen: true,
+        footerText: verify ? "去登陆" : "OK",
+        onRequestCloseUrlObj: {
+          url: "/user/login/index",
+          routerFn: "push"
+        }
+      };
+    } else {
+      feedbackModalData = {
+        ...feedbackModalData,
+        texts: [msg],
+        isOpen: true,
+        footerText: "OK"
+      };
+    }
+    yield put(
+      setFeedbackModal({
+        ...feedbackModalData
+      })
+    );
+    console.log(data);
   } catch (err) {
-    yield put(failure(err));
+    console.log(err);
   }
 }
 
-export default [
-  //   call(runClockSaga),
-  takeLatest(SET_LIST_VIEW_SCROOL_TOP, loadDataSaga),
-  takeLatest(SET_TAB_KEY, goTarget),
-  
-];
+export default [takeLatest(USER_LOGIN_IN, onLogin)];
