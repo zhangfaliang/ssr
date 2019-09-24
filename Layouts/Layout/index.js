@@ -70,7 +70,7 @@ class Layout extends React.Component {
     });
   };
   onLogin = () => {
-    Router.push("/user/login/index");
+    router.push("/user/login/index");
   };
   renderChildren() {
     const { children, ...other } = this.props;

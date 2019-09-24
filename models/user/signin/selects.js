@@ -13,7 +13,7 @@ export const makeInputValus = createSelector(
         [key]: get(currentInputValue, "value")
       };
     });
-    return get(processDatas,'0',{});
+    return processDatas || {};
   }
 );
 

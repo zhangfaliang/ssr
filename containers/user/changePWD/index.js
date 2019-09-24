@@ -38,15 +38,14 @@ class Login extends Component {
             placeholder="Your phone number"
             preFixPlaceholder="+86"
             verifyFn={valideIphone}
-            name="phoneNumber"
+            name="userName"
             verifyErrorMessage="手机号格式错误"
           />
           <UserInput
             type="password"
             verifyFn={validPassword}
-            compareName="password"
             verifyErrorMessage={"密码格式错误"}
-            placeholder="Password"
+            placeholder="oldPassword"
           />
           <UserInput
             verifyFn={validPassword}
@@ -54,7 +53,7 @@ class Login extends Component {
             name="newPassword"
             compareName="password"
             verifyErrorMessage={"密码格式错误"}
-            placeholder={"Password"}
+            placeholder={"newPassword"}
           />
           <UserInput
             verifyFn={validPassword}
@@ -62,7 +61,7 @@ class Login extends Component {
             name="newPasswordAgin"
             compareName="password"
             verifyErrorMessage={"密码格式错误"}
-            placeholder={"Password"}
+            placeholder={"newPasswordAgin"}
           />
           <HintLabel />
         </UserInputGroup>
