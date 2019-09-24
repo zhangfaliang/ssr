@@ -35,10 +35,12 @@ let feedbackModalData = {
 function* onLogin() {
   try {
     const inputValus = yield select(makeInputValus);
-    console.log(get(inputValus, "password", ""),'----------------',inputValus)
     const data = yield call(login, {
       userName: get(inputValus, "phoneNumber", ""),
-      password: sjcl.encrypt("password", get(inputValus, "password", ""))
+      password: sjcl.encrypt(
+        "password",
+        JSON.stringify(get(inputValus, "password", ""))
+      )
     });
     //setFeedbackModal verify
     if (get(data, "data.code", 0) * 1 === 0) {

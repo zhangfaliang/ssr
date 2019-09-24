@@ -7,13 +7,12 @@ export const makeInputValus = createSelector(
   selectState(),
   signin => {
     const inputDatas = get(signin, "inputDatas");
-    const processDatas = Object.keys(inputDatas).map(key => {
+    const res = {};
+    Object.keys(inputDatas).forEach(key => {
       const currentInputValue = inputDatas[key];
-      return {
-        [key]: get(currentInputValue, "value")
-      };
+      res = get(currentInputValue, "value");
     });
-    return processDatas || {};
+    return res;
   }
 );
 

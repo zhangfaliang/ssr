@@ -28,16 +28,20 @@ let feedbackModalData = {
 function* onChangePWD() {
   try {
     const inputValus = yield select(makeInputValus);
+    console.log(inputValus);
     const data = yield call(changePWD, {
       userName: get(inputValus, "userName", ""),
       password: JSON.stringify(
-        sjcl.encrypt("password", get(inputValus, "password", ""))
+        sjcl.encrypt("password",  JSON.stringify(get(inputValus, "password", "")))
       ),
       newPassword: JSON.stringify(
-        sjcl.encrypt("password", get(inputValus, "newPassword", ""))
+        sjcl.encrypt("password",  JSON.stringify(get(inputValus, "newPassword", "")))
       ),
       newPasswordAgin: JSON.stringify(
-        sjcl.encrypt("password", get(inputValus, "newPasswordAgin", ""))
+        sjcl.encrypt(
+          "password",
+           JSON.stringify(get(inputValus, "newPasswordAgin", ""))
+        )
       )
     });
     //setFeedbackModal
