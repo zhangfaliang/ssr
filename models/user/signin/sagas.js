@@ -36,17 +36,12 @@ let feedbackModalData = {
 function* signIn() {
   try {
     const inputValus = yield select(makeInputValus);
-    console.log(inputValus);
     const data = yield call(sigIn, {
       userName: get(inputValus, "phoneNumber", ""),
-      password: JSON.stringify(
-        sjcl.encrypt("password",  JSON.stringify(get(inputValus, "password", "")))
-      ),
-      passwordAgin: JSON.stringify(
-        sjcl.encrypt(
-          "passwordAgin",
-           JSON.stringify(get(inputValus, "passwordAgin", ""))
-        )
+      password: sjcl.encrypt("password", get(inputValus, "password", "")),
+      passwordAgin: sjcl.encrypt(
+        "passwordAgin",
+        get(inputValus, "passwordAgin", "")
       )
     });
     //setFeedbackModal

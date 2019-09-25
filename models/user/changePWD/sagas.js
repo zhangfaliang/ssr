@@ -32,16 +32,13 @@ function* onChangePWD() {
     const data = yield call(changePWD, {
       userName: get(inputValus, "userName", ""),
       password: JSON.stringify(
-        sjcl.encrypt("password",  JSON.stringify(get(inputValus, "password", "")))
+        sjcl.encrypt("password", get(inputValus, "password", ""))
       ),
       newPassword: JSON.stringify(
-        sjcl.encrypt("password",  JSON.stringify(get(inputValus, "newPassword", "")))
+        sjcl.encrypt("password", get(inputValus, "newPassword", ""))
       ),
       newPasswordAgin: JSON.stringify(
-        sjcl.encrypt(
-          "password",
-           JSON.stringify(get(inputValus, "newPasswordAgin", ""))
-        )
+        sjcl.encrypt("password", get(inputValus, "newPasswordAgin", ""))
       )
     });
     //setFeedbackModal

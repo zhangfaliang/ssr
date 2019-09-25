@@ -37,10 +37,7 @@ function* onLogin() {
     const inputValus = yield select(makeInputValus);
     const data = yield call(login, {
       userName: get(inputValus, "phoneNumber", ""),
-      password: sjcl.encrypt(
-        "password",
-        JSON.stringify(get(inputValus, "password", ""))
-      )
+      password: sjcl.encrypt("password", get(inputValus, "password", ""))
     });
     //setFeedbackModal verify
     if (get(data, "data.code", 0) * 1 === 0) {
