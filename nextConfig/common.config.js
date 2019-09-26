@@ -67,7 +67,8 @@ module.exports = {
     modifyVars: themeVariables // 让你的antd自定义有效
   },
 
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config, { isServer, ...other }) => {
+    console.log(other);
     if (config.externals) {
       const includes = [/antd-mobile/];
       config.externals = config.externals.map(external => {
