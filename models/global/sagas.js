@@ -1,27 +1,31 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
-import { setListViewScrollTop } from "./actions";
-import { SET_LIST_VIEW_SCROOL_TOP, SET_TAB_KEY } from "./actionTypes";
+import { get } from "lodash";
+import { setUser, getUser } from "./actions";
+import { getUserInfo } from "../../services/user";
+
+import { GET_USER, INIT_PAGE } from "./actionTypes";
 
 es6promise.polyfill();
 
-function* goTarget(action) {
-  debugger
-
-  console.log(action,'----------')
+function* initPage() {
+  yield put(getUser());
 }
-
-function* loadDataSaga() {
+function* getUserWorks() {
   try {
-    console.log(SET_LIST_VIEW_SCROOL_TOP, "---");
-  } catch (err) {
-    yield put(failure(err));
+    const res = yield call(getUserInfo);
+    if (get(res, "data.data.verify")) {
+      const userInfo = get(res, "data.data.userInfo");
+      yield put(setUser({ ...userInfo, isLogin: true }));
+    } else {
+      yield put(setUser({ isLogin: false }));
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
 export default [
-  //   call(runClockSaga),
-  takeLatest(SET_LIST_VIEW_SCROOL_TOP, loadDataSaga),
-  takeLatest(SET_TAB_KEY, goTarget),
-  
+  takeLatest(GET_USER, getUserWorks),
+  takeLatest(INIT_PAGE, initPage)
 ];

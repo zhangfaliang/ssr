@@ -9,6 +9,8 @@ import { NextSeo } from "next-seo";
 import createStore from "../models/store";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";
+import { getUser } from "../models/global/actions";
+
 const theme = {
   colors: {
     primary: "#0070f3"
@@ -40,7 +42,8 @@ class MyApp extends App {
 
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
-
+    // const { store, isServer, pathname, apiData } = ctx;
+    // store.dispatch(getUser());
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps({ ctx });
     }

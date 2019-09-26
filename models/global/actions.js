@@ -3,7 +3,10 @@ import {
   SET_HEADER_CEILING_FLAG,
   SET_PATH_NAME,
   SET_TAB_KEY,
-  SET_FEEDBACKMODAL
+  SET_FEEDBACKMODAL,
+  SET_USER,
+  GET_USER,
+  INIT_PAGE
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -22,7 +25,6 @@ export const setCeilingFlag = ceilingFlag => {
 
 
 export const setPathName = pathname => {
-  console.log('pathname',pathname)
   return {
     type: SET_PATH_NAME,
     pathname
@@ -45,3 +47,20 @@ export const setFeedbackModal = feedbackModal => {
   };
 };
 
+export const getUser = () => {
+  return {
+    type: GET_USER,
+  };
+};
+
+export const setUser = (userInfo) => {
+  return {
+    type: SET_USER,
+    userInfo
+  };
+};
+export const initPage = () => {
+  return {
+    type: INIT_PAGE,
+  };
+};

@@ -17,3 +17,11 @@ export const changePWD = (inputValus = {}) => {
     ...inputValus
   });
 };
+
+export const getUserInfo = () => {
+  try {
+    return axios.post("/api/common/userInfo", {});
+  } catch (e) {
+    console.log(e);
+  }
+};

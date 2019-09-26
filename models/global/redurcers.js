@@ -3,7 +3,8 @@ import {
   SET_HEADER_CEILING_FLAG,
   SET_PATH_NAME,
   SET_TAB_KEY,
-  SET_FEEDBACKMODAL
+  SET_FEEDBACKMODAL,
+  SET_USER
 } from "./actionTypes";
 
 export const exampleInitialState = {
@@ -20,7 +21,8 @@ export const exampleInitialState = {
     callbackWhenConfirm: () => {},
     feedbackModalClose: () => {},
     showCloseIcon: false,
-    texts: []
+    texts: [],
+    userInfo: {}
   }
 };
 
@@ -54,6 +56,11 @@ function reducer(state = exampleInitialState, action) {
           ...state.feedbackModal,
           ...action.feedbackModal
         }
+      };
+    case SET_USER:
+      return {
+        ...state,
+        userInfo: action.userInfo
       };
 
     default:

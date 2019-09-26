@@ -9,7 +9,7 @@ import DistributeHeder from "../../components/header/distribute";
 import DistributeFooterBar from "../../components/footer/distribute";
 import { FeedbackModal } from "../../components/feedbackModal/index";
 import { makeListFeedbackModal } from "../../models/global/selects";
-import { setFeedbackModal } from "../../models/global/actions";
+import { setFeedbackModal, initPage } from "../../models/global/actions";
 
 import {
   SildUserWarp,
@@ -40,13 +40,9 @@ class Layout extends React.Component {
     isDrawerOpen: false,
     open: false
   };
-
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.isDrawerOpen !== state.isDrawerOpen) {
-  //     return { isDrawerOpen: props.isDrawerOpen };
-  //   }
-  //   return null;
-  // }
+  componentDidMount() {
+    this.props.onInitPage();
+  }
   onOpenChange = (...args) => {
     const { onOpenChange } = this.props;
     console.log(args);
@@ -184,7 +180,9 @@ const mapDispatchToProps = dispatch => ({
   onSetCeilingFlag: ceilingFlag => dispatch(setCeilingFlag(ceilingFlag)),
   setPathName: pathName => dispatch(setPathName(pathName)),
   setTabKey: params => dispatch(setTabKey(params)),
-  onSetFeedbackModal: feedbackModal => dispatch(setFeedbackModal(feedbackModal))
+  onSetFeedbackModal: feedbackModal =>
+    dispatch(setFeedbackModal(feedbackModal)),
+  onInitPage: () => dispatch(initPage())
 });
 
 export default connect(
