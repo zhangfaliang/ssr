@@ -6,7 +6,8 @@ import {
   SET_FEEDBACKMODAL,
   SET_USER,
   GET_USER,
-  INIT_PAGE
+  INIT_PAGE,
+  CLICK_SILD_BAR
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -64,3 +65,10 @@ export const initPage = () => {
     type: INIT_PAGE,
   };
 };
+export const initClickBar = (typeText) => {
+  return {
+    type: CLICK_SILD_BAR,
+    typeText
+  };
+};
+

@@ -6,7 +6,7 @@ import styles from "./index.less";
 class Setting extends Component {
   static COMPONENT_NAME = "SETTING";
   render() {
-    const { setArr, className } = this.props;
+    const { setArr, className, onClickBar } = this.props;
     const setCls = classnames(className, {
       [styles.setting]: true
     });
@@ -15,13 +15,21 @@ class Setting extends Component {
         {setArr &&
           setArr.map((item, index) => {
             const { icontType, className, barText } = item;
-            return <Bar key={index} icontType={icontType} barText={barText} />;
+            return (
+              <Bar
+                onClickBar={onClickBar}
+                key={index}
+                icontType={icontType}
+                barText={barText}
+              />
+            );
           })}
       </div>
     );
   }
 }
 Setting.defaultProps = {
+  onClickBar: () => {},
   setArr: [
     {
       icontType: "icon_night",
@@ -29,14 +37,17 @@ Setting.defaultProps = {
     },
     {
       icontType: "pifu",
+      key:'skin',
       barText: "个性皮肤"
     },
     {
       icontType: "single",
+      key:'order',
       barText: "我的订单"
     },
     {
       icontType: "hkquit",
+      key:'logOut',
       barText: "退出"
     }
   ]

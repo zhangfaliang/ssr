@@ -6,7 +6,4 @@ export const SET_FEEDBACKMODAL = "GLOBAL/FEEDBACKMODAL";
 export const GET_USER = "GLOBAL/GET_USER";
 export const SET_USER = "GLOBAL/SET_USER";
 export const INIT_PAGE = "GLOBAL/INIT_PAGE";
-
-
-
-
+export const CLICK_SILD_BAR = "GLOBAL/CLICK_SILD_BAR";

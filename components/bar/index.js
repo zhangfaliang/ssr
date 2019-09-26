@@ -9,8 +9,8 @@ class Bar extends Component {
       [styles.bar]: true
     });
     return (
-      <div className={barCls}>
-        <IconFont  className={className} type={icontType} />
+      <div className={barCls} onClick={onClickBar.bind(this, barText)}>
+        <IconFont className={className} type={icontType} />
         <span>{barText}</span>
       </div>
     );

@@ -13,7 +13,11 @@ import {
   makeUserInfo,
   makeIsLogin
 } from "../../models/global/selects";
-import { setFeedbackModal, initPage } from "../../models/global/actions";
+import {
+  setFeedbackModal,
+  initPage,
+  initClickBar
+} from "../../models/global/actions";
 
 import {
   SildUserWarp,
@@ -122,7 +126,7 @@ class Layout extends React.Component {
         <UserPhoto />
         <UserInfo {...userInfo} />
         <Recharge />
-        <Setting />
+        <Setting onClickBar={this.props.onClickBar} />
         <SlideList />
       </SildUserWarp>
     );
@@ -191,7 +195,8 @@ const mapDispatchToProps = dispatch => ({
   setTabKey: params => dispatch(setTabKey(params)),
   onSetFeedbackModal: feedbackModal =>
     dispatch(setFeedbackModal(feedbackModal)),
-  onInitPage: () => dispatch(initPage())
+  onInitPage: () => dispatch(initPage()),
+  onClickBar: typeText => dispatch(initClickBar(typeText))
 });
 
 export default connect(
