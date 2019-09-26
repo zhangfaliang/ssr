@@ -7,7 +7,7 @@ export const makeInputValus = createSelector(
   selectState(),
   changePWD => {
     const inputDatas = get(changePWD, "inputDatas");
-    const res = {};
+    let res = {};
     Object.keys(inputDatas).forEach(key => {
       const currentInputValue = inputDatas[key];
       res[key] = get(currentInputValue, "value");
