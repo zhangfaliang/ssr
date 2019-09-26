@@ -8,7 +8,11 @@ import styles from "./idnex.less";
 import DistributeHeder from "../../components/header/distribute";
 import DistributeFooterBar from "../../components/footer/distribute";
 import { FeedbackModal } from "../../components/feedbackModal/index";
-import { makeListFeedbackModal } from "../../models/global/selects";
+import {
+  makeListFeedbackModal,
+  makeUserInfo,
+  makeIsLogin
+} from "../../models/global/selects";
 import { setFeedbackModal, initPage } from "../../models/global/actions";
 
 import {
@@ -97,8 +101,8 @@ class Layout extends React.Component {
     isFunction(router[routerFn]) &&
       router[routerFn]({
         pathname: url,
-        query,
-        state
+        query: query || {},
+        state: state || state
       });
     onSetFeedbackModal({ isOpen: false });
   };
@@ -109,12 +113,14 @@ class Layout extends React.Component {
       ceilingFlag,
       pathName,
       tabs,
-      feedbackModal
+      feedbackModal,
+      userInfo,
+      isLogin
     } = this.props;
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
-        <UserInfo />
+        <UserInfo {...userInfo} />
         <Recharge />
         <Setting />
         <SlideList />
@@ -136,6 +142,7 @@ class Layout extends React.Component {
       >
         <div className={styles.layout}>
           <DistributeHeder
+            isLogin={isLogin}
             onChangeTab={this.onChangeTab}
             onTabClick={this.onTabClick}
             onLogin={this.onLogin}
@@ -172,7 +179,9 @@ const mapStateToProps = createStructuredSelector({
   ceilingFlag: makeCeilingFlag,
   pathName: makePathName,
   tabs: makeTabs,
-  feedbackModal: makeListFeedbackModal
+  feedbackModal: makeListFeedbackModal,
+  userInfo: makeUserInfo,
+  isLogin: makeIsLogin
 });
 
 const mapDispatchToProps = dispatch => ({

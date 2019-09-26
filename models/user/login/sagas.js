@@ -39,7 +39,6 @@ function* onLogin() {
       userName: get(inputValus, "phoneNumber", ""),
       password: sjcl.encrypt("password", get(inputValus, "password", ""))
     });
-    //setFeedbackModal verify
     if (get(data, "data.code", 0) * 1 === 0) {
       const verify = get(data, "data.data.verify", false);
       const msg = get(data, "data.data.msg");
@@ -47,9 +46,9 @@ function* onLogin() {
         ...feedbackModalData,
         texts: [msg],
         isOpen: true,
-        footerText: verify ? "去登陆" : "OK",
+        footerText: "Ok",
         onRequestCloseUrlObj: {
-          url: "/user/login/index",
+          url: "/game/index",
           routerFn: "push"
         }
       };

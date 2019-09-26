@@ -4,6 +4,7 @@ import Page from "../containers/index/index.js";
 
 class Index extends React.Component {
   static async getInitialProps(props) {
+    const { store, isServer, pathname, apiData } = props.ctx;
     return { isServer };
   }
   render() {

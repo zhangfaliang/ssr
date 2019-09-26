@@ -68,3 +68,16 @@ export const makeTabs = createSelector(
     ];
   }
 );
+
+export const makeUserInfo = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "userInfo");
+  }
+);
+export const makeIsLogin = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "userInfo.isLogin",false);
+  }
+);

@@ -6,6 +6,7 @@ class UserInfo extends Component {
 
   render() {
     const { userName, balance } = this.props;
+    console.log(this.props);
     return (
       <div className={styles.info}>
         <span className={styles.userName}>{userName}</span>
@@ -15,7 +16,7 @@ class UserInfo extends Component {
   }
 }
 UserInfo.defaultProps = {
-  userName: "ShinyZhang",
-  balance: "78979"
+  userName: "",
+  balance: ""
 };
 export default UserInfo;
