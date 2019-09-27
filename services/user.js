@@ -25,3 +25,10 @@ export const getUserInfo = () => {
     console.log(e);
   }
 };
+export const getLogout = () => {
+  try {
+    return axios.post("/api/common/logout", {});
+  } catch (e) {
+    console.log(e);
+  }
+};

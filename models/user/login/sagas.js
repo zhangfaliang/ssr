@@ -12,7 +12,7 @@ import { get } from "lodash";
 import { login } from "../../../services/user";
 import { makeInputValus } from "./selects";
 import { USER_LOGIN_IN } from "./actionTypes";
-import { setFeedbackModal } from "../../../models/global/actions";
+import { setFeedbackModal, getUser } from "../../../models/global/actions";
 import sjcl from "../../../utils/sjcl";
 es6promise.polyfill();
 let feedbackModalData = {
@@ -40,6 +40,7 @@ function* onLogin() {
       password: sjcl.encrypt("password", get(inputValus, "password", ""))
     });
     if (get(data, "data.code", 0) * 1 === 0) {
+      yield put(getUser());
       const verify = get(data, "data.data.verify", false);
       const msg = get(data, "data.data.msg");
       feedbackModalData = {

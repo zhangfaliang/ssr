@@ -196,7 +196,9 @@ const mapDispatchToProps = dispatch => ({
   onSetFeedbackModal: feedbackModal =>
     dispatch(setFeedbackModal(feedbackModal)),
   onInitPage: () => dispatch(initPage()),
-  onClickBar: typeText => dispatch(initClickBar(typeText))
+  onClickBar: typeText => dispatch(initClickBar(typeText)),
+  onOpenUserSlidChange: flag => dispatch(openUserSlidChange(flag))
+  
 });
 
 export default connect(
