@@ -46,7 +46,8 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps({ ctx });
       store.dispatch(setPathName(pathname));
-      store.dispatch(getUser());
+      //store.dispatch(getUser());
+
     }
     return { pageProps };
   }

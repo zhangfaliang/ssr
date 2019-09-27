@@ -29,9 +29,6 @@ axios.interceptors.request.use(
     //   clientInfo: Object.assign({}, clientInfo, config.clientInfo),
     //   metaData: config.metaData
     // };
-      config.data = {
-      data: {test:'---------------------'}
-    };
     console.log(config)
     return config;
   },

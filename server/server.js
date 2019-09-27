@@ -3,7 +3,6 @@ const next = require("next");
 const Router = require("koa-router");
 const combintionRouter = require("./routes/index.js");
 const ssrCache = require("./ssrCache/index.js");
-const query = require("./connect/index");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
