@@ -9,7 +9,7 @@ import { GET_USER, INIT_PAGE, CLICK_SILD_BAR } from "./actionTypes";
 es6promise.polyfill();
 
 function* initPage() {
-  yield put(getUser());
+  // yield put(getUser());
 }
 function* getUserWorks() {
   try {

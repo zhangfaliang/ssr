@@ -1,17 +1,17 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet, createGlobalStyle } from "styled-components";
-const host = "http://localhost:3000/static/icon-font";
+const path = process.env.HOST + process.env.STATIC + process.env.ICON_FONT;
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "iconfont"; /* */
-    src: url("http://localhost:3000/static/icon-font/iconfont.eot");
-    src: url("http://localhost:3000/static/icon-font/iconfont.eot?#iefix")
+  src: url(${path}/iconfont.eot);
+    src: url(${path}/iconfont.eot?#iefix)
         format("embedded-opentype"),
-      url("http://localhost:3000/static/icon-font/iconfont.woff2") format("woff2"),
-      url("http://localhost:3000/static/icon-font/iconfont.woff") format("woff"),
-      url("http://localhost:3000/static/icon-font/iconfont.ttf") format("truetype"),
-      url("http://localhost:3000/static/icon-font/iconfont.svg#iconfont")
+      url(${path}/iconfont.woff2) format("woff2"),
+      url(${path}/iconfont.woff) format("woff"),
+      url(${path}/iconfont.ttf) format("truetype"),
+      url(${path}/iconfont.svg#iconfont)
         format("svg");
   }
 `;
@@ -57,7 +57,9 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script src={"http://localhost:3000/static/adaptive.js"} />
+          <script
+            src={process.env.HOST + process.env.STATIC + "/adaptive.js"}
+          />
         </Head>
         <body>
           <GlobalStyle />

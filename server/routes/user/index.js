@@ -7,6 +7,10 @@ const userRoute = ({ router, server, app, ssrCache }) => {
       await app.render(ctx.req, ctx.res, "/user/login", ctx.query);
       ctx.respond = false;
     });
+    router.get("/user/changePWD/index", async ctx => {
+      await app.render(ctx.req, ctx.res, "/user/changePWD", ctx.query);
+      ctx.respond = false;
+    });
   
     server.use(async (ctx, next) => {
       ctx.res.statusCode = 200;

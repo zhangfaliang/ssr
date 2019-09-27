@@ -4,12 +4,14 @@ const dotEnvResult = require("dotenv").config();
 if (dotEnvResult.error) {
   throw dotEnvResult.error;
 }
-
 module.exports = {
   ...commonConfig,
   env: {
     BACKEND_URL: "http://localhost:3000",
-    TEST: process.env.TEST
+    TEST: process.env.TEST,
+    HOST:"http://localhost:3000",
+    STATIC:'/static',
+    ICON_FONT:'/icon-font'
   },
   /* development only config options here */
   useFileSystemPublicRoutes: true, // 开启前端路由

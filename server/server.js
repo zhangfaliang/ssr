@@ -1,13 +1,11 @@
 const Koa = require("koa");
 const next = require("next");
 const Router = require("koa-router");
-const bodyParser = require("koa-bodyparser");
 const combintionRouter = require("./routes/index.js");
 const ssrCache = require("./ssrCache/index.js");
 const query = require("./connect/index");
 const apiRouter = require("./apiData/index");
 const proxy = require('koa-proxies')
-const httpsProxyAgent = require('https-proxy-agent')
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";

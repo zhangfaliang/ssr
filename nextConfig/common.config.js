@@ -68,7 +68,6 @@ module.exports = {
   },
 
   webpack: (config, { isServer, ...other }) => {
-    console.log(other);
     if (config.externals) {
       const includes = [/antd-mobile/];
       config.externals = config.externals.map(external => {
