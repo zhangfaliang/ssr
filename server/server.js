@@ -15,18 +15,17 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
-  if (dev) {
-    console.log(dev)
-    server.use(
-      proxy("/api", {
-        target: "http://localhost:5000",
-        changeOrigin: true,
-        rewrite: path => path.replace(/\/api/, ""),
-        logs: true
-        //pathRewrite
-      })
-    );
-  }
+  // if (dev) {
+  //   server.use(
+  //     proxy("/api", {
+  //       target: "http://localhost:5000",
+  //       changeOrigin: true,
+  //       rewrite: path => path.replace(/\/api/, ""),
+  //       logs: true
+  //       //pathRewrite
+  //     })
+  //   );
+  // }
 
   combintionRouter({
     server,

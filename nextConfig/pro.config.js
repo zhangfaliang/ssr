@@ -10,7 +10,7 @@ module.exports = {
   env: {
     TEST: process.env.TEST,
     HOST: "http://localhost:3000",
-    API_ENDPOINT:"http://localhost:5000",
+    API_ENDPOINT:"http://localhost:8080",
     STATIC:'/static',
     ICON_FONT:'/icon-font'
   },

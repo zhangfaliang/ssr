@@ -7,20 +7,20 @@ export const sigIn = (inputValus = {}) => {
 };
 
 export const login = (inputValus = {}) => {
-  return axios.post("/common/login", {
+  return axios.post("/api/common/login", {
     ...inputValus
   });
 };
 
 export const changePWD = (inputValus = {}) => {
-  return axios.post("/common/changepwd", {
+  return axios.post("/api/common/changepwd", {
     ...inputValus
   });
 };
 
 export const getUserInfo = () => {
   try {
-    return axios.post("/common/userInfo",{});
+    return axios.post("/api/common/userInfo",{});
   } catch (e) {
     console.log(e);
   }
