@@ -14,7 +14,6 @@ function* initPage() {
 function* getUserWorks() {
   try {
     const res = yield call(getUserInfo);
-    console.log(res,'-------------------------')
     if (get(res, "data.data.verify")) {
       const userInfo = get(res, "data.data.userInfo");
       yield put(setUser({ ...userInfo, isLogin: true }));

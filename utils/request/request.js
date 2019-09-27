@@ -51,9 +51,9 @@ const setRequestAndResponse = () => {
         config: error.config
       };
 
-      const processUpdateApi = new ProcessUpdateApi(apiParams, 2000, 10000);
-      return processUpdateApi.updateApi();
-      //throw new Error(error.stack);
+      // const processUpdateApi = new ProcessUpdateApi(apiParams, 2000, 10000);
+      // return processUpdateApi.updateApi();
+      throw new Error(error.stack);
     }
   );
 };

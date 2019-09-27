@@ -7,9 +7,9 @@ if (dotEnvResult.error) {
 module.exports = {
   ...commonConfig,
   env: {
-    BACKEND_URL: "http://localhost:3000",
     TEST: process.env.TEST,
-    HOST:"http://localhost:3000",
+    HOST: "http://localhost:3000",
+    API_ENDPOINT:"http://localhost:5000",
     STATIC:'/static',
     ICON_FONT:'/icon-font'
   },

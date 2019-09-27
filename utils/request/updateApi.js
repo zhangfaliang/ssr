@@ -14,6 +14,7 @@ export class ProcessUpdateApi {
     const _that = this;
     let responseCopy = {};
     const axios = Axios.create(config);
+    console.log(config)
     return new Promise(resolve => {
       _that.timers = setInterval(() => {
         if (_that.currentTolerance <= _that.tolerance) {
@@ -22,12 +23,11 @@ export class ProcessUpdateApi {
             responseCopy = response;
             try {
               if (response.status >= 200 && response.status < 300) {
-                  console.log(response,'responseresponseresponseresponse')
                 clearInterval(_that.timers);
-                if (response.data.data) {
-                    const decodeBase64 = Base64.decode(response.data.data);
-                    response.data.data = JSON.parse(decodeBase64);
-                  }
+                // if (response.data.data) {
+                //     const decodeBase64 = Base64.decode(response.data.data);
+                //     response.data.data = JSON.parse(decodeBase64);
+                //   }
                 resolve(response);
                 console.log('.....数据请求成功');
               } else {
