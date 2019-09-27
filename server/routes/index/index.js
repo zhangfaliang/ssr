@@ -1,4 +1,3 @@
-const axios = require("axios");
 
 const indexRoute = ({ router, server, app, ssrCache }) => {
   router.get("/a", async ctx => {

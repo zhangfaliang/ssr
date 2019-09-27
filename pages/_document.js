@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet, createGlobalStyle } from "styled-components";
-const path = process.env.HOST + process.env.STATIC + process.env.ICON_FONT;
+const path = process.env.API_ENDPOINT + process.env.STATIC + process.env.ICON_FONT;
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -58,7 +58,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <script
-            src={process.env.HOST + process.env.STATIC + "/adaptive.js"}
+            src={process.env.API_ENDPOINT + process.env.STATIC + "/adaptive.js"}
           />
         </Head>
         <body>

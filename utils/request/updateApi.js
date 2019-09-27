@@ -14,7 +14,6 @@ export class ProcessUpdateApi {
     const _that = this;
     let responseCopy = {};
     const axios = Axios.create(config);
-    console.log(config)
     return new Promise(resolve => {
       _that.timers = setInterval(() => {
         if (_that.currentTolerance <= _that.tolerance) {

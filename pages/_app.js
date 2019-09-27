@@ -43,14 +43,15 @@ class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
     const { store, isServer, pathname, apiData } = ctx;
-    store.dispatch(setPathName(pathname));
-    store.dispatch(getUser());
-
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps({ ctx });
+      store.dispatch(setPathName(pathname));
+      store.dispatch(getUser());
     }
-
     return { pageProps };
+  }
+  componentDidMount(){
+    console.log('---===---')
   }
   componentDidCatch(error, errorInfo) {
     console.log("CUSTOM ERROR HANDLING", error);
