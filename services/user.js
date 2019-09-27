@@ -1,7 +1,7 @@
 const { axios } = require("../utils/request/request.js");
 
 export const sigIn = (inputValus = {}) => {
-  return axios.post("/common/signin", {
+  return axios.post("/api/common/signin", {
     ...inputValus
   });
 };
@@ -20,7 +20,7 @@ export const changePWD = (inputValus = {}) => {
 
 export const getUserInfo = () => {
   try {
-    return axios.post("/api/common/userInfo",{});
+    return axios.post("/api/common/userInfo", {});
   } catch (e) {
     console.log(e);
   }

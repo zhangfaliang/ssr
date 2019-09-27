@@ -48,7 +48,7 @@ function* onLogin() {
         isOpen: true,
         footerText: "Ok",
         onRequestCloseUrlObj: {
-          url: "/game/index",
+          url: "/",
           routerFn: "push"
         }
       };
