@@ -8,7 +8,9 @@ import {
   GET_USER,
   INIT_PAGE,
   CLICK_SILD_BAR,
-  CHAGE_USER_SLID
+  CHAGE_USER_SLID,
+  SET_CONFIG_INDEX_PAGE,
+  GET_CONFIG_INDEX_PAGE
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -25,15 +27,12 @@ export const setCeilingFlag = ceilingFlag => {
   };
 };
 
-
 export const setPathName = pathname => {
   return {
     type: SET_PATH_NAME,
     pathname
   };
 };
-
-
 
 export const setTabKey = params => {
   return {
@@ -51,11 +50,11 @@ export const setFeedbackModal = feedbackModal => {
 
 export const getUser = () => {
   return {
-    type: GET_USER,
+    type: GET_USER
   };
 };
 
-export const setUser = (userInfo) => {
+export const setUser = userInfo => {
   return {
     type: SET_USER,
     userInfo
@@ -63,22 +62,31 @@ export const setUser = (userInfo) => {
 };
 export const initPage = () => {
   return {
-    type: INIT_PAGE,
+    type: INIT_PAGE
   };
 };
-export const initClickBar = (typeText) => {
+export const initClickBar = typeText => {
   return {
     type: CLICK_SILD_BAR,
     typeText
   };
 };
 
-export const changeUserSild = (userSildFalg) => {
+export const changeUserSild = userSildFalg => {
   return {
     type: CHAGE_USER_SLID,
     userSildFalg
   };
 };
 
-
-
+export const getConfigIndexPage = () => {
+  return {
+    type: GET_CONFIG_INDEX_PAGE
+  };
+};
+export const setConfigIndexPage = pageIndexConfig => {
+  return {
+    type: SET_CONFIG_INDEX_PAGE,
+    pageIndexConfig
+  };
+};

@@ -12,7 +12,8 @@ import {
   makeListFeedbackModal,
   makeUserInfo,
   makeIsLogin,
-  makeUserSildFalg
+  makeUserSildFalg,
+  makeIndexConfig
 } from "../../models/global/selects";
 import {
   setFeedbackModal,
@@ -115,13 +116,15 @@ class Layout extends React.Component {
       feedbackModal,
       userInfo,
       isLogin,
-      userSildFalg
+      userSildFalg,
+      indexConfig
     } = this.props;
+    const { userSlidBtn, userSetBtn, goToPageBtn } = indexConfig || {};
     const sidebar = (
       <SildUserWarp>
         <UserPhoto />
         <UserInfo {...userInfo} />
-        <Recharge />
+        <Recharge userSlidBtn={userSlidBtn || []} />
         <Setting onClickBar={this.props.onClickBar} />
         <SlideList />
       </SildUserWarp>
@@ -181,7 +184,8 @@ const mapStateToProps = createStructuredSelector({
   feedbackModal: makeListFeedbackModal,
   userInfo: makeUserInfo,
   isLogin: makeIsLogin,
-  userSildFalg: makeUserSildFalg
+  userSildFalg: makeUserSildFalg,
+  indexConfig: makeIndexConfig
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -32,3 +32,11 @@ export const getLogout = () => {
     console.log(e);
   }
 };
+
+export const getIndexPageConfig = () => {
+  try {
+    return axios.post("/api/common/pageIndexPage", {});
+  } catch (e) {
+    console.log(e);
+  }
+};

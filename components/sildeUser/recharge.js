@@ -7,20 +7,20 @@ class Recharge extends Component {
   static COMPONENT_NAME = "RECHARGE";
 
   render() {
-    const { btnArrData } = this.props;
+    const { userSlidBtn } = this.props;
     return (
       <div className={styles.recharge}>
-        {isArray(btnArrData) &&
-          btnArrData.map((item, index) => {
-            const { text, type, size } = item;
+        {isArray(userSlidBtn) &&
+          userSlidBtn.map((item, index) => {
+            const { name, type, size } = item;
             return (
               <Button
-                size={size}
+                size={size || "small"}
                 key={index}
                 className={styles.btn}
-                type={type}
+                type={type || "primary"}
               >
-                {text}
+                {name}
               </Button>
             );
           })}
@@ -29,17 +29,6 @@ class Recharge extends Component {
   }
 }
 Recharge.defaultProps = {
-  btnArrData: [
-    {
-      text: "会员的世界",
-      type: "primary",
-      size: "small"
-    },
-    {
-      text: "充值",
-      type: "primary",
-      size: "small"
-    }
-  ]
+  btnArrData: []
 };
 export default Recharge;

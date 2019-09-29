@@ -43,16 +43,29 @@ function* onLogin() {
       yield put(getUser());
       const verify = get(data, "data.data.verify", false);
       const msg = get(data, "data.data.msg");
-      feedbackModalData = {
-        ...feedbackModalData,
-        texts: [msg],
-        isOpen: true,
-        footerText: "Ok",
-        onRequestCloseUrlObj: {
-          url: "/",
-          routerFn: "push"
-        }
-      };
+      if (!verify) {
+        feedbackModalData = {
+          ...feedbackModalData,
+          texts: [msg],
+          isOpen: true,
+          footerText: "Ok"
+          // onRequestCloseUrlObj: {
+          //   url: "/",
+          //   routerFn: "push"
+          // }
+        };
+      } else {
+        feedbackModalData = {
+          ...feedbackModalData,
+          texts: [msg],
+          isOpen: true,
+          footerText: "Ok",
+          onRequestCloseUrlObj: {
+            url: "/",
+            routerFn: "push"
+          }
+        };
+      }
     } else {
       feedbackModalData = {
         ...feedbackModalData,

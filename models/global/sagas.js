@@ -1,9 +1,24 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import { get } from "lodash";
-import { setUser, getUser, setFeedbackModal, changeUserSild } from "./actions";
-import { getUserInfo, getLogout } from "../../services/user";
-import { GET_USER, INIT_PAGE, CLICK_SILD_BAR } from "./actionTypes";
+import {
+  setUser,
+  getUser,
+  setFeedbackModal,
+  changeUserSild,
+  setConfigIndexPage
+} from "./actions";
+import {
+  getUserInfo,
+  getLogout,
+  getIndexPageConfig
+} from "../../services/user";
+import {
+  GET_USER,
+  INIT_PAGE,
+  CLICK_SILD_BAR,
+  GET_CONFIG_INDEX_PAGE
+} from "./actionTypes";
 es6promise.polyfill();
 
 let feedbackModalData = {
@@ -73,9 +88,19 @@ function* clickSildBar(action) {
     );
   } catch (e) {}
 }
+function* requireConfigIndexPage() {
+  const res = yield call(getIndexPageConfig);
+  const indexConfig = {
+    userSlidBtn: JSON.parse(get(res, "data.data.data.userSlidBtn", [])),
+    userSetBtn: JSON.parse(get(res, "data.data.data.userSetBtn", [])),
+    goToPageBtn: JSON.parse(get(res, "data.data.data.goToPageBtn", []))
+  };
+  yield put(setConfigIndexPage(indexConfig));
+}
 
 export default [
   takeLatest(GET_USER, getUserWorks),
   takeLatest(INIT_PAGE, initPage),
-  takeLatest(CLICK_SILD_BAR, clickSildBar)
+  takeLatest(CLICK_SILD_BAR, clickSildBar),
+  takeLatest(GET_CONFIG_INDEX_PAGE, requireConfigIndexPage)
 ];

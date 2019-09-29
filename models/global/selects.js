@@ -88,3 +88,14 @@ export const makeUserSildFalg = createSelector(
     return get(globalData, "userSildFalg", false);
   }
 );
+
+export const makeIndexConfig = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "pageIndexConfig", {
+      userSlidBtn: [],
+      userSetBtn: [],
+      goToPageBtn: []
+    });
+  }
+);

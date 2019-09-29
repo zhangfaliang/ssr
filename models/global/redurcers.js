@@ -5,7 +5,8 @@ import {
   SET_TAB_KEY,
   SET_FEEDBACKMODAL,
   SET_USER,
-  CHAGE_USER_SLID
+  CHAGE_USER_SLID,
+  SET_CONFIG_INDEX_PAGE
 } from "./actionTypes";
 
 export const exampleInitialState = {
@@ -25,7 +26,8 @@ export const exampleInitialState = {
     texts: [],
     userInfo: {}
   },
-  userSildFalg: false
+  userSildFalg: false,
+  pageIndexConfig: { userSlidBtn: [], userSetBtn: [], goToPageBtn: [] }
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -70,6 +72,12 @@ function reducer(state = exampleInitialState, action) {
         ...state,
         userSildFalg: action.userSildFalg
       };
+    case SET_CONFIG_INDEX_PAGE:
+      return {
+        ...state,
+        pageIndexConfig: action.pageIndexConfig
+      };
+
     default:
       return state;
   }
