@@ -7,18 +7,18 @@ class SlideList extends Component {
   static COMPONENT_NAME = "SLIDE_LIST";
 
   render() {
-    const { className, list } = this.props;
+    const { className, goToPageBtn } = this.props;
     const slideListCls = classnames(className, {
       [styles.slideList]: true
     });
     return (
       <ul className={slideListCls}>
-        {list &&
-          list.map((item, index) => {
-            const { iconType, text } = item;
+        {goToPageBtn &&
+          goToPageBtn.map((item, index) => {
+            const { iconType, name } = item;
             return (
               <li key={index} className={styles.item}>
-                <IconFont type={iconType} /> <span>{text}</span>
+                <IconFont type={iconType} /> <span>{name}</span>
               </li>
             );
           })}
@@ -28,19 +28,6 @@ class SlideList extends Component {
 }
 SlideList.defaultProps = {
   className: "",
-  list: [
-    {
-      iconType: "shouye",
-      text: "首页"
-    },
-    {
-      iconType: "history",
-      text: "浏览记录"
-    },
-    {
-      iconType: "Downloadfolder",
-      text: "我的下载"
-    }
-  ]
+  goToPageBtn: []
 };
 export default SlideList;

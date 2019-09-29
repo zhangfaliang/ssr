@@ -92,10 +92,23 @@ export const makeUserSildFalg = createSelector(
 export const makeIndexConfig = createSelector(
   selectState(),
   globalData => {
+    const userSlidBtn = get(
+      globalData,
+      "pageIndexConfig.userSlidBtn",
+      []
+    ).filter(item => item.isShow);
+    const userSetBtn = get(globalData, "pageIndexConfig.userSetBtn", []).filter(
+      item => item.isShow
+    );
+    const goToPageBtn = get(
+      globalData,
+      "pageIndexConfig.goToPageBtn",
+      []
+    ).filter(item => item.isShow);
     return get(globalData, "pageIndexConfig", {
-      userSlidBtn: [],
-      userSetBtn: [],
-      goToPageBtn: []
+      userSlidBtn,
+      userSetBtn,
+      goToPageBtn
     });
   }
 );

@@ -125,8 +125,8 @@ class Layout extends React.Component {
         <UserPhoto />
         <UserInfo {...userInfo} />
         <Recharge userSlidBtn={userSlidBtn || []} />
-        <Setting onClickBar={this.props.onClickBar} />
-        <SlideList />
+        <Setting userSetBtn={userSetBtn} onClickBar={this.props.onClickBar} />
+        <SlideList goToPageBtn={goToPageBtn} />
       </SildUserWarp>
     );
     return (
