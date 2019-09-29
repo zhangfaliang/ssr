@@ -1,7 +1,7 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import { get } from "lodash";
-import { setUser, getUser, setFeedbackModal } from "./actions";
+import { setUser, getUser, setFeedbackModal, changeUserSild } from "./actions";
 import { getUserInfo, getLogout } from "../../services/user";
 import { GET_USER, INIT_PAGE, CLICK_SILD_BAR } from "./actionTypes";
 es6promise.polyfill();
@@ -45,6 +45,8 @@ function* clickSildBar(action) {
     const res = yield call(getLogout);
     if (get(res, "data.code", 0) * 1 === 0) {
       yield put(getUser());
+      yield put(changeUserSild(false));
+
       const msg = get(res, "data.data.msg");
       feedbackModalData = {
         ...feedbackModalData,

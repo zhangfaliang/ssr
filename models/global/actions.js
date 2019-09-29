@@ -7,7 +7,8 @@ import {
   SET_USER,
   GET_USER,
   INIT_PAGE,
-  CLICK_SILD_BAR
+  CLICK_SILD_BAR,
+  CHAGE_USER_SLID
 } from "./actionTypes";
 
 export const setListViewScrollTop = scrollTop => {
@@ -71,4 +72,13 @@ export const initClickBar = (typeText) => {
     typeText
   };
 };
+
+export const changeUserSild = (userSildFalg) => {
+  return {
+    type: CHAGE_USER_SLID,
+    userSildFalg
+  };
+};
+
+
 

@@ -11,12 +11,14 @@ import { FeedbackModal } from "../../components/feedbackModal/index";
 import {
   makeListFeedbackModal,
   makeUserInfo,
-  makeIsLogin
+  makeIsLogin,
+  makeUserSildFalg
 } from "../../models/global/selects";
 import {
   setFeedbackModal,
   initPage,
-  initClickBar
+  initClickBar,
+  changeUserSild
 } from "../../models/global/actions";
 
 import {
@@ -45,17 +47,11 @@ class Layout extends React.Component {
   state = {
     visible: false,
     placement: "left",
-    isDrawerOpen: false,
     open: false
   };
   componentDidMount() {
     this.props.onInitPage();
   }
-  onOpenChange = (...args) => {
-    const { onOpenChange } = this.props;
-    console.log(args);
-    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
-  };
 
   showDrawer = () => {
     this.setState({
@@ -63,10 +59,9 @@ class Layout extends React.Component {
       collapsed: false
     });
   };
-  onLeftClick = isDrawerOpen => {
-    this.setState({
-      isDrawerOpen: !this.state.isDrawerOpen
-    });
+  openUserSlidChange = isDrawerOpen => {
+    const { onOpenUserSlidChange, userSildFalg } = this.props;
+    onOpenUserSlidChange(!userSildFalg);
   };
   onClose = () => {
     this.setState({
@@ -119,7 +114,8 @@ class Layout extends React.Component {
       tabs,
       feedbackModal,
       userInfo,
-      isLogin
+      isLogin,
+      userSildFalg
     } = this.props;
     const sidebar = (
       <SildUserWarp>
@@ -130,7 +126,6 @@ class Layout extends React.Component {
         <SlideList />
       </SildUserWarp>
     );
-    const { isDrawerOpen } = this.state;
     return (
       <Drawer
         className={`${styles.drawer} my-drawer `}
@@ -141,8 +136,8 @@ class Layout extends React.Component {
           paddingTop: 10
         }}
         sidebar={sidebar}
-        open={isDrawerOpen || false}
-        onOpenChange={this.onOpenChange}
+        open={userSildFalg}
+        onOpenChange={this.openUserSlidChange}
       >
         <div className={styles.layout}>
           <DistributeHeder
@@ -151,7 +146,7 @@ class Layout extends React.Component {
             onTabClick={this.onTabClick}
             onLogin={this.onLogin}
             listViewScrollTop={listViewScrollTop}
-            onLeftClick={this.onLeftClick}
+            onLeftClick={this.openUserSlidChange}
             onSetCeilingFlag={onSetCeilingFlag}
             ceilingFlag={ceilingFlag}
             pathname={pathName}
@@ -185,7 +180,8 @@ const mapStateToProps = createStructuredSelector({
   tabs: makeTabs,
   feedbackModal: makeListFeedbackModal,
   userInfo: makeUserInfo,
-  isLogin: makeIsLogin
+  isLogin: makeIsLogin,
+  userSildFalg: makeUserSildFalg
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -197,8 +193,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setFeedbackModal(feedbackModal)),
   onInitPage: () => dispatch(initPage()),
   onClickBar: typeText => dispatch(initClickBar(typeText)),
-  onOpenUserSlidChange: flag => dispatch(openUserSlidChange(flag))
-  
+  onOpenUserSlidChange: userSildFalg => dispatch(changeUserSild(userSildFalg))
 });
 
 export default connect(

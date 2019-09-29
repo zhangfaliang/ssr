@@ -4,7 +4,8 @@ import {
   SET_PATH_NAME,
   SET_TAB_KEY,
   SET_FEEDBACKMODAL,
-  SET_USER
+  SET_USER,
+  CHAGE_USER_SLID
 } from "./actionTypes";
 
 export const exampleInitialState = {
@@ -23,7 +24,8 @@ export const exampleInitialState = {
     showCloseIcon: false,
     texts: [],
     userInfo: {}
-  }
+  },
+  userSildFalg: false
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -63,6 +65,11 @@ function reducer(state = exampleInitialState, action) {
         userInfo: action.userInfo
       };
 
+    case CHAGE_USER_SLID:
+      return {
+        ...state,
+        userSildFalg: action.userSildFalg
+      };
     default:
       return state;
   }

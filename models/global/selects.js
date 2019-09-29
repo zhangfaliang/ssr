@@ -78,6 +78,13 @@ export const makeUserInfo = createSelector(
 export const makeIsLogin = createSelector(
   selectState(),
   globalData => {
-    return get(globalData, "userInfo.isLogin",false);
+    return get(globalData, "userInfo.isLogin", false);
+  }
+);
+
+export const makeUserSildFalg = createSelector(
+  selectState(),
+  globalData => {
+    return get(globalData, "userSildFalg", false);
   }
 );
