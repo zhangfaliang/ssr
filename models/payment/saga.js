@@ -1,20 +1,17 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
-import { actionTypes, failure, loadDataSuccess, tickClock } from "./actions";
+import { actionTypes } from "./actions";
+import { recharge } from "../../services/recharge";
+
 es6promise.polyfill();
 
-
-
-function* loadDataSaga() {
+function* onRecharge({ data }) {
   try {
-    yield put(loadDataSuccess(data.data));
+    yield call(recharge, data);
   } catch (err) {
-    yield put(failure(err));
+    console.log(err);
   }
 }
 
-export default [
-  // call(runClockSaga),
- 
-];
+export default [takeLatest(actionTypes.ON_RECHARGE, onRecharge)];

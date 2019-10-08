@@ -1,6 +1,7 @@
 export const actionTypes = {
   SET_PAYMENT_TYPE: "/PAYMENT/SET_PAYMENT_TYPE",
-  SET_INPUTVALUE_DATAS: "/PAYMENT/SET_INPUTVALUE_DATAS"
+  SET_INPUTVALUE_DATAS: "/PAYMENT/SET_INPUTVALUE_DATAS",
+  ON_RECHARGE: "/PAYMENT/ON_RECHARGE"
 };
 
 export function setPaymentType(paymentType) {
@@ -15,3 +16,10 @@ export const setInputValues = inputDatas => {
     inputDatas
   };
 };
+export const onRecharge = (data) => {
+  return {
+    type: actionTypes.ON_RECHARGE,
+    data
+  };
+};
+

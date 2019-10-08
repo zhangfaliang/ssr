@@ -6,6 +6,7 @@ import indexSagas from "./index/saga";
 import signInSagas from "./user/signin/sagas";
 import loginSagas from "./user/login/sagas";
 import changePwdSagas from "./user/changePWD/sagas";
+import paymentSagas from "./payment/saga";
 
 function* rootSaga() {
   yield all([
@@ -13,7 +14,8 @@ function* rootSaga() {
     ...indexSagas,
     ...signInSagas,
     ...loginSagas,
-    ...changePwdSagas
+    ...changePwdSagas,
+    ...paymentSagas
   ]);
 }
 export default rootSaga;

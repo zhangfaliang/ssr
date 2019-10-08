@@ -9,3 +9,10 @@ export const makePaymentType = createSelector(
     return get(payment, "paymentType", "");
   }
 );
+
+export const makeIsVerifySuccess = createSelector(
+  selecPayment,
+  payment => {
+    return get(payment, "inputDatas.isVerifySuccess", false);
+  }
+);

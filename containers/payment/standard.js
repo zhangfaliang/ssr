@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import PayMentChoose from "../../components/payment/index";
-import { setPaymentType, setInputValues } from "../../models/payment/actions";
-import { makePaymentType } from "../../models/payment/selects";
+import {
+  setPaymentType,
+  setInputValues,
+  onRecharge
+} from "../../models/payment/actions";
+import {
+  makePaymentType,
+  makeIsVerifySuccess
+} from "../../models/payment/selects";
 import Title from "./component/title";
 import styles from "./index.less";
 import {
@@ -26,8 +33,12 @@ class Standard extends Component {
   outputInputValues = dada => {
     this.props.onSetInputDatas(dada);
   };
+  onRecharge = () => {
+    const { paymentType, onRecharge } = this.props;
+    onRecharge({ type: paymentType === "zhifubao" ? "1" : "2", goodId: "001" });
+  };
   render() {
-    const { paymentType } = this.props;
+    const { paymentType, isVerifySuccess, onRecharge } = this.props;
 
     return (
       <div className={styles.wrap}>
@@ -57,16 +68,16 @@ class Standard extends Component {
         />
         <Button
           btnText={"提交"}
-          clickCheckBtn={this.onSign}
-          disabled={false}
-          // !isVerifySuccess
+          clickCheckBtn={this.onRecharge}
+          disabled={!isVerifySuccess}
         />
       </div>
     );
   }
 }
 const mapStateToProps = createStructuredSelector({
-  paymentType: makePaymentType
+  paymentType: makePaymentType,
+  isVerifySuccess: makeIsVerifySuccess
 });
 const mapDispatchToProps = dispatch => ({
   onSetPaymentType: type => {
@@ -74,6 +85,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSetInputDatas: inputDatas => {
     dispatch(setInputValues(inputDatas));
+  },
+  onRecharge: (data) => {
+    dispatch(onRecharge(data));
   }
 });
 
