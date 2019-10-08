@@ -36,9 +36,9 @@ class DetailHeader extends Component {
       title,
       className,
       onSetCeilingFlag,
-      ceilingFlag
+      ceilingFlag,
+      rigthIconShow
     } = this.props;
-    console.log(onSetCeilingFlag, ceilingFlag);
     const headerCls = classnames(className || "", {
       [styles.detailHeder]: true,
       [styles.ceiling]: this.state.ceilingFlag
@@ -47,7 +47,11 @@ class DetailHeader extends Component {
       <div className={headerCls}>
         <IconFont onClick={this.onBack} type={leftIcon} />
         <span>{title}</span>
-        <IconFont onClick={this.onShare} type={rigthIcon} />
+        {rigthIconShow ? (
+          <IconFont onClick={this.onShare} type={rigthIcon} />
+        ) : (
+          <span/>
+        )}
       </div>
     );
   }
@@ -56,6 +60,7 @@ DetailHeader.defaultProps = {
   leftIcon: "back",
   title: "飞人乔丹，三分线起跳，滑翔扣篮",
   rigthIcon: "fenxiang",
+  rigthIconShow: true,
   onBack: () => {},
   onShare: () => {}
 };

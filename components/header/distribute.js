@@ -19,6 +19,9 @@ class DistributeHeder extends Component {
       [PATH_NAME_DISTRIBUTE_KEY.HOME]: <HomeHeder {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.INDEX]: <HomeHeder {...this.props} />,
       [PATH_NAME_DISTRIBUTE_KEY.DETAIL]: <DetailHeader {...this.props} />,
+      [PATH_NAME_DISTRIBUTE_KEY.PAYMENT_CHOSE]: (
+        <DetailHeader {...this.props} rigthIconShow={false} title="充值" />
+      ),
       [PATH_NAME_DISTRIBUTE_KEY.SIGN]: (
         <UserBanner
           clickCheckBtn={this.login}

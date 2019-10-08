@@ -57,6 +57,12 @@ const descriptor = {
     required: true,
     pattern: /^[0-9]\d{5}$/,
     message: `verificationCode error`
+  },
+  amount: {
+    type: "string",
+    required: true,
+    pattern: /\d+|\d+\.\d{,2}/,
+    message: `password error`
   }
 };
 const validator = (rules = []) => {
@@ -78,4 +84,7 @@ export const valideIphone = value => {
   return descriptor.iphone.pattern.test(value);
 };
 
+export const valideAmount = value => {
+  return descriptor.amount.pattern.test(value);
+};
 export default validator;

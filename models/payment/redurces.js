@@ -1,54 +1,26 @@
-import { actionTypes } from './actions'
+import { actionTypes } from "./actions";
 
 export const exampleInitialState = {
-  count: 0,
-  error: false,
-  lastUpdate: 0,
-  light: false,
-  placeholderData: null
-}
+  paymentType: "zhifubao",
+  inputDatas: {}
+};
 
-function reducer (state = exampleInitialState, action) {
+function reducer(state = exampleInitialState, action) {
   switch (action.type) {
-    case actionTypes.FAILURE:
+    case actionTypes.SET_PAYMENT_TYPE:
       return {
         ...state,
-        ...{ error: action.error }
-      }
-
-    case actionTypes.INCREMENT:
+        paymentType: action.paymentType
+      };
+    case actionTypes.SET_INPUTVALUE_DATAS:
       return {
         ...state,
-        ...{ count: state.count + 1 }
-      }
-
-    case actionTypes.DECREMENT:
-      return {
-        ...state,
-        ...{ count: state.count - 1 }
-      }
-
-    case actionTypes.RESET:
-      return {
-        ...state,
-        ...{ count: exampleInitialState.count }
-      }
-
-    case actionTypes.LOAD_DATA_SUCCESS:
-      return {
-        ...state,
-        ...{ placeholderData: action.data }
-      }
-
-    case actionTypes.TICK_CLOCK:
-      return {
-        ...state,
-        ...{ lastUpdate: action.ts, light: !!action.light }
-      }
+        inputDatas: action.inputDatas
+      };
 
     default:
-      return state
+      return state;
   }
 }
 
-export default reducer
+export default reducer;

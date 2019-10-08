@@ -5,10 +5,13 @@ import styles from "./index.less";
 class IconFont extends Component {
   render() {
     const { type, onClick, className } = this.props;
-    const iconCls = classnames(className, {
-      [styles.iconfont]: true,
-      [styles[`icon-${type}`]]: true
-    });
+    const iconCls = classnames(
+      {
+        [styles.iconfont]: true,
+        [styles[`icon-${type}`]]: true
+      },
+      className
+    );
     return <span className={iconCls} onClick={onClick} />;
   }
 }

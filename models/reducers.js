@@ -4,6 +4,7 @@ import indexData from "./index/redurces";
 import signin from "./user/signin/redurcers";
 import login from "./user/login/redurcers";
 import changePWD from "./user/changePWD/redurcers";
+import payment from "./payment/redurces";
 
 export const exampleInitialState = {
   indexData: {
@@ -23,5 +24,6 @@ export default combineReducers({
   indexData,
   signin,
   login,
-  changePWD
+  changePWD,
+  payment
 });
