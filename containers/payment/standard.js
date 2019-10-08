@@ -35,10 +35,14 @@ class Standard extends Component {
   };
   onRecharge = () => {
     const { paymentType, onRecharge } = this.props;
-    onRecharge({ type: paymentType === "zhifubao" ? "1" : "2", goodId: "001" });
+    onRecharge({
+      payType: paymentType === "zhifubao" ? "1" : "2",
+      goodId: "001",
+      payAmount: 8.88
+    });
   };
   render() {
-    const { paymentType, isVerifySuccess, onRecharge } = this.props;
+    const { paymentType, isVerifySuccess } = this.props;
 
     return (
       <div className={styles.wrap}>
@@ -86,7 +90,7 @@ const mapDispatchToProps = dispatch => ({
   onSetInputDatas: inputDatas => {
     dispatch(setInputValues(inputDatas));
   },
-  onRecharge: (data) => {
+  onRecharge: data => {
     dispatch(onRecharge(data));
   }
 });
