@@ -91,9 +91,9 @@ function* clickSildBar(action) {
 function* requireConfigIndexPage() {
   const res = yield call(getIndexPageConfig);
   const indexConfig = {
-    userSlidBtn: JSON.parse(get(res, "data.data.data.userSlidBtn", [])),
-    userSetBtn: JSON.parse(get(res, "data.data.data.userSetBtn", [])),
-    goToPageBtn: JSON.parse(get(res, "data.data.data.goToPageBtn", []))
+    userSlidBtn: JSON.parse(get(res, "data.data.data.userSlidBtn", '[]')),
+    userSetBtn: JSON.parse(get(res, "data.data.data.userSetBtn", '[]')),
+    goToPageBtn: JSON.parse(get(res, "data.data.data.goToPageBtn", '[]'))
   };
   yield put(setConfigIndexPage(indexConfig));
 }
