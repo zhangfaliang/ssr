@@ -3,7 +3,8 @@ import { actionTypes } from "./actions";
 export const exampleInitialState = {
   paymentType: "zhifubao",
   inputDatas: {},
-  htmlStr:''
+  htmlStr: "",
+  paymentData: {}
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -18,12 +19,17 @@ function reducer(state = exampleInitialState, action) {
         ...state,
         inputDatas: action.inputDatas
       };
-      case actionTypes.SET_RECHARGEHTML:
-        return {
-          ...state,
-          inputDatas: action.htmlStr
-        };
-      
+    case actionTypes.SET_RECHARGEHTML:
+      return {
+        ...state,
+        inputDatas: action.htmlStr
+      };
+    case actionTypes.SET_PAYMENT_DATA:
+      return {
+        ...state,
+        paymentData: action.paymentData
+      };
+
     default:
       return state;
   }

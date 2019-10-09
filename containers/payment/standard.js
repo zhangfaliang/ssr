@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import PayMentChoose from "../../components/payment/index";
+import AutoPayment from "../../components/autoPayment";
 import {
   setPaymentType,
   setInputValues,
-  onRecharge
+  onStandardRecharge,
+  onCustomRecharge
 } from "../../models/payment/actions";
 import {
   makePaymentType,
@@ -33,9 +35,14 @@ class Standard extends Component {
   outputInputValues = dada => {
     this.props.onSetInputDatas(dada);
   };
-  onRecharge = () => {
-    const { paymentType, onRecharge } = this.props;
-    onRecharge({
+  onStandardRecharge = () => {
+    const { paymentType, onStandardRecharge, onCustomRecharge } = this.props;
+    onStandardRecharge({
+      payType: paymentType === "zhifubao" ? "1" : "2",
+      goodId: "001",
+      payAmount: 8.88
+    });
+    onCustomRecharge({
       payType: paymentType === "zhifubao" ? "1" : "2",
       goodId: "001",
       payAmount: 8.88
@@ -72,9 +79,10 @@ class Standard extends Component {
         />
         <Button
           btnText={"提交"}
-          clickCheckBtn={this.onRecharge}
+          clickCheckBtn={this.onStandardRecharge}
           disabled={!isVerifySuccess}
         />
+        <AutoPayment></AutoPayment>
       </div>
     );
   }
@@ -90,8 +98,11 @@ const mapDispatchToProps = dispatch => ({
   onSetInputDatas: inputDatas => {
     dispatch(setInputValues(inputDatas));
   },
-  onRecharge: data => {
-    dispatch(onRecharge(data));
+  onStandardRecharge: data => {
+    dispatch(onStandardRecharge(data));
+  },
+  onCustomRecharge: data => {
+    dispatch(onStandardRecharge(data));
   }
 });
 
