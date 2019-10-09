@@ -5,8 +5,8 @@ export const actionTypes = {
   SET_RECHARGEHTML: "/PAYMENT/SET_RECHARGEHTML",
   ON_CUSTOM_RECHARGE: "/PAYMENT/ON_CUSTOM_RECHARGE",
   SET_PAYMENT_DATA: "/PAYMENT/SET_PAYMENT_DATA",
-
-
+  POLLING_START: "/PAYMENT/POLLING_START",
+  POLLING_STOP: "/PAYMENT/POLLING_STOP",
 };
 
 export function setPaymentType(paymentType) {
@@ -48,3 +48,14 @@ export const setPaymentData = (paymentData) => {
 };
 
 
+export const pollingStop = () => {
+  return {
+    type: actionTypes.POLLING_STOP,
+  };
+};
+
+export const pollingStart = () => {
+  return {
+    type: actionTypes.POLLING_START,
+  };
+};

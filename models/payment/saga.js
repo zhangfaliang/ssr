@@ -1,9 +1,9 @@
-import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
+import { all, call, delay, put, take, takeLatest, fork } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
 import { get } from "lodash";
-import { actionTypes, setRechargeHtml, setPaymentData } from "./actions";
-import { standardRecharge, customRecharge } from "../../services/recharge";
+import { actionTypes, setRechargeHtml, setPaymentData, pollingStop, pollingStart } from "./actions";
+import { standardRecharge, customRecharge, orderQuery } from "../../services/recharge";
 
 es6promise.polyfill();
 const toGetElementById = (id, value) => {
@@ -43,10 +43,42 @@ function* onStandardRecharge({ data }) {
     console.log(err);
   }
 }
+function* bgSync(greenpay_id) {
+  try {
+    while (true) {
+      const result = yield call(orderQuery, { greenpay_id });
+      console.log(result)
+      yield delay(5000)
+    }
+  } finally {
+    if (yield cancelled())
+      console.log('Sync cancelled!')
+  }
+}
+
+function* main() {
+  const data = yield take(actionTypes.POLLING_START);
+  const greenpay_id = get(data, 'greenpay_id')
+  while (data) {
+    // 启动后台任务
+    const bgSyncTask = yield fork(bgSync, greenpay_id)
+
+    // 等待用户的停止操作
+    yield take(actionTypes.POLLING_STOP)
+    // 用户点击了停止，取消后台任务
+    // 这会导致被 fork 的 bgSync 任务跳进它的 finally 区块
+    yield cancel(bgSyncTask)
+  }
+}
 function* onCustomRecharge({ data }) {
   try {
     const res = yield call(customRecharge, data);
     yield put(setPaymentData(get(res, "data.data")));
+    yield put({
+      type: actionTypes.POLLING_START,
+      greenpay_id: get(res, "data.data.greenpay_id")
+    })
+    yield;
   } catch (err) {
     console.log(err);
   }
@@ -54,5 +86,6 @@ function* onCustomRecharge({ data }) {
 
 export default [
   takeLatest(actionTypes.ON_STANDARD_RECHARGE, onStandardRecharge),
-  takeLatest(actionTypes.ON_CUSTOM_RECHARGE, onCustomRecharge)
+  takeLatest(actionTypes.ON_CUSTOM_RECHARGE, onCustomRecharge),
+  call(main)
 ];

@@ -12,3 +12,10 @@ export const customRecharge = (data = {}) => {
   });
 };
 
+export const orderQuery = (data = {}) => {
+  return axios.post("/api/common/query", {
+    ...data
+  });
+};
+
+
