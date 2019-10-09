@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import PayMentChoose from "../../components/payment/index";
 import AutoPayment from "../../components/autoPayment";
+import CustomPayment from "../../components/customPayment";
 import {
   setPaymentType,
   setInputValues,
@@ -37,11 +38,11 @@ class Standard extends Component {
   };
   onStandardRecharge = () => {
     const { paymentType, onStandardRecharge, onCustomRecharge } = this.props;
-    onStandardRecharge({
-      payType: paymentType === "zhifubao" ? "1" : "2",
-      goodId: "001",
-      payAmount: 0.01
-    });
+    // onStandardRecharge({
+    //   payType: paymentType === "zhifubao" ? "1" : "2",
+    //   goodId: "001",
+    //   payAmount: 0.01
+    // });
     onCustomRecharge({
       payType: paymentType === "zhifubao" ? "1" : "2",
       goodId: "001",
@@ -82,7 +83,8 @@ class Standard extends Component {
           clickCheckBtn={this.onStandardRecharge}
           disabled={!isVerifySuccess}
         />
-        <AutoPayment></AutoPayment>
+        <CustomPayment />
+        {/* <AutoPayment /> */}
       </div>
     );
   }
