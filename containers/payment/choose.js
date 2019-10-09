@@ -12,7 +12,9 @@ import {
 } from "../../models/payment/actions";
 import {
   makePaymentType,
-  makeIsVerifySuccess
+  makeIsVerifySuccess,
+  makePaymenyData,
+  makeShowMode
 } from "../../models/payment/selects";
 import Title from "./component/title";
 import styles from "./index.less";
@@ -46,11 +48,17 @@ class Standard extends Component {
     onCustomRecharge({
       payType: paymentType === "zhifubao" ? "1" : "2",
       goodId: "001",
-      payAmount: 0.01
+      payAmount: 0.1
     });
   };
   render() {
-    const { paymentType, isVerifySuccess } = this.props;
+    const {
+      paymentType,
+      isVerifySuccess,
+      paymenyData,
+      showMode,
+      parentProps
+    } = this.props;
 
     return (
       <div className={styles.wrap}>
@@ -83,7 +91,7 @@ class Standard extends Component {
           clickCheckBtn={this.onStandardRecharge}
           disabled={!isVerifySuccess}
         />
-        <CustomPayment />
+        <CustomPayment className ={styles.header} {...parentProps} {...paymenyData} isShow={showMode} />
         {/* <AutoPayment /> */}
       </div>
     );
@@ -91,7 +99,9 @@ class Standard extends Component {
 }
 const mapStateToProps = createStructuredSelector({
   paymentType: makePaymentType,
-  isVerifySuccess: makeIsVerifySuccess
+  isVerifySuccess: makeIsVerifySuccess,
+  paymenyData: makePaymenyData,
+  showMode: makeShowMode
 });
 const mapDispatchToProps = dispatch => ({
   onSetPaymentType: type => {
@@ -104,7 +114,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(onStandardRecharge(data));
   },
   onCustomRecharge: data => {
-    dispatch(onStandardRecharge(data));
+    dispatch(onCustomRecharge(data));
   }
 });
 

@@ -7,7 +7,7 @@ export const standardRecharge = (data = {}) => {
 };
 
 export const customRecharge = (data = {}) => {
-  return axios.post("/api/common/standard", {
+  return axios.post("/api/common/custom", {
     ...data
   });
 };

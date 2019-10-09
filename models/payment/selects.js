@@ -23,3 +23,10 @@ export const makePaymenyData = createSelector(
     return get(payment, "paymentData", {});
   }
 );
+
+export const makeShowMode = createSelector(
+  selecPayment,
+  payment => {
+    return get(payment, "showMode", false);
+  }
+);

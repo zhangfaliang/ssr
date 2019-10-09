@@ -4,7 +4,8 @@ export const exampleInitialState = {
   paymentType: "zhifubao",
   inputDatas: {},
   htmlStr: "",
-  paymentData: {}
+  paymentData: {},
+  showMode: false
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -27,7 +28,8 @@ function reducer(state = exampleInitialState, action) {
     case actionTypes.SET_PAYMENT_DATA:
       return {
         ...state,
-        paymentData: action.paymentData
+        paymentData: action.paymentData,
+        showMode: true
       };
 
     default:

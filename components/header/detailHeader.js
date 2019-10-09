@@ -39,10 +39,13 @@ class DetailHeader extends Component {
       ceilingFlag,
       rigthIconShow
     } = this.props;
-    const headerCls = classnames(className || "", {
-      [styles.detailHeder]: true,
-      [styles.ceiling]: this.state.ceilingFlag
-    });
+    const headerCls = classnames(
+      {
+        [styles.detailHeder]: true,
+        [styles.ceiling]: this.state.ceilingFlag
+      },
+      className || ""
+    );
     return (
       <div className={headerCls}>
         <IconFont onClick={this.onBack} type={leftIcon} />
@@ -50,7 +53,7 @@ class DetailHeader extends Component {
         {rigthIconShow ? (
           <IconFont onClick={this.onShare} type={rigthIcon} />
         ) : (
-          <span/>
+          <span />
         )}
       </div>
     );

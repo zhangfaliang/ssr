@@ -7,7 +7,7 @@ import { standardRecharge, customRecharge } from "../../services/recharge";
 
 es6promise.polyfill();
 const toGetElementById = (id, value) => {
-  console.log(id)
+  console.log(id);
   document.getElementById(id).value = value;
 };
 function* onStandardRecharge({ data }) {
@@ -45,8 +45,8 @@ function* onStandardRecharge({ data }) {
 }
 function* onCustomRecharge({ data }) {
   try {
-    const res = yield call(standardRecharge, data);
-    yield put(setRechargeHtml(get(res, "data.data")));
+    const res = yield call(customRecharge, data);
+    yield put(setPaymentData(get(res, "data.data")));
   } catch (err) {
     console.log(err);
   }
