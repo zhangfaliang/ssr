@@ -7,6 +7,7 @@ export const actionTypes = {
   SET_PAYMENT_DATA: "/PAYMENT/SET_PAYMENT_DATA",
   POLLING_START: "/PAYMENT/POLLING_START",
   POLLING_STOP: "/PAYMENT/POLLING_STOP",
+  SET_PAYMODELE: "/PAYMENT/SET_PAYMODELE",
 };
 
 export function setPaymentType(paymentType) {
@@ -57,5 +58,11 @@ export const pollingStop = () => {
 export const pollingStart = () => {
   return {
     type: actionTypes.POLLING_START,
+  };
+};
+export const setPayModule = (showMode) => {
+  return {
+    type: actionTypes.SET_PAYMODELE,
+    showMode
   };
 };

@@ -36,6 +36,7 @@
     "lodash": "^4.17.15",
     "md5-node": "^1.0.1",
     "micro-cors": "^0.1.1",
+    "moment": "^2.24.0",
     "mysql": "^2.17.1",
     "next": "9.0.3",
     "next-antd-aza-less": "^1.0.2",

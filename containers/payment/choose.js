@@ -8,7 +8,8 @@ import {
   setPaymentType,
   setInputValues,
   onStandardRecharge,
-  onCustomRecharge
+  onCustomRecharge,
+  setPayModule
 } from "../../models/payment/actions";
 import {
   makePaymentType,
@@ -57,7 +58,8 @@ class Standard extends Component {
       isVerifySuccess,
       paymenyData,
       showMode,
-      parentProps
+      parentProps,
+      onSetPayModule
     } = this.props;
 
     return (
@@ -91,7 +93,7 @@ class Standard extends Component {
           clickCheckBtn={this.onStandardRecharge}
           disabled={!isVerifySuccess}
         />
-        <CustomPayment className ={styles.header} {...parentProps} {...paymenyData} isShow={showMode} />
+        <CustomPayment onSetPayModule={onSetPayModule} className={styles.header} {...parentProps} {...paymenyData} isShow={showMode} />
         {/* <AutoPayment /> */}
       </div>
     );
@@ -115,7 +117,11 @@ const mapDispatchToProps = dispatch => ({
   },
   onCustomRecharge: data => {
     dispatch(onCustomRecharge(data));
+  },
+  onSetPayModule: flag => {
+    dispatch(setPayModule(flag));
   }
+
 });
 
 export default connect(

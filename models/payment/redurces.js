@@ -31,6 +31,11 @@ function reducer(state = exampleInitialState, action) {
         paymentData: action.paymentData,
         showMode: true
       };
+    case actionTypes.SET_PAYMODELE:
+      return {
+        ...state,
+        showMode: action.showMode,
+      };
 
     default:
       return state;
