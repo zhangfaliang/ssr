@@ -14,9 +14,11 @@ class CustomPayment extends Component {
   outmodedFn = () => {
     this.props.onSetPayModule(false)
   }
+  closeModule = () => {
+    this.props.onSetPayModule(false)
+  }
   render() {
     const { type, amount, className, payimg, onSetCeilingFlag, timeout, isShow } = this.props;
-    console.log(isShow)
     const customPaymentCls = classnames(
       { [styles.customPayment]: true, [styles.isShow]: this.state.isShow },
       className
@@ -26,6 +28,7 @@ class CustomPayment extends Component {
       <div className={customPaymentCls}>
         {/* 1：支付宝；2：微信。 */}
         <DetailHeader
+          onBack={this.closeModule}
           onSetCeilingFlag={onSetCeilingFlag}
           rigthIconShow={false}
           title="充值"
@@ -52,7 +55,7 @@ CustomPayment.defaultProps = {
   className: "",
   payType: 2,
   imgUrl: "/static/img/payment/wxpay.png",
-  amount: 0.05,
+  amount: 0.01,
   isShow: false
 };
 export default CustomPayment;

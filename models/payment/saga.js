@@ -12,10 +12,10 @@ import "isomorphic-unfetch";
 import { get } from "lodash";
 import {
   actionTypes,
-  setRechargeHtml,
   setPaymentData,
   pollingStop,
-  pollingStart
+  pollingStart,
+  setPayModule
 } from "./actions";
 import {
   standardRecharge,
@@ -70,7 +70,11 @@ function* bgSync(greenpay_id, goodId, amount, payType) {
         amount,
         payType
       });
-      console.log(result);
+      const code =get(result,'data.data.code');
+      if(code===200){
+        yield put(setPayModule(false));
+        yield put(pollingStop());
+      }
       yield delay(1000);
     }
   } finally {

@@ -49,7 +49,7 @@ class Standard extends Component {
     onCustomRecharge({
       payType: paymentType === "zhifubao" ? "1" : "2",
       goodId: "001",
-      payAmount: 0.1
+      payAmount: 0.01
     });
   };
   render() {
