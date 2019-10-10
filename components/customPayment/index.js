@@ -16,7 +16,7 @@ class CustomPayment extends Component {
       { [styles.customPayment]: true, [styles.isShow]: this.state.isShow },
       className
     );
-
+   const payApp =Number(type) === 1 ? "支付宝" : "微信支付"
     return (
       <div className={customPaymentCls}>
         {/* 1：支付宝；2：微信。 */}
@@ -27,10 +27,16 @@ class CustomPayment extends Component {
           className={styles.herder}
         />
         <div className={styles.title}>
-          请使用使用{Number(type) === 1 ? "支付宝" : "微信支付"}
+         付款须知
+        </div>
+        <div className={styles.title}>
+          请使用{payApp}
+        </div>
+        <div  className={styles.description}>				
+        请截屏或长按二维码保存图片至相册，然后打开{payApp}扫一扫，点击右上角相册，选择保存的图片识别支付。
         </div>
         <div className={styles.description}>
-          请支付对应金额<span className={styles.mount}>{amount}</span>
+          请支付对应金额<span className={styles.mount}>￥{amount}</span>
           ，否则支付不成功，无法退款！
         </div>
         <img className={styles.img} src={payimg} alt="刷新试试" />
