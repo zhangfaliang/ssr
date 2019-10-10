@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import { isFunction } from 'lodash'
 import Router from "next/router";
 import classnames from "classnames";
 import IconFont from "../iconFont";
 import styles from "./index.less";
-
 class DetailHeader extends Component {
   state = {
     listViewScrollTop: 0,
@@ -24,7 +24,8 @@ class DetailHeader extends Component {
     return null;
   }
   onBack = () => {
-    Router.back();
+    isFunction(this.props.onBack) ? this.props.onBack() : Router.back();
+
   };
   onShare = () => {
     console.log("onShare");
@@ -53,8 +54,8 @@ class DetailHeader extends Component {
         {rigthIconShow ? (
           <IconFont onClick={this.onShare} type={rigthIcon} />
         ) : (
-          <span />
-        )}
+            <span />
+          )}
       </div>
     );
   }
@@ -64,8 +65,8 @@ DetailHeader.defaultProps = {
   title: "飞人乔丹，三分线起跳，滑翔扣篮",
   rigthIcon: "fenxiang",
   rigthIconShow: true,
-  onBack: () => {},
-  onShare: () => {}
+  onBack: () => { },
+  onShare: () => { }
 };
 
 export default DetailHeader;

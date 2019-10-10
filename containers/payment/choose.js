@@ -9,7 +9,8 @@ import {
   setInputValues,
   onStandardRecharge,
   onCustomRecharge,
-  setPayModule
+  setPayModule,
+  pollingStop
 } from "../../models/payment/actions";
 import {
   makePaymentType,
@@ -49,7 +50,7 @@ class Standard extends Component {
     onCustomRecharge({
       payType: paymentType === "zhifubao" ? "1" : "2",
       goodId: "001",
-      payAmount: 0.01
+      payAmount: 0.1
     });
   };
   render() {
@@ -59,7 +60,8 @@ class Standard extends Component {
       paymenyData,
       showMode,
       parentProps,
-      onSetPayModule
+      onSetPayModule,
+      onPollingStop
     } = this.props;
 
     return (
@@ -93,7 +95,7 @@ class Standard extends Component {
           clickCheckBtn={this.onStandardRecharge}
           disabled={!isVerifySuccess}
         />
-        <CustomPayment onSetPayModule={onSetPayModule} className={styles.header} {...parentProps} {...paymenyData} isShow={showMode} />
+        <CustomPayment onPollingStop={onPollingStop} onSetPayModule={onSetPayModule} className={styles.header} {...parentProps} {...paymenyData} isShow={showMode} />
         {/* <AutoPayment /> */}
       </div>
     );
@@ -120,6 +122,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSetPayModule: flag => {
     dispatch(setPayModule(flag));
+  },
+  onPollingStop: flag => {
+    dispatch(pollingStop(flag));
   }
 
 });

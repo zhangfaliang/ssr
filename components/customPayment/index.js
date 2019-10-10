@@ -11,11 +11,11 @@ class CustomPayment extends Component {
     }
     return null;
   }
-  outmodedFn = () => {
-    this.props.onSetPayModule(false)
-  }
+
   closeModule = () => {
-    this.props.onSetPayModule(false)
+    const { onPollingStop, onSetPayModule } = this.props;
+    onPollingStop()
+    onSetPayModule(false)
   }
   render() {
     const { type, amount, className, payimg, onSetCeilingFlag, timeout, isShow } = this.props;
@@ -46,7 +46,7 @@ class CustomPayment extends Component {
           ，否则支付不成功，无法退款！
         </div>
         <img className={styles.img} src={payimg} alt="刷新试试" />
-        <CountDown times={timeout} outmodedFn={this.outmodedFn} />
+        <CountDown times={timeout} outmodedFn={this.closeModule} />
       </div>
     );
   }
