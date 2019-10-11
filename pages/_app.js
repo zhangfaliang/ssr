@@ -47,13 +47,10 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps({ ctx });
       store.dispatch(setPathName(pathname));
       //store.dispatch(getUser());
-
     }
     return { pageProps };
   }
-  componentDidMount(){
-    console.log('---===---')
-  }
+  componentDidMount() {}
   componentDidCatch(error, errorInfo) {
     console.log("CUSTOM ERROR HANDLING", error);
     // This is needed to render errors correctly in development / production

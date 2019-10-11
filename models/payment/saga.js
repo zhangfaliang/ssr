@@ -1,11 +1,13 @@
 import {
-  all,
+  takeEvery,
   call,
   delay,
   put,
   take,
   takeLatest,
-  fork
+  fork,
+  cancel,
+  cancelled
 } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
@@ -70,8 +72,8 @@ function* bgSync(greenpay_id, goodId, amount, payType) {
         amount,
         payType
       });
-      const code =get(result,'data.data.code');
-      if(code===200){
+      const code = get(result, "data.data.code");
+      if (code === 200) {
         yield put(setPayModule(false));
         yield put(pollingStop());
       }
@@ -82,18 +84,18 @@ function* bgSync(greenpay_id, goodId, amount, payType) {
   }
 }
 
-function* main() {
-  const data = yield take(actionTypes.POLLING_START);
+function* main(data) {
+  // while (true) {
+  // const data = yield takeEvery(actionTypes.POLLING_START);
   const { greenpay_id, goodId, amount, payType } = data || {};
-  while (data) {
-    // 启动后台任务
-    const bgSyncTask = yield fork(bgSync, greenpay_id, goodId, amount, payType);
-    // 等待用户的停止操作
-    yield take(actionTypes.POLLING_STOP);
-    // 用户点击了停止，取消后台任务
-    // 这会导致被 fork 的 bgSync 任务跳进它的 finally 区块
-    yield cancel(bgSyncTask);
-  }
+  // 启动后台任务
+  const bgSyncTask = yield fork(bgSync, greenpay_id, goodId, amount, payType);
+  // 等待用户的停止操作
+  yield take(actionTypes.POLLING_STOP);
+  // 用户点击了停止，取消后台任务
+  // 这会导致被 fork 的 bgSync 任务跳进它的 finally 区块
+  yield cancel(bgSyncTask);
+  // }
 }
 function* onCustomRecharge({ data }) {
   try {
@@ -115,5 +117,6 @@ function* onCustomRecharge({ data }) {
 export default [
   takeLatest(actionTypes.ON_STANDARD_RECHARGE, onStandardRecharge),
   takeLatest(actionTypes.ON_CUSTOM_RECHARGE, onCustomRecharge),
-  call(main)
+  takeEvery(actionTypes.POLLING_START, main)
+  // call(main)
 ];

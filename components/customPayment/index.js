@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import styles from "./index.less";
 import DetailHeader from "../../components/header/detailHeader";
-import CountDown from '../../components/countDown'
+import CountDown from "../../components/countDown";
 class CustomPayment extends Component {
   state = { isShow: false };
   static getDerivedStateFromProps(props, state) {
@@ -14,19 +14,26 @@ class CustomPayment extends Component {
 
   closeModule = () => {
     const { onPollingStop, onSetPayModule } = this.props;
-    onPollingStop()
-    onSetPayModule(false)
-  }
+    onPollingStop();
+    onSetPayModule(false);
+  };
   render() {
-    const { type, amount, className, payimg, onSetCeilingFlag, timeout, isShow } = this.props;
+    const {
+      type,
+      amount,
+      className,
+      payimg,
+      onSetCeilingFlag,
+      timeout,
+      isShow
+    } = this.props;
     const customPaymentCls = classnames(
       { [styles.customPayment]: true, [styles.isShow]: this.state.isShow },
       className
     );
-    const payApp = Number(type) === 1 ? "支付宝" : "微信支付"
+    const payApp = Number(type) === 1 ? "支付宝" : "微信支付";
     return (
       <div className={customPaymentCls}>
-        {/* 1：支付宝；2：微信。 */}
         <DetailHeader
           onBack={this.closeModule}
           onSetCeilingFlag={onSetCeilingFlag}
@@ -36,11 +43,14 @@ class CustomPayment extends Component {
         />
         <div className={styles.title}>
           付款须知
-         <br></br>
-          请使用{payApp}
+          <span className={styles.mount}>(请勿重复付款，多付无法退还)</span>
+          <br></br>
+          <span className={styles.mount}>使用{payApp}付款</span>
         </div>
         <div className={styles.description}>
-          请截屏或长按二维码保存图片至相册，然后打开{payApp}扫一扫，点击右上角相册，选择保存的图片识别支付。
+          请截屏或长按二维码保存图片至相册，然后打开
+          <span className={styles.mount}>{payApp}</span>
+          扫一扫，点击右上角相册，选择保存的图片识别支付。
           <br></br>
           请支付对应金额<span className={styles.mount}>￥{amount}</span>
           ，否则支付不成功，无法退款！
