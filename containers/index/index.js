@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NextSeo } from "next-seo";
-import  { createStructuredSelector }  from 'reselect';
+import { createStructuredSelector } from "reselect";
 import ListViewComponent from "../../components/listView";
 import IndexRow from "./row";
 import Banner from "../../components/banner/index";
-import { selectplaceholderData }  from '../../models/index/selects';
+import { selectplaceholderData } from "../../models/index/selects";
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
@@ -19,13 +19,11 @@ class IndexPage extends React.PureComponent {
     setScrollTop(scrollTop);
   };
   render() {
-    const {
-      parentProps
-    } = this.props;
+    const { parentProps } = this.props;
     const { ceilingFlag } = parentProps;
     return (
       <div>
-        <NextSeo
+        {/* <NextSeo
           config={{
             title: "Page Meta Title",
             description: "This will be the page meta description",
@@ -52,7 +50,7 @@ class IndexPage extends React.PureComponent {
               ]
             }
           }}
-        />
+        /> */}
         <ListViewComponent
           Banner={Banner}
           IndexRow={IndexRow}
@@ -64,10 +62,11 @@ class IndexPage extends React.PureComponent {
   }
 }
 const mapStateToProps = createStructuredSelector({
-  placeholderData: selectplaceholderData,
- 
+  placeholderData: selectplaceholderData
 });
-const mapDispatchToProps = dispatch => ({
-});
+const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps,mapDispatchToProps)(IndexPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IndexPage);
