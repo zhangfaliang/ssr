@@ -10,6 +10,7 @@ import {
   CLICK_SILD_BAR,
   CHAGE_USER_SLID,
   SET_CONFIG_INDEX_PAGE,
+  GO_TO_RECHAGE,
   GET_CONFIG_INDEX_PAGE
 } from "./actionTypes";
 
@@ -90,3 +91,10 @@ export const setConfigIndexPage = pageIndexConfig => {
     pageIndexConfig
   };
 };
+export const goToRecharge = key => {
+  return {
+    type: GO_TO_RECHAGE,
+    key
+  };
+};
+

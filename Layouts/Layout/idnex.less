@@ -4,6 +4,7 @@
   height: 100%;
   overflow: hidden !important;
   background: @brand-background;
+  width: 750px;
   .layout{
     position: absolute;
     top: 0;
@@ -15,6 +16,7 @@
     display: flex;
     justify-content: flex-start;
     flex-flow: column nowrap;
+    width: 750px;
   }
   .main {
     position: relative;
@@ -22,10 +24,11 @@
     justify-content: flex-start;
     flex-flow: column nowrap;
     flex: 1;
-    overflow: hidden;
-    overflow-y: auto;
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
+    width: 750px;
+    padding: 0 24px;
   }
   :global {
     .am-drawer-draghandle {

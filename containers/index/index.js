@@ -6,6 +6,7 @@ import ListViewComponent from "../../components/listView";
 import IndexRow from "./row";
 import Banner from "../../components/banner/index";
 import { selectplaceholderData } from "../../models/index/selects";
+import { changeUserSild } from "../../models/global/actions";
 
 class IndexPage extends React.PureComponent {
   onScroll = scrollTop => {
@@ -18,6 +19,9 @@ class IndexPage extends React.PureComponent {
     } = parentProps;
     setScrollTop(scrollTop);
   };
+  componentWillUnmount() {
+    this.props.changeUserSild(false);
+  }
   render() {
     const { parentProps } = this.props;
     const { ceilingFlag } = parentProps;
@@ -64,7 +68,11 @@ class IndexPage extends React.PureComponent {
 const mapStateToProps = createStructuredSelector({
   placeholderData: selectplaceholderData
 });
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  changeUserSild: flag => {
+    dispatch(changeUserSild(flag));
+  }
+});
 
 export default connect(
   mapStateToProps,

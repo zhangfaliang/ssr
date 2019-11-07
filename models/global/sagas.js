@@ -1,6 +1,8 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import { get } from "lodash";
+import Router from "next/router";
+
 import {
   setUser,
   getUser,
@@ -17,7 +19,8 @@ import {
   GET_USER,
   INIT_PAGE,
   CLICK_SILD_BAR,
-  GET_CONFIG_INDEX_PAGE
+  GET_CONFIG_INDEX_PAGE,
+  GO_TO_RECHAGE
 } from "./actionTypes";
 es6promise.polyfill();
 
@@ -91,16 +94,20 @@ function* clickSildBar(action) {
 function* requireConfigIndexPage() {
   const res = yield call(getIndexPageConfig);
   const indexConfig = {
-    userSlidBtn: JSON.parse(get(res, "data.data.data.userSlidBtn", '[]')),
-    userSetBtn: JSON.parse(get(res, "data.data.data.userSetBtn", '[]')),
-    goToPageBtn: JSON.parse(get(res, "data.data.data.goToPageBtn", '[]'))
+    userSlidBtn: JSON.parse(get(res, "data.data.data.userSlidBtn", "[]")),
+    userSetBtn: JSON.parse(get(res, "data.data.data.userSetBtn", "[]")),
+    goToPageBtn: JSON.parse(get(res, "data.data.data.goToPageBtn", "[]"))
   };
   yield put(setConfigIndexPage(indexConfig));
 }
 
+function* gotoRecahge(action) {
+  Router.push(`/payment/choose?key=${key}`)
+}
 export default [
   takeLatest(GET_USER, getUserWorks),
   takeLatest(INIT_PAGE, initPage),
   takeLatest(CLICK_SILD_BAR, clickSildBar),
-  takeLatest(GET_CONFIG_INDEX_PAGE, requireConfigIndexPage)
+  takeLatest(GET_CONFIG_INDEX_PAGE, requireConfigIndexPage),
+  takeLatest(GO_TO_RECHAGE, gotoRecahge)
 ];

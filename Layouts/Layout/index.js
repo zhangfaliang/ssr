@@ -35,7 +35,8 @@ import {
   setListViewScrollTop,
   setCeilingFlag,
   setPathName,
-  setTabKey
+  setTabKey,
+  goToRecharge
 } from "../../models/global/actions";
 import {
   makeListViewScrollTop,
@@ -106,6 +107,9 @@ class Layout extends React.Component {
       });
     onSetFeedbackModal({ isOpen: false });
   };
+  handuleBtn = key => {
+    this.props.goToRecharge(key);
+  };
   render() {
     const {
       listViewScrollTop,
@@ -124,7 +128,10 @@ class Layout extends React.Component {
       <SildUserWarp>
         <UserPhoto />
         <UserInfo {...userInfo} />
-        <Recharge userSlidBtn={userSlidBtn || []} />
+        <Recharge
+          userSlidBtn={userSlidBtn || []}
+          handuleBtn={this.handuleBtn}
+        />
         <Setting userSetBtn={userSetBtn} onClickBar={this.props.onClickBar} />
         <SlideList goToPageBtn={goToPageBtn} />
       </SildUserWarp>
@@ -197,7 +204,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setFeedbackModal(feedbackModal)),
   onInitPage: () => dispatch(initPage()),
   onClickBar: typeText => dispatch(initClickBar(typeText)),
-  onOpenUserSlidChange: userSildFalg => dispatch(changeUserSild(userSildFalg))
+  onOpenUserSlidChange: userSildFalg => dispatch(changeUserSild(userSildFalg)),
+  goToRecharge: key => dispatch(goToRecharge(key))
 });
 
 export default connect(

@@ -35,6 +35,8 @@ let feedbackModalData = {
 function* onLogin() {
   try {
     const inputValus = yield select(makeInputValus);
+    console.log(inputValus)
+
     const data = yield call(login, {
       userName: get(inputValus, "phoneNumber", ""),
       password: sjcl.encrypt("password", get(inputValus, "password", ""))
