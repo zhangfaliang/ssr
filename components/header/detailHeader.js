@@ -24,7 +24,8 @@ class DetailHeader extends Component {
     return null;
   }
   onBack = () => {
-    isFunction(this.props.onBack) ? this.props.onBack() : Router.back();
+    // isFunction(this.props.onBack) ? this.props.onBack() : Router.back();
+    Router.back()
 
   };
   onShare = () => {

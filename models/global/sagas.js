@@ -102,7 +102,8 @@ function* requireConfigIndexPage() {
 }
 
 function* gotoRecahge(action) {
-  Router.push(`/payment/choose?key=${key}`)
+  const { key } = action;
+  Router.push(`/payment/choose?key=${key}`);
 }
 export default [
   takeLatest(GET_USER, getUserWorks),

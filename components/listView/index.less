@@ -1,8 +1,9 @@
 .listView-wrap {
-  overflow: auto;
+  overflow: hidden;
   height: @main-height;
+  position: relative;
   .banner {
-    width: 710px;
+    width: 660px;
     margin: 0;
     height: 290px;
   }
@@ -11,6 +12,7 @@
       padding: 0 20px;
       box-sizing: border-box;
     }
+ 
     .sticky-list .sticky-container .am-list-item {
       padding-left: 0;
     }
@@ -23,6 +25,7 @@
     }
     .sticky-list .sticky-container .sticky {
       padding: 7px 15px;
+      box-sizing: border-box;
       transform: none;
     }
   }
